@@ -1,0 +1,48 @@
+/* NewCars.css */
+.new-cars-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  .new-car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .new-car-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .new-car-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .new-car-card a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .new-car-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .back-link {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,70 @@
+/* MainPage.css */
+.main-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  h1 {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the search bar */
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;  /* Increased bottom margin to give space between search bar and listings */
+    gap: 10px;  /* Add space between the input fields and button */
+  }
+  
+  .search-bar input, .search-bar button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 200px;
+  }
+  
+  .search-bar button {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .search-bar button:hover {
+    background-color: #d10027;
+  }
+  
+  /* Grid layout for car listings */
+  .car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .car-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .car-card:hover {
+    transform: translateY(-5px);  /* Slight lift effect when hovering over a card */
+  }
+  
+  .car-card a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .car-card a:hover {
+    text-decoration: underline;
+  }
+  
