@@ -1,13 +1,119 @@
-body {
+:root {
+	/*========== Colors ==========*/
+	--text-color: rgb(38, 1, 9);
+	--background-color: rgb(255, 249, 250);
+	--primary-color: rgb(228, 0, 43);
+	--primary-hover-color: #d10027;
+	--primary-a1-color: rgba(228, 0, 43, 0.2);
+	--secondary-color: rgb(124, 252, 164);
+	--secondary-a1-color: rgba(124, 252, 164, 0.2);
+	--white-color: rgb(255, 255, 255);
+	--body-color: rgb(38, 1, 9);
+
+	/*========== Font and typography ==========*/
+	/*.5rem = 8px | 1rem = 16px ...*/
+	/* <uniquifier>: Use a unique and descriptive class name*/
+	/* <weight>: Use a value from 100 to 900*/
+
+	--ff-primary: "Inter";
+
+	/*========== Font weight ==========*/
+	--fs-700: 3.158rem;
+	--fs-600: 2.369rem;
+	--fs-500: 1.125rem;
+	--fs-400: 1rem;
+	--fs-300: 0.75rem;
+
+	--fs-body: var(--fs-400);
+	--fs-primary-heading: var(--fs-700);
+	--fs-secondary-heading: var(--fs-600);
+
+	/*========== Font weight ==========*/
+	--fw-regular: 400;
+	--fw-semi-bold: 600;
+	--fw-bold: 700;
+
+	/*========== z index ==========*/
+	--z-tooltip: 10;
+	--z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+	:root {
+		--biggest-font-size: 2.369rem;
+		--normal-font-size: 1rem;
+		--small-font-size: 0.75rem;
+	}
+}
+
+/*=============== BASE ===============*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	font: inherit;
+	padding: 0;
 	margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
 		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 		"Helvetica Neue", sans-serif;
+	font-family: var(--ff-primary);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-size: var(--normal-font-size);
+	background-color: var(--background-color);
+	color: var(--text-color);
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: var(--fw-bold);
+	margin: 0;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+img,
+picture,
+svg {
+	max-width: 100%;
+	display: block;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/

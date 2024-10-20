@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"; // Import js-cookie
 import "./Header.css";
 
 const Header = () => {
+	const navigate = useNavigate();
+	const userName = sessionStorage.getItem("username");
+	console.log(userName);
+	const handleLogout = () => {
+		sessionStorage.removeItem("username");
+		alert("Logout successfull!");
+		navigate("/main");
+	};
 	return (
 		<header className="header">
 			<div className="container">
@@ -9,10 +18,16 @@ const Header = () => {
 					<Link to="/">HeptaWheels</Link>
 				</div>
 				<nav className="nav">
-					<Link to="/new">New Cars</Link>
-					<Link to="/used">Used Cars</Link>
-					<Link to="/login">Login</Link>
-					<Link to="/signup">Sign Up</Link>
+					<Link to="/main">Shop</Link>
+					<Link to="/used">Loan</Link>
+					{userName ? <Link to="/main">Profile</Link> : null}
+					{userName ? (
+						<Link to="/main" onClick={handleLogout}>
+							Logout
+						</Link>
+					) : (
+						<Link to="/login">Login</Link>
+					)}
 				</nav>
 			</div>
 		</header>
