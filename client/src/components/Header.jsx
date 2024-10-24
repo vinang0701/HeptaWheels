@@ -20,6 +20,8 @@ const Header = () => {
 				<nav className="nav">
 					<Link to="/main">Shop</Link>
 					<Link to="/used">Loan</Link>
+					<Link to="/admin/dashboard">Dashboard</Link>
+					{/* Maybe try use CSS to handle the logic instead. */}
 					{userName ? <Link to="/main">Profile</Link> : null}
 					{userName ? (
 						<Link to="/main" onClick={handleLogout}>

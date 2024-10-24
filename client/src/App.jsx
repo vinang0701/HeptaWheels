@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp.jsx";
 import CarDetailsPage from "./components/CarDetailsPage.jsx";
 import Header from "./components/Header.jsx"; // Add a Header component for navigation
 import "./index.css";
+import UserAdminDashboard from "./components/UserAdminDashboard.jsx";
 
 function App() {
 	return (
@@ -20,6 +21,10 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/car-details/:id" element={<CarDetailsPage />} />
+				<Route
+					path="/admin/dashboard"
+					element={<UserAdminDashboard />}
+				/>
 			</Routes>
 		</Router>
 	);

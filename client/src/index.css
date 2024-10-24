@@ -4,9 +4,10 @@
 	--background-color: rgb(255, 249, 250);
 	--primary-color: rgb(228, 0, 43);
 	--primary-hover-color: #d10027;
-	--primary-a1-color: rgba(228, 0, 43, 0.2);
+	--primary-a1-color: rgba(228, 0, 43, 0.02);
 	--secondary-color: rgb(124, 252, 164);
 	--secondary-a1-color: rgba(124, 252, 164, 0.2);
+	--accent-color: rgb(77, 231, 251);
 	--white-color: rgb(255, 255, 255);
 	--body-color: rgb(38, 1, 9);
 
@@ -18,8 +19,9 @@
 	--ff-primary: "Inter";
 
 	/*========== Font weight ==========*/
-	--fs-700: 3.158rem;
-	--fs-600: 2.369rem;
+	--fs-800: 3.158rem;
+	--fs-700: 2.369rem;
+	--fs-600: 1.777rem;
 	--fs-500: 1.125rem;
 	--fs-400: 1rem;
 	--fs-300: 0.75rem;
@@ -97,6 +99,14 @@ h4,
 h5 {
 	font-weight: var(--fw-bold);
 	margin: 0;
+}
+
+h1 {
+	font-size: var(--fs-primary-heading);
+}
+
+h4 {
+	font-size: var(--fs-secondary-heading);
 }
 
 code {
