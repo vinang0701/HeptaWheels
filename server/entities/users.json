@@ -1,26 +1,282 @@
 [
 	{
 		"userID": 1,
-		"username": "James",
-		"email": "james@gmail.com",
-		"password": "password"
+		"email": "user149@yahoo.com",
+		"password": "C;JP5}q!",
+		"status": "Active",
+		"role": "Seller"
 	},
 	{
 		"userID": 2,
-		"username": "Conner",
-		"email": "conner@gmail.com",
-		"password": "password"
+		"email": "user243@outlook.com",
+		"password": "ry6V\\L(C",
+		"status": "Active",
+		"role": "Buyer"
 	},
 	{
 		"userID": 3,
-		"username": "David",
-		"email": "david@gmail.com",
-		"password": "password"
+		"email": "user365@gmail.com",
+		"password": "N(YI2?ik",
+		"status": "Inactive",
+		"role": "User Admin"
 	},
 	{
 		"userID": 4,
-		"username": "Ben",
-		"email": "ben@gmail.com",
-		"password": "password"
+		"email": "user460@outlook.com",
+		"password": "*L3{a5tp",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 5,
+		"email": "user556@gmail.com",
+		"password": "<g9B[Z@W",
+		"status": "Active",
+		"role": "Agent"
+	},
+	{
+		"userID": 6,
+		"email": "user612@gmail.com",
+		"password": "*G6@:H(0",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 7,
+		"email": "user799@outlook.com",
+		"password": "a!b^y(^h",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 8,
+		"email": "user83@outlook.com",
+		"password": "hVb<(XIm",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 9,
+		"email": "user975@gmail.com",
+		"password": "~$HKXQUZ",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 10,
+		"email": "user1079@hotmail.com",
+		"password": "[JSS0_3_",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 11,
+		"email": "user1141@outlook.com",
+		"password": ")7Wl*'f$",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 12,
+		"email": "user1283@outlook.com",
+		"password": "vY9\"->[R",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 13,
+		"email": "user1351@gmail.com",
+		"password": "YCYkE*sf",
+		"status": "Active",
+		"role": "User Admin"
+	},
+	{
+		"userID": 14,
+		"email": "user1457@yahoo.com",
+		"password": "Yp$O%Q@5",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 15,
+		"email": "user1546@gmail.com",
+		"password": "c5W&m'u4",
+		"status": "Inactive",
+		"role": "Seller"
+	},
+	{
+		"userID": 16,
+		"email": "user1623@yahoo.com",
+		"password": "Wl9[@99?",
+		"status": "Active",
+		"role": "Buyer"
+	},
+	{
+		"userID": 17,
+		"email": "user1737@hotmail.com",
+		"password": "I`Xqiv(o",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 18,
+		"email": "user1825@hotmail.com",
+		"password": "uxVP7N:+",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 19,
+		"email": "user1988@hotmail.com",
+		"password": "D=uY^UDS",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 20,
+		"email": "user205@outlook.com",
+		"password": "@I/iDh^s",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 21,
+		"email": "user2137@outlook.com",
+		"password": "Cg3_O>xp",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 22,
+		"email": "user2279@gmail.com",
+		"password": "h\\1:6#]$",
+		"status": "Active",
+		"role": "Buyer"
+	},
+	{
+		"userID": 23,
+		"email": "user2362@outlook.com",
+		"password": "B'uuB-*c",
+		"status": "Active",
+		"role": "Agent"
+	},
+	{
+		"userID": 24,
+		"email": "user2472@gmail.com",
+		"password": "P>)4|Zp<",
+		"status": "Active",
+		"role": "User Admin"
+	},
+	{
+		"userID": 25,
+		"email": "user2596@yahoo.com",
+		"password": "}.9]rv-3",
+		"status": "Active",
+		"role": "User Admin"
+	},
+	{
+		"userID": 26,
+		"email": "user266@outlook.com",
+		"password": "!0AwGrv0",
+		"status": "Active",
+		"role": "Agent"
+	},
+	{
+		"userID": 27,
+		"email": "user2776@hotmail.com",
+		"password": "iP=obLH(",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 28,
+		"email": "user2839@outlook.com",
+		"password": "0ZcvXrR]",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 29,
+		"email": "user2963@gmail.com",
+		"password": "Jby'd(!;",
+		"status": "Active",
+		"role": "Agent"
+	},
+	{
+		"userID": 30,
+		"email": "user3051@yahoo.com",
+		"password": "Zxh03q=~",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 31,
+		"email": "user3166@outlook.com",
+		"password": "JP8Aww#5",
+		"status": "Inactive",
+		"role": "User Admin"
+	},
+	{
+		"userID": 32,
+		"email": "user3290@outlook.com",
+		"password": "/ayL7n.n",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 33,
+		"email": "user3395@gmail.com",
+		"password": "M&3G4$W-",
+		"status": "Inactive",
+		"role": "Seller"
+	},
+	{
+		"userID": 34,
+		"email": "user3475@yahoo.com",
+		"password": "SUblrn+@",
+		"status": "Active",
+		"role": "User Admin"
+	},
+	{
+		"userID": 35,
+		"email": "user3552@yahoo.com",
+		"password": "OTCy\\Hh}",
+		"status": "Inactive",
+		"role": "Buyer"
+	},
+	{
+		"userID": 36,
+		"email": "user3668@hotmail.com",
+		"password": "L`'zvocd",
+		"status": "Active",
+		"role": "Buyer"
+	},
+	{
+		"userID": 37,
+		"email": "user3781@yahoo.com",
+		"password": "L<f}^DH#",
+		"status": "Inactive",
+		"role": "Agent"
+	},
+	{
+		"userID": 38,
+		"email": "user3891@outlook.com",
+		"password": "O2b\\R<#/",
+		"status": "Inactive",
+		"role": "Seller"
+	},
+	{
+		"userID": 39,
+		"email": "user3998@hotmail.com",
+		"password": "<^<Wea9@",
+		"status": "Active",
+		"role": "Seller"
+	},
+	{
+		"userID": 40,
+		"email": "user4048@outlook.com",
+		"password": "5cyT+b17",
+		"status": "Active",
+		"role": "Buyer"
 	}
 ]

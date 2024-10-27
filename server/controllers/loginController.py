@@ -16,7 +16,7 @@ class LoginController:
 
         # Ignore this: Need a function to return UserAccount object for front end
 
-        #For now just these statements
+        #b For now just these statements
         if user is None:
             return jsonify({"status": "error", "message": "Invalid password"}), 401
         else:

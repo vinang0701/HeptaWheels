@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
-import "./MainPage.css";
-import Header from "./Header";
+import "./BuyerDashboard.css";
 
-const MainPage = () => {
+const BuyerDashboard = () => {
 	const [cars, setCars] = useState([]);
 	const [filteredCars, setFilteredCars] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -40,17 +40,14 @@ const MainPage = () => {
 	}
 
 	return (
-		<div className="container">
-			<Header />
-			<h1>Landing Page</h1>
-
-			{/* <h1>Available Cars</h1> */}
+		<div className="main-container">
+			<h1>Available Cars</h1>
 
 			{/* Search bar */}
-			{/* <SearchBar onSearch={handleSearch} /> */}
+			<SearchBar onSearch={handleSearch} />
 
 			{/* Car grid */}
-			{/* <div className="car-grid">
+			<div className="car-grid">
 				{Array.isArray(filteredCars) && filteredCars.length > 0 ? (
 					filteredCars.map((car) => (
 						<div className="car-card" key={car.id}>
@@ -68,9 +65,9 @@ const MainPage = () => {
 				) : (
 					<p>No cars available</p>
 				)}
-			</div>*/}
+			</div>
 		</div>
 	);
 };
 
-export default MainPage;
+export default BuyerDashboard;

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./Login.css";
 
@@ -52,11 +52,31 @@ const Login = () => {
 					alert("Login successful");
 					// Store user's name in a cookie
 					sessionStorage.setItem(
-						"username",
-						response.data.user_data.username
+						"user-email",
+						response.data.user_data.email
 					);
-					// Redirect or perform any other action upon successful login
-					navigate("/");
+					sessionStorage.setItem(
+						"user-role",
+						response.data.user_data.role
+					);
+					// Redirect based on role
+					// For now it will be admin only
+
+					let userRole = response.data.user_data.role;
+					switch (userRole) {
+						case "admin":
+							navigate("/admin");
+							break;
+						case "buyer":
+							navigate("/buyer");
+							break;
+						case "seller":
+							navigate("/seller");
+							break;
+						case "agent":
+							navigate("/agent");
+							break;
+					}
 				} else {
 					setError(response.data.message);
 				}
@@ -69,9 +89,9 @@ const Login = () => {
 
 	return (
 		<div>
-			<div className="loginPageContainer" onSubmit={handleSubmit}>
+			<div className="loginPageContainer">
 				<h1>Login</h1>
-				<form className="loginInputForm">
+				<form className="loginInputForm" onSubmit={handleSubmit}>
 					<div className="loginInputFields">
 						{error && <p className="error">{error}</p>}
 						{emailError && <p className="error">{emailError}</p>}

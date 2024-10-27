@@ -1,26 +1,15 @@
-import bson
+from pymongo import MongoClient
+import os, configparser
 
-from flask import current_app, g
-from werkzeug.local import LocalProxy
-from flask_pymongo import PyMongo
+def get_database():
+    # Load the MongoDB URI from the config file
+    config = configparser.ConfigParser()
+    currentfolder = os.path.dirname(os.path.abspath(__file__))
+    initfile = os.path.join(currentfolder, 'sample_ini.init')
+    config.read(initfile)
 
-from pymongo.errors import DuplicateKeyError, OperationFailure
-from bson.objectid import ObjectId
-from bson.errors import InvalidId
-
-
-def get_db():
-    """
-    Configuration method to return db instance
-    """
-    db = getattr(g, "_database", None)
-
-    if db is None:
-
-        db = g._database = PyMongo(current_app).db
-       
-    return db
-
-
-# Use LocalProxy to read the global db instance with just `db`
-db = LocalProxy(get_db)
+    # Get DB URI
+    db_uri = config.get("prod", "DB_URI")
+    client = MongoClient(db_uri)
+    database = client["heptawheels"]
+    return database

@@ -1,30 +1,27 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./components/MainPage.jsx";
-import NewCars from "./components/NewCars.jsx";
-import UsedCars from "./components/UsedCars.jsx";
+import UsedCars from "./components/buyer/UsedCars.jsx";
 import Login from "./components/Login.jsx";
-import SignUp from "./components/SignUp.jsx";
-import CarDetailsPage from "./components/CarDetailsPage.jsx";
-import Header from "./components/Header.jsx"; // Add a Header component for navigation
+import CarDetailsPage from "./components/buyer/CarDetailsPage.jsx";
+import UserAdminDashboard from "./components/admin/UserAdminDashboard.jsx";
+import BuyerDashboard from "./components/buyer/BuyerDashboard.jsx";
+import SellerDashboard from "./components/seller/SellerDashboard.jsx";
+import AgentDashboard from "./components/agent/AgentDashboard.jsx";
 import "./index.css";
-import UserAdminDashboard from "./components/UserAdminDashboard.jsx";
 
 function App() {
 	return (
 		<Router>
-			<Header /> {/* Navigation bar for the entire site */}
 			<Routes>
 				<Route path="/" element={<MainPage />} />
 				<Route path="/main" element={<MainPage />} />
-				<Route path="/new" element={<NewCars />} />
 				<Route path="/used" element={<UsedCars />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<SignUp />} />
 				<Route path="/car-details/:id" element={<CarDetailsPage />} />
-				<Route
-					path="/admin/dashboard"
-					element={<UserAdminDashboard />}
-				/>
+				<Route path="/admin" element={<UserAdminDashboard />} />
+				<Route path="/buyer" element={<BuyerDashboard />} />
+				<Route path="/seller" element={<SellerDashboard />} />
+				<Route path="/agent" element={<AgentDashboard />} />
 			</Routes>
 		</Router>
 	);

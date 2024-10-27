@@ -11,6 +11,12 @@
 	--white-color: rgb(255, 255, 255);
 	--body-color: rgb(38, 1, 9);
 
+	--p1-color: #c1121f;
+	--p1-hover-color: #780000;
+	--s1-color: #003049;
+	--s1-hover-color: #669bbc;
+	--a1-color: #fdf0d5;
+
 	/*========== Font and typography ==========*/
 	/*.5rem = 8px | 1rem = 16px ...*/
 	/* <uniquifier>: Use a unique and descriptive class name*/
@@ -124,6 +130,22 @@ svg {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
 	text-decoration-skip-ink: auto;
+}
+
+button {
+	background-color: var(--primary-color);
+
+	color: var(--background-color);
+
+	font-weight: var(--fw-bold);
+	padding: 12px 16px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #d10027;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
