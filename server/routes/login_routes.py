@@ -9,7 +9,7 @@ login_routes = Blueprint("login_routes", __name__)
 
 # Initialize Entity and Controller
 database = get_database()
-userAccount = UserAccount(database)
+userAccount = UserAccount()
 loginController = LoginController(userAccount)
 
 
@@ -30,12 +30,10 @@ def login():
     # Delegate the login logic to the login controller
     user = loginController.validateUser(email, password)
 
-
     user_data = {
         "email": user['email'],
         "role": user['role'].lower()
     }
-
 
     return jsonify({"status": "success", "message": "Login successful!", "user_data": user_data}), 200
 

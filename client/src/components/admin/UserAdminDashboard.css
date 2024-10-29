@@ -89,33 +89,35 @@
 .userFormContainer {
 	display: flex;
 	flex-direction: column;
+	width: 25%;
 	z-index: 13;
-	padding: 1.5em 1em;
-	height: 500px;
+	padding: 20px 40px;
+	/* height: 50%; */
 	border: 1px solid rgba(0, 0, 0, 0.4);
 	border-radius: 12px;
 	position: fixed;
-	top: 40%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #e9e9e9;
+	background-color: #fff4f6;
+	box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 8px;
 }
 
 .userFormHeader {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	padding-bottom: 8px;
 }
 
 .userFormHeader button {
 	background-color: #0032e4;
-
 	font-weight: var(--fw-bold);
 	color: var(--background-color);
 	border: none;
 	padding: 0.25em 0.5em;
 	border-radius: 10px;
 	cursor: pointer;
+	margin-left: auto;
 }
 
 .userFormHeader button:hover {
@@ -124,23 +126,16 @@
 
 .createUserForm {
 	width: 100%;
-	height: 100%;
-	display: grid;
-	row-gap: 4px;
-	padding-top: 1em;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 8px;
 }
 
 .userInputContainer {
-	display: grid;
-	grid-template-columns: 30% 70%;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px 0;
 	position: relative;
-}
-
-.userInputContainer span {
-	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
 }
 
 .userInputContainer input {
@@ -148,22 +143,18 @@
 	border-radius: 10px;
 	border: 1px solid #0909096b;
 	padding-left: 8px;
-	margin-top: 4px;
 }
 
 .error {
 	color: red;
 	font-size: 0.8em;
-	/* margin-bottom: 4px; */
-	display: block;
-	top: -18px; /* Adjust to control vertical positioning */
-	left: 0;
 	width: 100%;
+	height: 12px;
 	text-align: left;
 }
 
 #submitCreateUser {
-	margin-top: auto;
+	margin-top: 16px;
 	background-color: var(--primary-color);
 	color: var(--background-color);
 	font-weight: var(--fw-bold);

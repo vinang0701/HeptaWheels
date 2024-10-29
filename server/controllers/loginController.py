@@ -18,7 +18,7 @@ class LoginController:
 
         #b For now just these statements
         if user is None:
-            return jsonify({"status": "error", "message": "Invalid password"}), 401
+            return None
         else:
             return user
         

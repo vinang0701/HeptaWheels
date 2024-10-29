@@ -1,35 +1,47 @@
 # Entity class to fetch user account data
 
 # Needs a validateUser(email, password) function
-#ignore above
+# ignore above
 
 from flask import jsonify
 from pymongo import DESCENDING
+from db import get_database
 
 class UserAccount:
-    
-
-    def __init__(self, db):
-        self.collection = db["users"]
+    def __init__(self):
+        database = get_database()
+        self.collection = database["users"]
     
     def find_user_by_email(self, email):
         """
         Fetch a user by their email from MongoDB.
         """
-        user = self.collection.find_one({"email": email}, {"_id": 0})
-        return user
+        try:
+            user = self.collection.find_one({"email": email}, {"_id": 0})
+            if (user is None):
+                return None
+            return user
+        except Exception as e:
+            raise RuntimeError(f"An unexpected error as occured: {str(e)}")
+    
 
     def getAllUsers(self):
         """
         Fetch all users from MongoDB.
         """
-        users = list(self.collection.find({}, {"_id":0}))
-        return users
+        try:
+            users = list(self.collection.find({}, {"_id":0}).sort("userID", 1))
+            if (users is None):
+                return None
+            return users
+        except Exception as e:
+            raise RuntimeError(f"An unexpected error as occured: {str(e)}")
+        
     
     def validateUser(self, email, pwd):
         user = self.find_user_by_email(email)
         if not user:
-            return jsonify({"status": "error", "message": "User not found"}), 404
+            return None
         else:
             if pwd == user['password']:
                 print(user)
@@ -37,7 +49,7 @@ class UserAccount:
             else:
                 return None
 
-        return False
+        return None
 
     def createUser(self, email, pwd, role):
         # Check if user already exists
@@ -56,7 +68,18 @@ class UserAccount:
                     "status": "Active",
                     "role": role
                 })
-                print("Scuba")
                 return jsonify({"status": "success", "message": "User added successfully"}), 200
             except Exception as e:
                 return jsonify({"status": "error", "message": str(e)}), 500
+            
+    def suspend(self, email):
+        try:
+            user = self.find_user_by_email(email)
+            if(user is None):
+                raise ValueError("User not found!")
+                return False
+            
+            self.collection.update_one({"email": email},
+                                       {"$set": {"status": "Inactive"}})
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error has occurred: {str(e)}")

@@ -134,14 +134,15 @@ a:not([class]) {
 
 button {
 	background-color: var(--primary-color);
-
 	color: var(--background-color);
-
 	font-weight: var(--fw-bold);
-	padding: 12px 16px;
 	border: none;
 	border-radius: 12px;
 	cursor: pointer;
+}
+
+input {
+	padding-left: 8px;
 }
 
 button:hover {

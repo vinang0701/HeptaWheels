@@ -9,12 +9,7 @@ class AdminController:
         self.user_account_entity = user_account_entity
 
 
-    def getAllUsers(self):
-        try:
-            users = self.user_account_entity.getAllUsers()
-            return users
-        except Exception as e:
-            return jsonify({"status": "error", "message": str(e)}), 500
+   
 
     def createUser(self, email, pwd, role):
         try:

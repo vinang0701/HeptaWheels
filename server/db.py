@@ -1,4 +1,6 @@
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
+import certifi
 import os, configparser
 
 def get_database():
@@ -10,6 +12,7 @@ def get_database():
 
     # Get DB URI
     db_uri = config.get("prod", "DB_URI")
-    client = MongoClient(db_uri)
+    client = MongoClient(db_uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
     database = client["heptawheels"]
+    
     return database

@@ -84,11 +84,11 @@ const CreateUser = ({ toggleFormVisibility }) => {
 				<form className="createUserForm" onSubmit={handleSubmit}>
 					{error && <span className="error">{error}</span>}
 					<div>
-						{emailError && (
-							<span className="error">{emailError}</span>
-						)}
 						<div className="userInputContainer">
-							<span>Email</span>
+							{emailError && (
+								<span className="error">{emailError}</span>
+							)}
+							<label>Email</label>
 							<input
 								type="text"
 								name="email"
@@ -99,11 +99,11 @@ const CreateUser = ({ toggleFormVisibility }) => {
 					</div>
 
 					<div>
-						{passwordError && (
-							<span className="error">{passwordError}</span>
-						)}
 						<div className="userInputContainer">
-							<span>Password</span>
+							{passwordError && (
+								<span className="error">{passwordError}</span>
+							)}
+							<label>Password</label>
 							<input
 								type="text"
 								name="password"
@@ -113,11 +113,9 @@ const CreateUser = ({ toggleFormVisibility }) => {
 						</div>
 					</div>
 					<div>
-						{roleError && (
-							<span className="error">{roleError}</span>
-						)}
 						<div className="userInputContainer">
-							<span>Role</span>
+							<span className="error">{roleError}</span>
+							<label>Role</label>
 							<input
 								type="text"
 								name="userRole"
