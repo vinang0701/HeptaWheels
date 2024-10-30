@@ -1,0 +1,282 @@
+[
+    {
+        "userID": 1,
+        "email": "charlie88@hotmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 2,
+        "email": "mary98@hotmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 3,
+        "email": "bob83@yahoo.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Seller"
+    },
+    {
+        "userID": 4,
+        "email": "charles64@gmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 5,
+        "email": "charles53@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Seller"
+    },
+    {
+        "userID": 6,
+        "email": "james86@outlook.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 7,
+        "email": "bob14@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Seller"
+    },
+    {
+        "userID": 8,
+        "email": "mary9@hotmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 9,
+        "email": "james92@gmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 10,
+        "email": "james20@hotmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Buyer"
+    },
+    {
+        "userID": 11,
+        "email": "alice49@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 12,
+        "email": "james84@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 13,
+        "email": "mary48@yahoo.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 14,
+        "email": "alice61@gmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Buyer"
+    },
+    {
+        "userID": 15,
+        "email": "james34@hotmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Seller"
+    },
+    {
+        "userID": 16,
+        "email": "mary81@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 17,
+        "email": "charlie92@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 18,
+        "email": "alice93@outlook.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 19,
+        "email": "charles33@yahoo.com",
+        "password": "123",
+        "status": "Active",
+        "role": "User Admin"
+    },
+    {
+        "userID": 20,
+        "email": "james82@hotmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Seller"
+    },
+    {
+        "userID": 21,
+        "email": "alice46@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Buyer"
+    },
+    {
+        "userID": 22,
+        "email": "james96@hotmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 23,
+        "email": "james17@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 24,
+        "email": "bob49@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 25,
+        "email": "charlie17@hotmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "User Admin"
+    },
+    {
+        "userID": 26,
+        "email": "alice31@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Seller"
+    },
+    {
+        "userID": 27,
+        "email": "bob40@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Seller"
+    },
+    {
+        "userID": 28,
+        "email": "alice72@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Buyer"
+    },
+    {
+        "userID": 29,
+        "email": "charles55@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "User Admin"
+    },
+    {
+        "userID": 30,
+        "email": "charles51@outlook.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 31,
+        "email": "james83@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 32,
+        "email": "mary64@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    },
+    {
+        "userID": 33,
+        "email": "james20@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 34,
+        "email": "bob12@gmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 35,
+        "email": "bob77@hotmail.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 36,
+        "email": "mary95@yahoo.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Buyer"
+    },
+    {
+        "userID": 37,
+        "email": "charlie40@yahoo.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 38,
+        "email": "charlie70@yahoo.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Seller"
+    },
+    {
+        "userID": 39,
+        "email": "james46@outlook.com",
+        "password": "123",
+        "status": "Active",
+        "role": "Agent"
+    },
+    {
+        "userID": 40,
+        "email": "mary99@gmail.com",
+        "password": "123",
+        "status": "Inactive",
+        "role": "Agent"
+    }
+]

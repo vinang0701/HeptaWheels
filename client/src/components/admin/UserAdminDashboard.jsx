@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CreateUser from "./CreateUser";
 import "./UserAdminDashboard.css";
@@ -8,6 +9,7 @@ const UserAdminDashboard = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
 	const [error, setError] = useState(null);
 	const [users, setUsers] = useState([]);
+	const navigate = useNavigate();
 	const toggleFormVisibility = () => {
 		setFormVisible(!isFormVisible);
 	};
@@ -28,6 +30,10 @@ const UserAdminDashboard = () => {
 
 		fetchUsers(); // Call the fetch function
 	}, []);
+
+	const viewAccount = (email) => {
+		navigate(`/users/${encodeURIComponent(email)}`);
+	};
 
 	return (
 		<div>
@@ -61,7 +67,9 @@ const UserAdminDashboard = () => {
 							<div>{user.role}</div>
 							<div>{user.status}</div>
 							<div>
-								<button>View Profile</button>
+								<button onClick={() => viewAccount(user.email)}>
+									View Account
+								</button>
 							</div>
 						</div>
 					))}

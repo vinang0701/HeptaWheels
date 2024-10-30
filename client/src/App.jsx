@@ -8,6 +8,7 @@ import BuyerDashboard from "./components/buyer/BuyerDashboard.jsx";
 import SellerDashboard from "./components/seller/SellerDashboard.jsx";
 import AgentDashboard from "./components/agent/AgentDashboard.jsx";
 import "./index.css";
+import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/car-details/:id" element={<CarDetailsPage />} />
 				<Route path="/admin" element={<UserAdminDashboard />} />
+				<Route path="/users/:email" element={<ViewUserAccountPage />} />
 				<Route path="/buyer" element={<BuyerDashboard />} />
 				<Route path="/seller" element={<SellerDashboard />} />
 				<Route path="/agent" element={<AgentDashboard />} />

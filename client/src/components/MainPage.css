@@ -1,4 +1,36 @@
 /* MainPage.css */
-.container {
+
+.landing-page-container {
 	width: 100%;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	padding: 40px 190px;
+	background-color: var(--secondary-color);
+}
+
+.landing-page-container img {
+	width: 490px;
+	height: 80vh;
+	border-radius: 30px;
+	object-fit: cover;
+}
+
+.hero-section-text-container {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	margin-right: auto;
+	height: fit-content;
+}
+
+.hero-section-text-container p {
+	font-size: var(--fs-500);
+}
+
+.hero-section-text-container button {
+	font-size: var(--fs-600);
+	height: 56px;
+	width: 160px;
+	margin-top: 40px;
 }

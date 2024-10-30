@@ -18,9 +18,9 @@ const AdminNav = () => {
 					<Link to="/">HeptaWheels</Link>
 				</div>
 				<nav className="admin-nav-items">
-					{userRole ? <Link to="/admin">Dashboard</Link> : null}
+					{userRole ? <Link to="/admin">Manage Users</Link> : null}
 					{/* Maybe try use CSS to handle the logic instead. */}
-					{userRole ? <Link to="/main">Profile</Link> : null}
+					{userRole ? <Link to="/main">Manage Profiles</Link> : null}
 					{userRole ? (
 						<Link to="/main" onClick={handleLogout}>
 							Logout

@@ -53,7 +53,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 
 			try {
 				// Make a POST request to the API
-				const response = await axios.put(
+				const response = await axios.post(
 					"http://127.0.0.1:8080/api/users",
 					data
 				);

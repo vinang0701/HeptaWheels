@@ -1,21 +1,14 @@
 from flask import Blueprint, Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-from controllers.AdminController import AdminController
-# from controllers.ViewUserAccountController import ViewUserAccountController
-# from entities.UserAccount import UserAccount
-# from db import get_database
 
 admin = Blueprint("admin", __name__)
-
-# Init objects required
-    # database = get_database()
-    # user_account_entity = UserAccount(database)
-    # admin_controller = AdminController(user_account_entity)
 
 # Test
 @admin.route("/admin")
 def hi():
     return "Hello!"
+
+
 
 
 

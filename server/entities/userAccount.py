@@ -23,7 +23,7 @@ class UserAccount:
             return user
         except Exception as e:
             raise RuntimeError(f"An unexpected error as occured: {str(e)}")
-    
+        
 
     def getAllUsers(self):
         """
@@ -53,9 +53,22 @@ class UserAccount:
 
     def createUser(self, email, pwd, role):
         # Check if user already exists
-        checkDuplUser = self.find_user_by_email(email)
+        # checkDuplUser = self.find_user_by_email(email)
         last_user = self.collection.find_one(sort=[("userID", DESCENDING)])
         next_user_id = (last_user["userID"] + 1) if last_user else 1
+        try:
+            self.collection.insert_one({
+                "userID": next_user_id,
+                "email": email,
+                "password": pwd,
+                "status": "Active",
+                "role": role
+            })
+            return True
+        except Exception as e:
+            return False
+            # return jsonify({"status": "error", "message": str(e)}), 500
+        """
         if (checkDuplUser is not None):
             return jsonify({"status": "error", "message": "User already exists"}), 500
         else:
@@ -71,7 +84,8 @@ class UserAccount:
                 return jsonify({"status": "success", "message": "User added successfully"}), 200
             except Exception as e:
                 return jsonify({"status": "error", "message": str(e)}), 500
-            
+        """
+        
     def suspend(self, email):
         try:
             user = self.find_user_by_email(email)
@@ -81,5 +95,18 @@ class UserAccount:
             
             self.collection.update_one({"email": email},
                                        {"$set": {"status": "Inactive"}})
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+        
+    def updateUserAccount(self, currentEmail, email, pwd, status, role):
+        try:
+            self.collection.update_one({"email": currentEmail},
+                                       {"$set": {
+                                            "email": email,
+                                            "password": pwd,
+                                            "status": status,
+                                            "role": role
+                                            }})
+            return True
         except Exception as e:
             raise RuntimeError(f"Unexpected error has occurred: {str(e)}")

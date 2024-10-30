@@ -13,15 +13,15 @@ class ViewUserAccountController():
     def viewUserAccount(self, email):
         user = self.user_entity.find_user_by_email(email)
         if user is None:
-            raise ValueError("User not found")  # Raise an exception if user is not found
+            return None
         return user
     
     def getAllUsers(self):
         users = self.user_entity.getAllUsers()
-        if users is None:
-            raise ValueError("No users! Please create new users.") # If users is empty
-        return users
         
+        if users is None:
+            return None
+        return users
 
 # Route to get specified user in url/<string:email>
 # Used to call controller
@@ -30,11 +30,12 @@ def viewUserAccount(email):
     viewUAController = ViewUserAccountController()
     try:
         user = viewUAController.viewUserAccount(email)
-        return jsonify({"status": "success", "message": "User has been found!", "user_data": user}), 200
-    except ValueError as e:
-        return jsonify({"status": "error", "message": str(e), "user_data": None}), 404
+        if(user is None):
+            return jsonify({"status": "error", "message": "User not found!", "user_data": None}), 404
+        else:
+            return jsonify({"status": "success", "message": "User has been found!", "user_data": user}), 200
     except Exception as e:
-        return jsonify({"status": "error", "message": "An unexpected error occurred.", "user_data": None}), 500
+        return jsonify({"status": "error", "message": "An unexpected error occurred."}), 500
 
 # Method to get all users from admin controller
 @admin.route("/api/users", methods=['GET'])
@@ -46,7 +47,5 @@ def getAllUsers():
         if users is None:
             return jsonify({"status": "error", "message": "No users found. Please create new users", "users": None}), 404
         return jsonify({"status": "success", "message": "All users retrieved!", "users": users})
-    except ValueError as ve:
-        return jsonify({"status": "error", "message": str(ve), "users": None}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e), "users": None}), 500

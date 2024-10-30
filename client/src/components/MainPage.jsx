@@ -1,74 +1,29 @@
 import { useState, useEffect } from "react";
+import Image from "react";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 import Header from "./Header";
 
 const MainPage = () => {
-	const [cars, setCars] = useState([]);
-	const [filteredCars, setFilteredCars] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		fetch("https://6707c1878e86a8d9e42cc865.mockapi.io/cars")
-			.then((response) => response.json())
-			.then((data) => {
-				setCars(data);
-				setFilteredCars(data); // Initially show all cars
-				setLoading(false);
-			})
-			.catch((error) => console.error("Error fetching data:", error));
-	}, []);
-
-	const handleSearch = (searchCriteria) => {
-		const filtered = cars.filter((car) => {
-			const matchesMake = car.make
-				.toLowerCase()
-				.includes(searchCriteria.make.toLowerCase());
-			const matchesModel = car.model
-				.toLowerCase()
-				.includes(searchCriteria.model.toLowerCase());
-			const matchesPrice =
-				car.price >= searchCriteria.minPrice &&
-				car.price <= searchCriteria.maxPrice;
-			return matchesMake && matchesModel && matchesPrice;
-		});
-		setFilteredCars(filtered);
-	};
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-
 	return (
-		<div className="container">
+		<div>
 			<Header />
-			<h1>Landing Page</h1>
-
-			{/* <h1>Available Cars</h1> */}
-
-			{/* Search bar */}
-			{/* <SearchBar onSearch={handleSearch} /> */}
-
-			{/* Car grid */}
-			{/* <div className="car-grid">
-				{Array.isArray(filteredCars) && filteredCars.length > 0 ? (
-					filteredCars.map((car) => (
-						<div className="car-card" key={car.id}>
-							<strong>
-								{car.make} {car.model}
-							</strong>{" "}
-							<br />
-							Year: {new Date(car.year).getFullYear()} <br />
-							Price: ${Number(car.price).toFixed(2)} <br />
-							<Link to={`/car-details/${car.id}`}>
-								View Details
-							</Link>
-						</div>
-					))
-				) : (
-					<p>No cars available</p>
-				)}
-			</div>*/}
+			<div className="landing-page-container">
+				<div className="hero-section-text-container">
+					<h1>Find Your Perfect Ride with HeptaWheels!</h1>
+					<p>
+						Whether you're searching for reliability, luxury, or a
+						deal that just can’t be missed, HeptaWheels has you
+						covered. Explore an unbeatable selection of quality used
+						cars, fully inspected and ready for the road. Start your
+						journey with us—drive away your dream car today!
+					</p>
+					<button>Login</button>
+				</div>
+				<img src="./src/assets/car.jpg" alt="car image" />
+			</div>
 		</div>
 	);
 };
