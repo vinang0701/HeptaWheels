@@ -1,20 +1,33 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import useAuth from "../hooks/useAuth";
+import axios from "../api/axios";
 import "./Login.css";
+import Header from "./Header";
 
 const Login = () => {
+	const { setAuth } = useAuth();
+
+	// State needed for user login details
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	// States for user input error
 	const [error, setError] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const navigate = useNavigate(); // Initialize the useNavigate hook
+
+	// To navigate user to respective home page
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
+
+		// Reset user inputs
+		setEmail("");
+		setPassword("");
 
 		// Reset errors first
 		setEmailError("");
@@ -41,40 +54,48 @@ const Login = () => {
 			try {
 				// Make a POST request to the API
 				const response = await axios.post(
-					"http://127.0.0.1:8080/api/login",
+					"/api/login",
 					{
 						email: email,
 						password: password,
+					},
+					{
+						headers: { "Content-Type": "application/json" },
 					}
 				);
+				console.log(response.data);
 
 				if (response.data.status === "success") {
 					alert("Login successful");
-					// Store user's name in a cookie
-					sessionStorage.setItem(
-						"user-email",
-						response.data.user_data.email
-					);
-					sessionStorage.setItem(
-						"user-role",
-						response.data.user_data.role
-					);
-					// Redirect based on role
-					// For now it will be admin only
 
-					let userRole = response.data.user_data.role;
+					sessionStorage.setItem("loggedIn", true);
+
+					const userRole = response.data.user_data.role;
+					console.log(userRole);
+
+					setAuth({ email, password, userRole });
+					sessionStorage.setItem(
+						"auth",
+						JSON.stringify({ email, userRole })
+					);
+
+					// Redirect user based on role
 					switch (userRole) {
-						case "admin":
+						case "User Admin":
 							navigate("/admin");
 							break;
-						case "buyer":
+						case "Buyer":
 							navigate("/buyer");
 							break;
-						case "seller":
+						case "Seller":
 							navigate("/seller");
 							break;
-						case "agent":
+						case "Agent":
 							navigate("/agent");
+							break;
+						default:
+							console.error("Unknown role:", userRole);
+							// Optionally navigate to a default route or show an error
 							break;
 					}
 				} else {
@@ -100,7 +121,9 @@ const Login = () => {
 							className="loginUserName"
 							type="text"
 							value={email}
+							autoComplete="off"
 							onChange={(e) => setEmail(e.target.value)}
+							required
 						/>
 					</div>
 					<div className="loginInputFields">
@@ -112,7 +135,9 @@ const Login = () => {
 							className="loginPassword"
 							type="password"
 							value={password}
+							autoComplete="off"
 							onChange={(e) => setPassword(e.target.value)}
+							required
 						/>
 					</div>
 					<button id="submitLogin" type="submit">

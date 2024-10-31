@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, useRoutes } from "react-router-dom";
-import axios from "axios";
-import CreateUser from "./CreateUser";
-import "./UserAdminDashboard.css";
-import AdminNav from "./AdminNav";
+import axios from "../../api/axios";
+import styles from "./ViewUserAccountPage.module.css";
 
 const ViewUserAccountPage = () => {
 	const { email } = useParams(); // Retrieve car ID from the URL
@@ -15,6 +13,11 @@ const ViewUserAccountPage = () => {
 		navigate(-1); // Go back to the previous page
 	};
 
+	const handleEditProfile = () => {
+		navigate(`/users/${encodeURIComponent(email)}/edit`, {
+			state: { user },
+		});
+	};
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
@@ -37,10 +40,41 @@ const ViewUserAccountPage = () => {
 
 	return (
 		<div>
-			<AdminNav />
-			<h1>{user.email}</h1>
-			<h1>{user.role}</h1>
-			<h1>{user.status}</h1>
+			<p onClick={handleGoBack} className={styles.backButton}>
+				&lt; Back
+			</p>
+			<div className={styles.card}>
+				<h4>User Account</h4>
+				<div className={styles.userDetailsContainer}>
+					<div className={styles.userDetails}>
+						<label>User ID</label>
+						<div>{user.userID}</div>
+					</div>
+					<div className={styles.userDetails}>
+						<label>Email</label>
+						<div>{user.email}</div>
+					</div>
+					<div className={styles.userDetails}>
+						<label>Password</label>
+						<div>{user.password}</div>
+					</div>
+					<div className={styles.userDetails}>
+						<label>Role</label>
+						<div>{user.role}</div>
+					</div>
+					<div className={styles.userDetails}>
+						<label>Status</label>
+						<div>{user.status}</div>
+					</div>
+				</div>
+				<button
+					onClick={handleEditProfile}
+					className={styles.editButton}
+				>
+					Edit
+				</button>
+				<button>Delete</button>
+			</div>
 		</div>
 	);
 };

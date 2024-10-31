@@ -1,15 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import "./AdminNav.css";
 
 const AdminNav = () => {
 	const navigate = useNavigate();
-	const userRole = sessionStorage.getItem("user-role");
-	console.log(userRole);
+	const { setAuth } = useAuth();
+
+	const auth = JSON.parse(sessionStorage.getItem("auth"));
+	const userEmail = auth.email;
+	const userRole = auth.userRole;
+	console.log(userEmail);
+
 	const handleLogout = () => {
 		sessionStorage.removeItem("user-role");
 		sessionStorage.removeItem("user-email");
+		setAuth({});
+		sessionStorage.removeItem("auth"); // Clear auth from localStorage
+
 		alert("Logout successfull!");
-		navigate("/main");
+		navigate("/");
 	};
 	return (
 		<header className="admin-header">

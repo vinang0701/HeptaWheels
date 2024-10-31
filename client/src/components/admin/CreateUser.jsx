@@ -10,7 +10,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 	const [error, setError] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const [roleError, setRoleError] = useState("");
+	const USER_ROLES = ["User Admin", "Buyer", "Seller", "Agent"];
 
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
@@ -20,7 +20,6 @@ const CreateUser = ({ toggleFormVisibility }) => {
 		// Reset errors first
 		setEmailError("");
 		setPasswordError("");
-		setRoleError("");
 		setError("");
 
 		// Validate email format
@@ -39,15 +38,10 @@ const CreateUser = ({ toggleFormVisibility }) => {
 			hasError = true;
 		}
 
-		if (role === "") {
-			setRoleError("Please enter role!");
-			hasError = true;
-		}
-
 		if (!hasError) {
 			var data = {
 				email: email.trim(),
-				password: password,
+				password: password.trim(),
 				role: role,
 			};
 
@@ -85,43 +79,62 @@ const CreateUser = ({ toggleFormVisibility }) => {
 					{error && <span className="error">{error}</span>}
 					<div>
 						<div className="userInputContainer">
-							{emailError && (
+							{/* {emailError && (
 								<span className="error">{emailError}</span>
-							)}
+							)} */}
 							<label>Email</label>
 							<input
 								type="text"
+								pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
 								name="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
+								autoComplete="off"
+								required
 							/>
 						</div>
 					</div>
 
 					<div>
 						<div className="userInputContainer">
-							{passwordError && (
+							{/* {passwordError && (
 								<span className="error">{passwordError}</span>
-							)}
+							)} */}
 							<label>Password</label>
 							<input
 								type="text"
 								name="password"
 								value={password}
+								autoComplete="off"
 								onChange={(e) => setPassword(e.target.value)}
+								required
 							/>
 						</div>
 					</div>
 					<div>
 						<div className="userInputContainer">
-							<span className="error">{roleError}</span>
 							<label>Role</label>
-							<input
+							{/* <input
 								type="text"
 								name="userRole"
 								value={role}
 								onChange={(e) => setRole(e.target.value)}
-							/>
+							/> */}
+							<select
+								name="selectRole"
+								id="selectRole"
+								value={role || ""}
+								onChange={(e) => setRole(e.target.value)}
+							>
+								{USER_ROLES.map((user_role) => (
+									<option key={user_role} value={user_role}>
+										{user_role}
+									</option>
+								))}
+								<option value="" disabled hidden>
+									Select a role
+								</option>
+							</select>
 						</div>
 					</div>
 					<input

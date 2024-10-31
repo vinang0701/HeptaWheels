@@ -59,6 +59,8 @@
 *,
 *::before,
 *::after {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -85,12 +87,7 @@ body {
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-		"Helvetica Neue", sans-serif;
 	font-family: var(--ff-primary);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: var(--normal-font-size);
 	background-color: var(--background-color);
 	color: var(--text-color);
@@ -108,6 +105,7 @@ h5 {
 }
 
 h1 {
+	line-height: 1.1;
 	font-size: var(--fs-primary-heading);
 }
 
@@ -124,12 +122,14 @@ img,
 picture,
 svg {
 	max-width: 100%;
-	display: block;
+	height: auto;
+	vertical-align: baseline;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
 	text-decoration-skip-ink: auto;
+	display: inline-block;
 }
 
 button {

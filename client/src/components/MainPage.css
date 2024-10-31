@@ -5,13 +5,12 @@
 	display: flex;
 	align-content: center;
 	justify-content: center;
-	padding: 40px 190px;
-	background-color: var(--secondary-color);
+	padding: 40px 280px;
 }
 
 .landing-page-container img {
 	width: 490px;
-	height: 80vh;
+	height: 70vh;
 	border-radius: 30px;
 	object-fit: cover;
 }
@@ -19,6 +18,7 @@
 .hero-section-text-container {
 	display: flex;
 	flex-direction: column;
+	align-self: center;
 	width: 500px;
 	margin-right: auto;
 	height: fit-content;

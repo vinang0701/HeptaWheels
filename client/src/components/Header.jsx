@@ -1,24 +1,79 @@
+import useAuth from "../hooks/useAuth";
+import "./admin/AdminNav.css";
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"; // Import js-cookie
 import "./Header.css";
 
 const Header = () => {
 	const navigate = useNavigate();
-	const userName = sessionStorage.getItem("username");
-	console.log(userName);
+	const { auth, setAuth } = useAuth();
+
+	const userEmail = auth.email;
+	const userRole = auth.userRole;
+	console.log(userEmail);
+
 	const handleLogout = () => {
-		sessionStorage.removeItem("username");
+		sessionStorage.removeItem("user-role");
+		sessionStorage.removeItem("user-email");
+		setAuth({});
+		sessionStorage.removeItem("auth"); // Clear auth from localStorage
+
 		alert("Logout successfull!");
-		navigate("/main");
+		navigate("/");
 	};
+
+	const renderNavLinks = () => {
+		switch (userRole) {
+			case "User Admin":
+				return (
+					<>
+						<Link to="/admin">Manage Users</Link>
+						<Link to="/admin/profiles">Manage Profiles</Link>
+					</>
+				);
+			case "Buyer":
+				return (
+					<>
+						<Link to="/buyer">Browse Used Cars</Link>
+						<Link to="/buyer">Favourites</Link>
+					</>
+				);
+			case "Seller":
+				return (
+					<>
+						<Link to="/seller">Listings</Link>
+					</>
+				);
+			case "Agent":
+				return (
+					<>
+						<Link to="/agent">Agent Dashboard</Link>
+						<Link to="/manage">Manage Listings</Link>
+					</>
+				);
+			default:
+				return <Link to="/login">Login</Link>;
+		}
+	};
+
 	return (
 		<header className="header">
 			<div className="container">
-				<div className="logo">
-					<Link to="/">HeptaWheels</Link>
-				</div>
-				<nav className="nav">
-					<Link to="/login">Login</Link>
+				{userEmail ? (
+					<div className="logo">HeptaWheels</div>
+				) : (
+					<div className="logoButton">
+						<Link to="/">HeptaWheels</Link>
+					</div>
+				)}
+
+				<nav className="nav-items">
+					{renderNavLinks()}
+
+					{userEmail ? (
+						<Link to="/" onClick={handleLogout}>
+							Logout
+						</Link>
+					) : null}
 				</nav>
 			</div>
 		</header>

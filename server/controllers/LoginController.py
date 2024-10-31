@@ -2,10 +2,12 @@
 # send to UserAccount entity to fetch data
 
 from flask import jsonify
+from entities import UserAccount
+from db import get_database
 
 class LoginController:
-    def __init__(self, user_entity):
-        self.user_entity = user_entity
+    def __init__(self):
+        self.user_entity = UserAccount()
 
     def validateUser(self, email, pwd):
         """
@@ -13,10 +15,7 @@ class LoginController:
         """
 
         user = self.user_entity.validateUser(email, pwd)
-
-        # Ignore this: Need a function to return UserAccount object for front end
-
-        #b For now just these statements
+        
         if user is None:
             return None
         else:

@@ -10,7 +10,7 @@ login_routes = Blueprint("login_routes", __name__)
 # Initialize Entity and Controller
 database = get_database()
 userAccount = UserAccount()
-loginController = LoginController(userAccount)
+loginController = LoginController()
 
 
 @login_routes.route("/api/login", methods=['POST'])
@@ -22,18 +22,18 @@ def login():
     data = request.json
     email = data.get("email")
     password = data.get("password")
-
-    # Check if email and password were provided
-    if not email or not password:
-        return jsonify({"status": "error", "message": "Missing email or password"}), 400
     
     # Delegate the login logic to the login controller
-    user = loginController.validateUser(email, password)
+    try:
+        user = loginController.validateUser(email, password)
 
-    user_data = {
-        "email": user['email'],
-        "role": user['role'].lower()
-    }
-
-    return jsonify({"status": "success", "message": "Login successful!", "user_data": user_data}), 200
-
+        if user is None:
+            return jsonify({"status": "error", "message": "Email/password is wrong!", "user_data": None}),404
+        else:
+            user_data = {
+                "email": user['email'],
+                "role": user['role'].lower()
+            }
+            return jsonify({"status": "success", "message": "Login successful!", "user_data": user}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500

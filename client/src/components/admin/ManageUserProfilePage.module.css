@@ -1,0 +1,79 @@
+.manageProfileContainer {
+	display: grid;
+	min-width: 820px;
+	width: 820px;
+	margin: 0px 88px;
+	margin: auto;
+	padding-top: 2.5rem;
+	position: relative;
+}
+
+.searchContainer {
+	margin: 1em 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.createProfileButton {
+	margin-right: auto;
+}
+
+.searchContainer button {
+	background-color: #0032e4;
+	font-weight: var(--fw-bold);
+	color: var(--background-color);
+	padding: 10px 12px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.searchContainer button:hover {
+	background-color: #564ab8;
+}
+
+.searchContainer input {
+	height: 100%;
+	margin-right: 0.5em;
+	border-radius: 12px;
+	padding-left: 8px;
+	border: 1px solid #767676;
+	background-color: #d9d9d9;
+}
+
+.table {
+	display: grid;
+	border: 1px solid #d9d9d9;
+	border-radius: 12px;
+	background-color: var(--primary-a1-color);
+}
+
+.profileTableHeader,
+.profileTableRow {
+	display: grid;
+	grid-template-columns: 320px 320px auto;
+	gap: 10px;
+	padding: 10px 24px;
+}
+
+.profileTableHeader {
+	font-weight: var(--fw-bold);
+	border-radius: 12px 12px 0px 0px;
+	background-color: var(--secondary-color);
+	background-color: #d9d9d9;
+}
+
+.profileTableRow {
+	border-top: 1px solid #d9d9d9;
+	padding: 1em 1.5em;
+}
+
+.profileTableRow > div {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}
+
+.profileTableRow button {
+	padding: 12px 10px;
+}

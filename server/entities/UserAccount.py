@@ -40,7 +40,7 @@ class UserAccount:
     
     def validateUser(self, email, pwd):
         user = self.find_user_by_email(email)
-        if not user:
+        if user is None:
             return None
         else:
             if pwd == user['password']:

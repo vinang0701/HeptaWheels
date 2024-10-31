@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CreateUser from "./CreateUser";
 import "./UserAdminDashboard.css";
-import AdminNav from "./AdminNav";
 
 const UserAdminDashboard = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
@@ -37,7 +36,7 @@ const UserAdminDashboard = () => {
 
 	return (
 		<div>
-			<AdminNav />
+			{/* <AdminNav /> */}
 			<div className="userAdminContainer">
 				<h4>Manage Users</h4>
 				<div id="searchBarContainer">
