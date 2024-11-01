@@ -2,11 +2,13 @@ import json
 import random
 import string
 
+
 # Function to generate a random email
 def generate_email():
     names = ["bob", "james", "charles", "alice", "mary", "charlie"]
     domains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com"]
     return f"{random.choice(names)}{random.randint(1, 100)}@{random.choice(domains)}"
+
 
 # Function to generate a random password
 # def generate_password(length=8):
@@ -31,7 +33,7 @@ for user_id in range(1, 41):
         "email": email,
         "password": "123",  # Random password
         "status": random.choice(status),
-        "role": random.choice(roles)
+        "role": random.choice(roles),
     }
     users.append(user)
 

@@ -79,7 +79,7 @@ npm run dev
 
 To run the back-end server:
 
-1. Ensure you are in the server directory.
+1. Ensure you are in the server directory and you have activated the virtual environment.
 2. Open a separate terminal and type:
 
 Mac/Linx:

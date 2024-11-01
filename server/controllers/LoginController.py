@@ -5,6 +5,7 @@ from flask import jsonify
 from entities import UserAccount
 from db import get_database
 
+
 class LoginController:
     def __init__(self):
         self.user_entity = UserAccount()
@@ -15,9 +16,8 @@ class LoginController:
         """
 
         user = self.user_entity.validateUser(email, pwd)
-        
+
         if user is None:
             return None
         else:
             return user
-        

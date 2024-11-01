@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 /server/venv
+/server/sample_ini.init
 
 # Editor directories and files
 .vscode/*

@@ -5,9 +5,9 @@
 [X] Update User
     [X] Update User Backend
     [X] Update User Frontend
-[] Delete User
-    [] Delete User Frontend
-    [?] Delete User Backend
+[] Suspend User
+    [] Suspend User Frontend
+    [X] Suspend User Backend
 [] Create Profile
     [] Create Profile Frontend
     [X] Create Profile Backend
@@ -17,6 +17,16 @@
 [] Update Profile
     [] Update Profile Frontend
     [X] Update Profile Backend
-[] Delete Profile
-    [] Delete User Frontend
-    [?] Delete User Backend
+[] Suspend Profile
+    [] Suspend Profile Frontend
+    [X] Suspend Profile Backend
+
+// Buyer
+[] View Car Listings
+[] Save Favourite Car Listings
+[] View Favourite Car Listings
+[] Delete Favourite Car Listings
+
+// Seller
+
+// Used Car Agent
