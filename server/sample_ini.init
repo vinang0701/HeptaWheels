@@ -1,1 +1,2 @@
-Nothing to see
+[prod]
+DB_URI = mongodb+srv://vinang0701:hy2k4BqFWQAg1fmI@cluster0.seh9s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

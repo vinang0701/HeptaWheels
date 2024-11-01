@@ -16,7 +16,7 @@ const ManageUserProfilePage = () => {
 				const response = await axios.get("/api/profiles");
 
 				setProfiles(response.data.user_profiles);
-				setProfiles([]); // Set the users data to state
+				// Set the users data to state
 				console.log(profiles);
 			} catch (err) {
 				setError("Error fetching data");
@@ -51,7 +51,7 @@ const ManageUserProfilePage = () => {
 						<div className={styles.profileTableHeader}>
 							<div>Role</div>
 							<div>Status</div>
-							<div>Actions</div>
+							<div className={styles.lastColumn}>Actions</div>
 						</div>
 						{profiles.map((profile) => (
 							<div
@@ -61,7 +61,10 @@ const ManageUserProfilePage = () => {
 								<div>{profile.profile_name}</div>
 								<div>{profile.status}</div>
 								<div>
-									<button onClick={() => viewProfile()}>
+									<button
+										className={styles.lastColumn}
+										onClick={() => viewProfile()}
+									>
 										View Profile
 									</button>
 								</div>
