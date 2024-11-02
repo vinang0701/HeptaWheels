@@ -10,10 +10,13 @@ const MainPage = () => {
 	};
 
 	return (
-		<div>
+		<div className="pageContainer">
 			<div className="landing-page-container">
 				<div className="hero-section-text-container">
-					<h1>Find Your Perfect Ride with HeptaWheels!</h1>
+					<h1>
+						Find Your Perfect Ride with{" "}
+						<span className="logo">HeptaWheels</span>
+					</h1>
 					<p>
 						Whether you&apos;re searching for reliability, luxury,
 						or a deal that just can’t be missed, HeptaWheels has you

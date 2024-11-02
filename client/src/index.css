@@ -5,13 +5,20 @@
 	--primary-color: rgb(228, 0, 43);
 	--primary-hover-color: #d10027;
 	--primary-a1-color: rgba(228, 0, 43, 0.02);
+	--primary-gradient-color: linear-gradient(
+		135deg,
+		rgb(228, 0, 43),
+		rgb(139, 0, 43),
+		rgb(255, 77, 100)
+	);
+
 	--secondary-color: rgb(124, 252, 164);
 	--secondary-a1-color: rgba(124, 252, 164, 0.2);
 	--accent-color: rgb(77, 231, 251);
 	--white-color: rgb(255, 255, 255);
 	--body-color: rgb(38, 1, 9);
 
-	--p1-color: #c1121f;
+	--p1-color: rgb(193, 18, 31);
 	--p1-hover-color: #780000;
 	--s1-color: #003049;
 	--s1-hover-color: #669bbc;

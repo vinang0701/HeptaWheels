@@ -13,6 +13,7 @@ dist-ssr
 *.local
 /server/venv
 /server/sample_ini.init
+__pycache__/
 
 # Editor directories and files
 .vscode/*

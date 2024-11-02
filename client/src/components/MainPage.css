@@ -1,26 +1,41 @@
 /* MainPage.css */
 
+.pageContainer {
+	min-width: 1024px;
+	padding: 0 88px;
+}
+
 .landing-page-container {
-	width: 100%;
 	display: flex;
+	justify-content: space-around;
 	align-content: center;
-	justify-content: center;
-	padding: 40px 280px;
+	padding: 80px 0px;
+}
+
+.landing-page-container h1 {
+	font-size: 64px;
+	margin-bottom: 24px;
 }
 
 .landing-page-container img {
-	width: 490px;
-	height: 70vh;
+	width: 440px;
+	height: 60vh;
 	border-radius: 30px;
 	object-fit: cover;
+}
+
+.landing-page-container .logo {
+	background: var(--primary-color);
+	background: var(--primary-gradient-color);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .hero-section-text-container {
 	display: flex;
 	flex-direction: column;
 	align-self: center;
-	width: 500px;
-	margin-right: auto;
+	max-width: 540px;
 	height: fit-content;
 }
 

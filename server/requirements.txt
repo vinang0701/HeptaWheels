@@ -1,7 +1,8 @@
 Flask
-pymongo[srv]
+pymongo
 Flask-PyMongo
 Flask-Cors
 faker==0.8.13
 certifi
 dnspython
+pytest
