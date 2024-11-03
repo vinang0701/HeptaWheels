@@ -15,7 +15,7 @@ const Header = () => {
 		sessionStorage.removeItem("user-role");
 		sessionStorage.removeItem("user-email");
 		setAuth({});
-		sessionStorage.removeItem("auth"); // Clear auth from localStorage
+		sessionStorage.removeItem("auth");
 
 		alert("Logout successfull!");
 		navigate("/");

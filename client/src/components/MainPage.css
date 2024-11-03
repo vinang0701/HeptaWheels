@@ -25,6 +25,7 @@
 }
 
 .landing-page-container .logo {
+	display: block;
 	background: var(--primary-color);
 	background: var(--primary-gradient-color);
 	-webkit-background-clip: text;
@@ -48,4 +49,17 @@
 	height: 56px;
 	width: 160px;
 	margin-top: 40px;
+}
+
+.unAuthContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 1048px;
+	margin: 40px auto;
+}
+
+.goHomeButton {
+	padding: 8px;
+	margin-top: 8px;
 }

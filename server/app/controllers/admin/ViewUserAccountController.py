@@ -37,7 +37,7 @@ def viewUserAccount(email):
                 jsonify(
                     {"status": "error", "message": "User not found!", "user_data": None}
                 ),
-                404,
+                200,
             )
         else:
             return (

@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios";
 import CreateUser from "./CreateUser";
 import "./UserAdminDashboard.css";
 
 const UserAdminDashboard = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState("");
+	const searchRef = useRef(null);
+	const [searchEmail, setSearchEmail] = useState("");
+	const [searchResult, setSearchResult] = useState({});
 	const [users, setUsers] = useState([]);
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	const navigate = useNavigate();
 	const toggleFormVisibility = () => {
 		setFormVisible(!isFormVisible);
@@ -17,9 +21,7 @@ const UserAdminDashboard = () => {
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
-				const response = await axios.get(
-					"http://127.0.0.1:8080/api/users"
-				);
+				const response = await axios.get("/api/users");
 				setUsers(response.data.users); // Set the users data to state
 			} catch (err) {
 				setError("Error fetching data");
@@ -30,27 +32,67 @@ const UserAdminDashboard = () => {
 		fetchUsers(); // Call the fetch function
 	}, []);
 
+	const searchUserAccount = async (e) => {
+		e.preventDefault();
+		if (!emailPattern.test(searchEmail) && searchEmail.length > 0) {
+			setError("Please type in a valid email!");
+			return;
+		}
+
+		if (searchEmail.length > 0) {
+			try {
+				const response = await axios.get(`api/users/${searchEmail}`);
+
+				if (response.data.user_data != null) {
+					console.log(searchEmail);
+					setError("");
+					setSearchResult(response.data.user_data);
+				} else {
+					setSearchEmail("");
+					setError("User not found!");
+				}
+			} catch (err) {
+				setSearchEmail("");
+				setSearchResult({});
+				setError("User not found!");
+				console.log(error);
+			}
+		} else {
+			setError("");
+			setSearchEmail("");
+			setSearchResult({});
+			searchRef.current.setCustomValidity("Hello");
+		}
+	};
+
 	const viewAccount = (email) => {
 		navigate(`/users/${encodeURIComponent(email)}`);
 	};
 
 	return (
 		<div>
-			{/* <AdminNav /> */}
 			<div className="userAdminContainer">
 				<h4>Manage Users</h4>
-				<div id="searchBarContainer">
+
+				<form id="searchBarContainer">
 					<button onClick={toggleFormVisibility}>Add User</button>
 					<div>
 						<input
 							type="text"
+							ref={searchRef}
 							name="searchUser"
 							id="searchUser"
+							value={searchEmail}
 							placeholder="Search by email"
+							onChange={(e) => setSearchEmail(e.target.value)}
+							autoComplete="off"
 						/>
-						<button>Search</button>
+						<button type="submit" onClick={searchUserAccount}>
+							Search
+						</button>
 					</div>
-				</div>
+				</form>
+				{error && <p>{error}</p>}
 				<div className="userTable">
 					<div className="tableHeader">
 						<div>User ID</div>
@@ -59,19 +101,45 @@ const UserAdminDashboard = () => {
 						<div>Status</div>
 						<div>Actions</div>
 					</div>
-					{users.map((user) => (
-						<div className="tableRow" key={user.id}>
-							<div>{user.userID}</div>
-							<div>{user.email}</div>
-							<div>{user.role}</div>
-							<div>{user.status}</div>
+
+					{/* Need to conditional render dependent on searchResult */}
+					{searchResult.email ? (
+						<div className="tableRow" key={searchResult.id}>
+							<div>{searchResult.userID}</div>
+							<div>{searchResult.email}</div>
+							<div>{searchResult.role}</div>
+							<div>{searchResult.status}</div>
 							<div>
-								<button onClick={() => viewAccount(user.email)}>
+								<button
+									onClick={() =>
+										viewAccount(searchResult.email)
+									}
+								>
 									View Account
 								</button>
 							</div>
 						</div>
-					))}
+					) : (
+						<>
+							{users.map((user) => (
+								<div className="tableRow" key={user.id}>
+									<div>{user.userID}</div>
+									<div>{user.email}</div>
+									<div>{user.role}</div>
+									<div>{user.status}</div>
+									<div>
+										<button
+											onClick={() =>
+												viewAccount(user.email)
+											}
+										>
+											View Account
+										</button>
+									</div>
+								</div>
+							))}
+						</>
+					)}
 				</div>
 			</div>
 			{isFormVisible && (

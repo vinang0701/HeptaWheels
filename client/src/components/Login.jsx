@@ -1,12 +1,12 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "../api/axios";
 import "./Login.css";
-import Header from "./Header";
 
 const Login = () => {
-	const { setAuth } = useAuth();
+	const { auth, setAuth } = useAuth();
+	const location = useLocation();
 
 	// State needed for user login details
 	const [email, setEmail] = useState("");
@@ -20,14 +20,32 @@ const Login = () => {
 	// To navigate user to respective home page
 	const navigate = useNavigate();
 
+	const goHome = () => {
+		// Check role
+		const role = auth.userRole;
+		switch (role) {
+			case "User Admin":
+				navigate("/admin");
+				break;
+			case "Agent":
+				navigate("/agent");
+				break;
+			case "Buyer":
+				navigate("/buyer");
+				break;
+			case "Seller":
+				navigate("/seller");
+				break;
+			default:
+				navigate("/");
+				break;
+		}
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
-
-		// Reset user inputs
-		setEmail("");
-		setPassword("");
 
 		// Reset errors first
 		setEmailError("");
@@ -46,6 +64,7 @@ const Login = () => {
 
 		// Validate password
 		if (password === "") {
+			// Reset user inputs
 			setPasswordError("Please enter your password!");
 			hasError = true;
 		}
@@ -99,6 +118,8 @@ const Login = () => {
 							break;
 					}
 				} else {
+					setEmail("");
+					setPassword("");
 					setError(response.data.message);
 				}
 			} catch (err) {
@@ -111,39 +132,57 @@ const Login = () => {
 	return (
 		<div>
 			<div className="loginPageContainer">
-				<h1>Login</h1>
-				<form className="loginInputForm" onSubmit={handleSubmit}>
-					<div className="loginInputFields">
-						{error && <p className="error">{error}</p>}
-						{emailError && <p className="error">{emailError}</p>}
-						<span>Email</span>
-						<input
-							className="loginUserName"
-							type="text"
-							value={email}
-							autoComplete="off"
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
+				{auth.userRole ? (
+					<div>
+						<h1>You are already logged In</h1>
+						<button className="goHomeButton" onClick={goHome}>
+							Go home
+						</button>
 					</div>
-					<div className="loginInputFields">
-						{passwordError && (
-							<p className="error">{passwordError}</p>
-						)}
-						<span>Password</span>
-						<input
-							className="loginPassword"
-							type="password"
-							value={password}
-							autoComplete="off"
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
+				) : (
+					<div className="loginPageContainer">
+						<h1>Login</h1>
+						<form
+							className="loginInputForm"
+							onSubmit={handleSubmit}
+						>
+							<div className="loginInputFields">
+								{error && <p className="error">{error}</p>}
+								{emailError && (
+									<p className="error">{emailError}</p>
+								)}
+								<span>Email</span>
+								<input
+									className="loginUserName"
+									type="text"
+									value={email}
+									autoComplete="off"
+									onChange={(e) => setEmail(e.target.value)}
+									required
+								/>
+							</div>
+							<div className="loginInputFields">
+								{passwordError && (
+									<p className="error">{passwordError}</p>
+								)}
+								<span>Password</span>
+								<input
+									className="loginPassword"
+									type="password"
+									value={password}
+									autoComplete="off"
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+									required
+								/>
+							</div>
+							<button id="submitLogin" type="submit">
+								Login
+							</button>
+						</form>
 					</div>
-					<button id="submitLogin" type="submit">
-						Login
-					</button>
-				</form>
+				)}
 			</div>
 		</div>
 	);

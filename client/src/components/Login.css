@@ -50,3 +50,7 @@ h1 {
 #submitLogin:hover {
 	background-color: #d10027;
 }
+
+.goHomeButton {
+	width: 437px;
+}

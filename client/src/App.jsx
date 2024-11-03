@@ -15,6 +15,7 @@ import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
 import Layout from "./Layout.jsx";
 import ManageUserProfilePage from "./components/admin/ManageUserProfilePage.jsx";
+import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
 
 function App() {
 	return (
@@ -26,7 +27,6 @@ function App() {
 				<Route path="unauthorized" element={<Unauthorized />} />
 
 				{/* Protected Routes */}
-
 				<Route element={<RequireAuth allowedRoles={["User Admin"]} />}>
 					<Route path="/admin" element={<UserAdminDashboard />} />
 					<Route
@@ -40,6 +40,10 @@ function App() {
 					<Route
 						path="/admin/profiles"
 						element={<ManageUserProfilePage />}
+					/>
+					<Route
+						path="/admin/profiles/:profile_name"
+						element={<UpdatePermissionsPage />}
 					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Buyer"]} />}>

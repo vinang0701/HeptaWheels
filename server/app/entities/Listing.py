@@ -9,7 +9,6 @@ Listing]
 - carMake : string
 - carModel : string
 - price : int
-- year_left : int
 - status : [Available, Unavailable, Pending, Sold]
 """
 

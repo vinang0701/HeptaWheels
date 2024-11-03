@@ -1,0 +1,71 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	backdrop-filter: blur(10px);
+	z-index: 10;
+}
+
+/* Centering the CreateUser component */
+.createUserProfileContainer {
+	display: flex;
+	width: 400px;
+	height: 120px;
+	z-index: 13;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -20%);
+	background-color: #fff4f6;
+	box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 8px;
+}
+
+.createUserProfileContainer > form {
+	width: 100%;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.formHeader {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.formHeader button {
+	background-color: #0032e4;
+	font-size: 0.65rem;
+	padding: 4px 8px;
+	border-radius: 4px;
+}
+
+.createUserProfileContainer > form > label > span {
+	align-self: end;
+}
+
+.inputBox {
+	display: flex;
+	height: 35px;
+
+	width: 100%;
+}
+
+.inputBox input {
+	padding: 0 4px;
+	flex-grow: 1;
+	height: 100%;
+}
+
+.inputBox button {
+	padding: 4px 8px;
+	align-items: center;
+	border-radius: 4px;
+	margin-left: 8px;
+	height: 100%;
+}

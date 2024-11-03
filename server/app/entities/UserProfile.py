@@ -25,6 +25,13 @@ class UserProfile:
 
     def createUserProfile(self, profile_name):
         try:
+            # Check for exisiting profiles
+            profileExists = self.getUserProfile(profile_name)
+
+            # Profile exists
+            if profileExists:
+                return False
+
             profile_data = {"profile_name": profile_name, "status": "Active"}
             self.collection.insert_one(profile_data)
             return True

@@ -12,8 +12,9 @@ class CreateUserProfileController:
     def createUserProfile(self, profile_name):
         try:
             isCreated = self.userProfile_entity.createUserProfile(profile_name)
-            if isCreated:
-                return True
+            if not isCreated:
+                return False
+            return isCreated
         except Exception as e:
             raise e
 
@@ -31,17 +32,29 @@ def createUserProfile():
                     {
                         "status": "success",
                         "message": "User profile successfully created",
+                        "isCreated": isCreated,
                     }
                 ),
-                201,
+                200,
+            )
+        else:
+            return (
+                jsonify(
+                    {
+                        "status": "error",
+                        "message": "User profile could not be created. Try again!",
+                        "isCreated": isCreated,
+                    }
+                ),
+                400,
             )
     except Exception as e:
         return (
             jsonify(
                 {
                     "status": "error",
-                    "message": "User profile cannot be created.",
-                    "error message": str(e),
+                    "message": str(e),
+                    "isCreated": False,
                 }
             ),
             500,
