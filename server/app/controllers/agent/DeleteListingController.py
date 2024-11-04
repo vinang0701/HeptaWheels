@@ -5,9 +5,9 @@ logic for used car agent to remove specified car listing
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from entities.Listing import Listing
-from db import get_database
-from routes.agent_routes import agent
+from app.entities.Listing import Listing
+from app.db import get_database
+from app.routes.agent_routes import agent
 
 
 class DeleteListingController:

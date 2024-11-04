@@ -1,6 +1,6 @@
 from flask import jsonify
 from pymongo import DESCENDING
-from db import get_database
+from app.db import get_database
 
 
 class UserProfile:

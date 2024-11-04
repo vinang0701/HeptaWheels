@@ -79,7 +79,7 @@ const Login = () => {
 						password: password,
 					},
 					{
-						headers: { "Content-Type": "application/json" },
+						headers: { "Access-Control-Allow-Origin": "*" },
 					}
 				);
 				console.log(response.data);

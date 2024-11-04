@@ -2,9 +2,9 @@
 # admin tasks
 from flask import jsonify, request
 from flask_cors import cross_origin
-from entities.UserAccount import UserAccount
-from db import get_database
-from routes.admin_routes import admin
+from app.entities.UserAccount import UserAccount
+from app.db import get_database
+from app.routes.admin_routes import admin
 
 
 class CreateUserAccountController:

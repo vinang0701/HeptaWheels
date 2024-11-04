@@ -1,11 +1,9 @@
 /* MainPage.css */
 
-.pageContainer {
-	min-width: 1024px;
-	padding: 0 88px;
-}
-
 .landing-page-container {
+	width: 1360px;
+	/* padding: 0 88px; */
+	margin: 0 auto;
 	display: flex;
 	justify-content: space-around;
 	align-content: center;
@@ -19,7 +17,7 @@
 
 .landing-page-container img {
 	width: 440px;
-	height: 60vh;
+	height: 500px;
 	border-radius: 30px;
 	object-fit: cover;
 }

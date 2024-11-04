@@ -12,7 +12,7 @@ Listing]
 - status : [Available, Unavailable, Pending, Sold]
 """
 
-from db import get_database
+from app.db import get_database
 from pymongo import DESCENDING
 
 

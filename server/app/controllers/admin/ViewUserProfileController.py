@@ -1,8 +1,8 @@
 from flask import jsonify
 from flask_cors import cross_origin
-from entities.UserProfile import UserProfile
-from db import get_database
-from routes.admin_routes import admin
+from app.entities.UserProfile import UserProfile
+from app.db import get_database
+from app.routes.admin_routes import admin
 
 
 class ViewUserProfileController:

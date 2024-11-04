@@ -6,6 +6,6 @@ It will call the Listing entity to get all listings.
 
 from flask import jsonify
 from flask_cors import cross_origin
-from entities.UserAccount import UserAccount
-from db import get_database
-from routes.buyer_routes import buyer
+from app.entities.UserAccount import UserAccount
+from app.db import get_database
+from app.routes.buyer_routes import buyer
