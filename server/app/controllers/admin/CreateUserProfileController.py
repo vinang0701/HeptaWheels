@@ -9,9 +9,9 @@ class CreateUserProfileController:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def createUserProfile(self, profile_name):
+    def createUserProfile(self, profile_name, permissions):
         try:
-            isCreated = self.userProfile_entity.createUserProfile(profile_name)
+            isCreated = self.userProfile_entity.createUserProfile(profile_name, permissions)
             if not isCreated:
                 return False
             return isCreated
@@ -23,9 +23,10 @@ class CreateUserProfileController:
 def createUserProfile():
     data = request.json
     profile_name = data["profile_name"]
+    permissions = data["permissions"]
     createUPController = CreateUserProfileController()
     try:
-        isCreated = createUPController.createUserProfile(profile_name)
+        isCreated = createUPController.createUserProfile(profile_name, permissions)
         if isCreated:
             return (
                 jsonify(

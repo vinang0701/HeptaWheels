@@ -8,10 +8,10 @@ class UpdateUserProfileController:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def updateUserProfile(self, currentProfile_name, profile_name, status):
+    def updateUserProfile(self, currentProfile_name, profile_name, permissions,status):
         try:
             isUpdated = self.userProfile_entity.updateUserProfile(
-                currentProfile_name, profile_name, status
+                currentProfile_name, profile_name, permissions,status
             )
             if isUpdated:
                 return True
@@ -23,11 +23,15 @@ class UpdateUserProfileController:
 def updateUserProfile(currentProfile_name):
     data = request.json
     updateUPController = UpdateUserProfileController()
+    # User Profile data fields
     profile_name = data["profile_name"]
+    permissions = data["permissions"]
     profile_status = data["status"]
+
+    # Call controller
     try:
         isUpdated = updateUPController.updateUserProfile(
-            currentProfile_name, profile_name, profile_status
+            currentProfile_name, profile_name, permissions, profile_status
         )
         if isUpdated:
             return (

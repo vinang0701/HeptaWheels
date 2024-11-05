@@ -64,7 +64,7 @@ def getUserProfile(profile_name):
                 {
                     "status": "error",
                     "message": "No user profile found",
-                    "user_profiles": None,
+                    "user_profile": None,
                 }
             ),
             404,

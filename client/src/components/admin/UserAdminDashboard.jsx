@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import CreateUser from "./CreateUser";
@@ -7,13 +7,13 @@ import "./UserAdminDashboard.css";
 const UserAdminDashboard = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
 	const [error, setError] = useState("");
-	const searchRef = useRef(null);
 	const [searchEmail, setSearchEmail] = useState("");
 	const [searchResult, setSearchResult] = useState({});
 	const [users, setUsers] = useState([]);
-	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	const navigate = useNavigate();
-	const toggleFormVisibility = () => {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const toggleFormVisibility = (e) => {
+		e.preventDefault();
 		setFormVisible(!isFormVisible);
 	};
 
@@ -47,6 +47,7 @@ const UserAdminDashboard = () => {
 					console.log(searchEmail);
 					setError("");
 					setSearchResult(response.data.user_data);
+					setSearchEmail("");
 				} else {
 					setSearchEmail("");
 					setError("User not found!");
@@ -61,7 +62,6 @@ const UserAdminDashboard = () => {
 			setError("");
 			setSearchEmail("");
 			setSearchResult({});
-			searchRef.current.setCustomValidity("Hello");
 		}
 	};
 
@@ -79,7 +79,6 @@ const UserAdminDashboard = () => {
 					<div>
 						<input
 							type="text"
-							ref={searchRef}
 							name="searchUser"
 							id="searchUser"
 							value={searchEmail}
@@ -111,7 +110,7 @@ const UserAdminDashboard = () => {
 							<div>{searchResult.status}</div>
 							<div>
 								<button
-									onClick={() =>
+									onClick={(e) =>
 										viewAccount(searchResult.email)
 									}
 								>
@@ -120,16 +119,16 @@ const UserAdminDashboard = () => {
 							</div>
 						</div>
 					) : (
-						<>
+						<div>
 							{users.map((user) => (
-								<div className="tableRow" key={user.id}>
+								<div className="tableRow" key={user.userID}>
 									<div>{user.userID}</div>
 									<div>{user.email}</div>
 									<div>{user.role}</div>
 									<div>{user.status}</div>
 									<div>
 										<button
-											onClick={() =>
+											onClick={(e) =>
 												viewAccount(user.email)
 											}
 										>
@@ -138,7 +137,7 @@ const UserAdminDashboard = () => {
 									</div>
 								</div>
 							))}
-						</>
+						</div>
 					)}
 				</div>
 			</div>

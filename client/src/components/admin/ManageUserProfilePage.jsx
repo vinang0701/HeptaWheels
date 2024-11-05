@@ -6,10 +6,13 @@ import styles from "./ManageUserProfilePage.module.css";
 
 const ManageUserProfilePage = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState("");
+	const [searchProfile, setSearchProfile] = useState("");
+	const [searchResult, setSearchResult] = useState({});
 	const [profiles, setProfiles] = useState([]);
 	const navigate = useNavigate();
-	const toggleFormVisibility = () => {
+	const toggleFormVisibility = (e) => {
+		e.preventDefault();
 		setFormVisible(!isFormVisible);
 	};
 
@@ -30,6 +33,40 @@ const ManageUserProfilePage = () => {
 		fetchProfiles(); // Call the fetch function
 	}, []);
 
+	const searchUserProfile = async (e) => {
+		e.preventDefault();
+
+		if (searchProfile.length > 0) {
+			try {
+				const response = await axios.get(
+					`api/profiles/${searchProfile}`
+				);
+
+				if (response.data.user_profile != null) {
+					const profileTemp = [];
+					profileTemp.push(response.data.user_profile);
+					setError("");
+					// setSearchResult(response.data.user_profile);
+					setProfiles(profileTemp);
+					console.log(profiles);
+					setSearchProfile("");
+				} else {
+					setSearchProfile("");
+					setError("User not found!");
+				}
+			} catch (err) {
+				setSearchProfile("");
+				setSearchResult({});
+				setError("Profile not found!");
+				console.log(error);
+			}
+		} else {
+			setError("");
+			setSearchProfile("");
+			setSearchResult({});
+		}
+	};
+
 	// View Specified Profile Function
 	const viewProfile = (profile_name) => {
 		navigate(`/admin/profiles/${encodeURIComponent(profile_name)}`);
@@ -48,11 +85,20 @@ const ManageUserProfilePage = () => {
 							Add Profile
 						</button>
 						<div>
-							<input type="text" placeholder="Search by name" />
-							<button>Search</button>
+							<input
+								type="text"
+								placeholder="Search by name"
+								value={searchProfile}
+								onChange={(e) =>
+									setSearchProfile(e.target.value)
+								}
+								autoComplete="off"
+							/>
+							<button onClick={searchUserProfile}>Search</button>
 						</div>
 					</div>
 				</div>
+				{error && <span>{error}</span>}
 				{profiles.length > 0 ? (
 					<div className={styles.table}>
 						<div className={styles.profileTableHeader}>

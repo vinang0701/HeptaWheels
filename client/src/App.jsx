@@ -15,6 +15,7 @@ import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
 import Layout from "./Layout.jsx";
 import ManageUserProfilePage from "./components/admin/ManageUserProfilePage.jsx";
+import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
 import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
 
 function App() {
@@ -43,6 +44,10 @@ function App() {
 					/>
 					<Route
 						path="/admin/profiles/:profile_name"
+						element={<ViewUserProfilePage />}
+					/>
+					<Route
+						path="/admin/profiles/:profile_name/edit"
 						element={<UpdatePermissionsPage />}
 					/>
 				</Route>
@@ -58,7 +63,7 @@ function App() {
 					<Route path="seller" element={<SellerDashboard />} />
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Agent"]} />}>
-					<Route path="agent" element={<AgentDashboard />} />
+					<Route path="/agent" element={<AgentDashboard />} />
 				</Route>
 			</Route>
 		</Routes>

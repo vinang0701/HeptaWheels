@@ -11,7 +11,8 @@
 		rgb(139, 0, 43),
 		rgb(255, 77, 100)
 	);
-
+	--secondary-button: #9747ff;
+	--secondary-hover-button: #564ab8;
 	--secondary-color: rgb(124, 252, 164);
 	--secondary-a1-color: rgba(124, 252, 164, 0.2);
 	--accent-color: rgb(77, 231, 251);

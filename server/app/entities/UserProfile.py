@@ -23,7 +23,7 @@ class UserProfile:
         )
         return user_profile
 
-    def createUserProfile(self, profile_name):
+    def createUserProfile(self, profile_name, permissions):
         try:
             # Check for exisiting profiles
             profileExists = self.getUserProfile(profile_name)
@@ -32,17 +32,19 @@ class UserProfile:
             if profileExists:
                 return False
 
-            profile_data = {"profile_name": profile_name, "status": "Active"}
+            profile_data = {"profile_name": profile_name, "permissions": permissions ,"status": "Active"}
             self.collection.insert_one(profile_data)
             return True
         except Exception as e:
             raise RuntimeError(f"Unexpected error occurred: {str(e)}")
 
-    def updateUserProfile(self, currentProfile_name, profile_name, profile_status):
+    def updateUserProfile(self, currentProfile_name, profile_name, permissions, profile_status):
         try:
             self.collection.update_one(
                 {"profile_name": currentProfile_name},
-                {"$set": {"profile_name": profile_name, "status": profile_status}},
+                {"$set": {"profile_name": profile_name, 
+                          "permissions": permissions,
+                          "status": profile_status}},
             )
             return True
         except Exception as e:

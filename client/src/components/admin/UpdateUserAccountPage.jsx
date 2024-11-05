@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../api/axios";
 import styles from "./ViewUserAccountPage.module.css";
 
-const ViewUserAccountPage = () => {
+const UpdateUserAccountPage = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { user } = location.state || {}; // Retrieve `user` from the state
@@ -146,4 +146,4 @@ const ViewUserAccountPage = () => {
 	);
 };
 
-export default ViewUserAccountPage;
+export default UpdateUserAccountPage;

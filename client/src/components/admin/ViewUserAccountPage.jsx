@@ -6,7 +6,7 @@ import styles from "./ViewUserAccountPage.module.css";
 const ViewUserAccountPage = () => {
 	const { email } = useParams(); // Retrieve car ID from the URL
 	const navigate = useNavigate();
-	const [user, setUser] = useState("");
+	const [user, setUser] = useState({});
 	const [error, setError] = useState("");
 
 	const handleGoBack = () => {

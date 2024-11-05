@@ -1,0 +1,70 @@
+/* UpdatePermissionsPage.module.css */
+.backButton {
+	margin-left: 88px;
+	margin-top: 12px;
+	cursor: pointer;
+}
+
+.backButton:hover {
+	color: var(--p1-color);
+}
+
+.userProfilePermCard {
+	width: 360px;
+	height: 440px;
+	padding: 24px;
+	margin: auto;
+	margin-top: 20px;
+	border: 1px solid #d9d9d9;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #fff4f6;
+	box-shadow: rgba(0, 0, 0, 0.15) 0 4px 8px;
+}
+
+.userProfilePermCard h4 {
+	margin: 0 auto;
+}
+
+.userProfileDetailsContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.profileDetails {
+	margin-bottom: 20px;
+	display: flex;
+}
+
+.profileDetails input {
+	margin-right: 16px;
+}
+
+.profileDetails > select {
+	border: 1px solid #d9d9d9;
+	background-color: white;
+	border-radius: 5px;
+	padding-left: 4px;
+}
+
+.userProfilePermCard button {
+	width: 200px;
+	height: 42px;
+	margin: 0 auto;
+}
+
+.profileDetails select {
+	margin-left: 8px;
+	width: 100%;
+}
+
+.cancelButton {
+	background-color: var(--secondary-button);
+}
+
+.cancelButton:hover {
+	background-color: var(--secondary-hover-button);
+}
