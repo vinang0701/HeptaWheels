@@ -9,7 +9,6 @@ const Header = () => {
 
 	const userEmail = auth.email;
 	const userRole = auth.userRole;
-	console.log(userEmail);
 
 	const handleLogout = () => {
 		sessionStorage.removeItem("user-role");

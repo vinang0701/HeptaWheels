@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import "./index.css";
 import RequireAuth from "./components/RequireAuth.jsx";
 import Header from "./components/Header.jsx";
 import MainPage from "./components/MainPage.jsx";
@@ -10,7 +11,6 @@ import BuyerDashboard from "./components/buyer/BuyerDashboard.jsx";
 import CarDetailsPage from "./components/buyer/CarDetailsPage.jsx";
 import SellerDashboard from "./components/seller/SellerDashboard.jsx";
 import AgentDashboard from "./components/agent/AgentDashboard.jsx";
-import "./index.css";
 import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
 import Layout from "./Layout.jsx";

@@ -39,11 +39,10 @@ def suspendProfile(profile_name):
         suspendSuccessful = suspendUPController.suspend(profile_name)
         if suspendSuccessful:
             return (
-                
                 jsonify(
                     {
                         "status": "success",
-                        "message": "User has been suspended",
+                        "message": "Profile has been suspended",
                         "suspendSuccessful": suspendSuccessful,
                     }
                 ),
@@ -54,7 +53,7 @@ def suspendProfile(profile_name):
                 jsonify(
                     {
                         "status": "error",
-                        "message": "User cannot be suspended",
+                        "message": "Profile cannot be suspended",
                         "suspendSuccessful": suspendSuccessful,
                     }
                 ),

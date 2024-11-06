@@ -4,14 +4,15 @@ from app.entities.UserProfile import UserProfile
 from app.db import get_database
 from app.routes.admin_routes import admin
 
+
 class UpdateUserProfileController:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def updateUserProfile(self, currentProfile_name, profile_name, permissions,status):
+    def updateUserProfile(self, currentProfile_name, profile_name, permissions, status):
         try:
             isUpdated = self.userProfile_entity.updateUserProfile(
-                currentProfile_name, profile_name, permissions,status
+                currentProfile_name, profile_name, permissions, status
             )
             if isUpdated:
                 return True
@@ -27,7 +28,9 @@ def updateUserProfile(currentProfile_name):
     profile_name = data["profile_name"]
     permissions = data["permissions"]
     profile_status = data["status"]
-
+    # if request.method == "OPTIONS":
+    #     # This is the preflight request
+    #     return jsonify({"status": "CORS preflight successful"}), 200
     # Call controller
     try:
         isUpdated = updateUPController.updateUserProfile(

@@ -20,7 +20,7 @@ const UpdatePermissionsPage = () => {
 	const handleGoBack = () => {
 		navigate(`/admin/profiles/${profile_name}`); // Go back to the previous page
 	};
-
+	console.log(profile_name);
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
@@ -32,6 +32,7 @@ const UpdatePermissionsPage = () => {
 				const profile_data = response.data.user_profile;
 				setProfile(profile_data);
 				setStatus(profile_data.status);
+				setNewProfileName(profile_data.profile_name);
 				// Set permissions if defined, otherwise set it to an empty array
 				if (Array.isArray(profile_data.permissions)) {
 					setPermissions(profile_data.permissions);
@@ -66,39 +67,32 @@ const UpdatePermissionsPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		let hasError = false;
-		console.log("handle submit");
-		console.log(permissions);
-		console.log(status);
-
 		// Reset errors first
 		setError("");
-		/*
-		if (!hasError) {
-			var data = {
-				profile_name: newProfileName,
-				permissions: [],
-				status: status,
-			};
 
-			try {
-				// Make a POST request to the API
-				const response = await axios.put(
-					`/api/users/${user.email}`,
-					data
-				);
+		const data = {
+			profile_name: newProfileName,
+			permissions: permissions,
+			status: status,
+		};
 
-				if (response.data.status === "success") {
-					alert("User Successfully Updated!");
-					navigate("/admin");
-				} else {
-					setError(response.data.message);
-				}
-			} catch (err) {
-				// Handle error
-				setError("User cannot be update! Please check again.");
+		try {
+			// Make a POST request to the API
+			const response = await axios.put(
+				`/api/profiles/${profile_name}`,
+				data
+			);
+
+			if (response.data.status === "success") {
+				alert("Profile successfully updated!");
+				navigate("/admin/profiles");
+			} else {
+				setError(response.data.message);
 			}
-		}*/
+		} catch (err) {
+			// Handle error
+			setError("Profile update unsuccessful!");
+		}
 	};
 
 	if (loading) {
@@ -110,12 +104,20 @@ const UpdatePermissionsPage = () => {
 			<div className={styles.backButton} onClick={handleGoBack}>
 				&lt; Back
 			</div>
+
 			<form
 				className={styles.userProfilePermCard}
 				onSubmit={handleSubmit}
 			>
-				<h4>{profile_name}</h4>
+				{error && <p className={styles.error}>{error}</p>}
 				<div className={styles.userProfileDetailsContainer}>
+					<div className={styles.profileName}>
+						<input
+							type="text"
+							value={newProfileName}
+							onChange={(e) => setNewProfileName(e.target.value)}
+						/>
+					</div>
 					{/* Checkbox ticked */}
 					<div className={styles.profileDetails}>
 						<input
@@ -173,7 +175,13 @@ const UpdatePermissionsPage = () => {
 					</div>
 				</div>
 				<button className={styles.saveButton}>Save Changes</button>
-				<button className={styles.cancelButton}>Cancel</button>
+				<button
+					type="button"
+					onClick={handleGoBack}
+					className={styles.cancelButton}
+				>
+					Cancel
+				</button>
 			</form>
 		</div>
 	);

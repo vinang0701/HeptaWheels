@@ -11,7 +11,9 @@ class CreateUserProfileController:
 
     def createUserProfile(self, profile_name, permissions):
         try:
-            isCreated = self.userProfile_entity.createUserProfile(profile_name, permissions)
+            isCreated = self.userProfile_entity.createUserProfile(
+                profile_name, permissions
+            )
             if not isCreated:
                 return False
             return isCreated
@@ -19,12 +21,15 @@ class CreateUserProfileController:
             raise e
 
 
-@admin.route("/api/profiles", methods=["POST"])
+@admin.route("/api/profiles", methods=["POST", "OPTIONS"])
 def createUserProfile():
     data = request.json
     profile_name = data["profile_name"]
     permissions = data["permissions"]
     createUPController = CreateUserProfileController()
+    if request.method == "OPTIONS":
+        # This is the preflight request
+        return jsonify({"status": "CORS preflight successful"}), 200
     try:
         isCreated = createUPController.createUserProfile(profile_name, permissions)
         if isCreated:

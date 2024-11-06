@@ -19,21 +19,18 @@ class SuspendUserAccountController:
         to indicate status is already inactive
         else: change status from active to inactive
         """
+        try:
+            isSuspended = self.user_entity.suspend(email)
 
-        # First retrieve the specified user from email
-        user = self.user_entity.find_user_by_email(email)
+            # Check what is returned from UserAccount entity
+            # If true, means user account successfully suspended
 
-        # check if user is found
-        if user is None:
-            raise ValueError("User not found!")
-
-        # check if status == "active"
-        # call user_entity to change to inactive
-        isSuspended = False
-        if user["status"].lower() == "active":
-            return self.user_entity.suspend(email)
-        elif user["status"].lower() == "inactive":
-            return False
+            if isSuspended:
+                return True
+            else:
+                return False
+        except Exception as e:
+            raise e
 
 
 @admin.route("/api/users/<string:email>/suspend", methods=["PUT"])
@@ -63,7 +60,5 @@ def suspendUserAccount(email):
                 ),
                 400,
             )
-    except ValueError as ve:
-        return jsonify({"status": "error", "message": str(ve)}), 400
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500

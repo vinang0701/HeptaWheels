@@ -88,17 +88,28 @@ class UserAccount:
         """
 
     def suspend(self, email):
-        try:
-            user = self.find_user_by_email(email)
-            if user is None:
-                raise ValueError("User not found!")
-                return False
+        # Get account to check for status
+        # Check status - if status is inactive,
+        # return False to user to show that
+        # account is already suspended
 
-            self.collection.update_one(
-                {"email": email}, {"$set": {"status": "Inactive"}}
-            )
-        except Exception as e:
-            raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+        user = self.find_user_by_email(email)
+        current_status = user["status"]
+        if user is None:
+            raise ValueError("User not found!")
+            return False
+
+        if current_status == "Inactive":
+            return False
+
+        else:
+            try:
+                self.collection.update_one(
+                    {"email": email}, {"$set": {"status": "Inactive"}}
+                )
+                return True
+            except Exception as e:
+                raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
 
     def updateUserAccount(self, currentEmail, email, pwd, status, role):
         try:

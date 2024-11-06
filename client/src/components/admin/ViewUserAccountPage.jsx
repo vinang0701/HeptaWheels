@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, useRoutes } from "react-router-dom";
 import axios from "../../api/axios";
 import styles from "./ViewUserAccountPage.module.css";
+import SuspendUserAccountPage from "./SuspendUserAccountPage";
 
 const ViewUserAccountPage = () => {
 	const { email } = useParams(); // Retrieve car ID from the URL
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const [error, setError] = useState("");
+	const [isDeleteVisible, setDeleteVisible] = useState(false);
 
 	const handleGoBack = () => {
 		navigate(-1); // Go back to the previous page
@@ -18,6 +20,12 @@ const ViewUserAccountPage = () => {
 			state: { user },
 		});
 	};
+
+	const toggleDeleteVisibility = (e) => {
+		console.log("Hi");
+		setDeleteVisible(!isDeleteVisible);
+	};
+
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
@@ -73,8 +81,20 @@ const ViewUserAccountPage = () => {
 				>
 					Edit
 				</button>
-				<button>Delete</button>
+				<button onClick={toggleDeleteVisibility}>Delete</button>
 			</div>
+			{isDeleteVisible && (
+				<div
+					className={styles.overlay}
+					onClick={toggleDeleteVisibility}
+				/>
+			)}
+			{isDeleteVisible && (
+				<SuspendUserAccountPage
+					toggleDeleteVisibility={toggleDeleteVisibility}
+					user={user}
+				/>
+			)}
 		</div>
 	);
 };

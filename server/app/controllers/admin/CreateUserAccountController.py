@@ -19,13 +19,16 @@ class CreateUserAccountController:
             return False
 
 
-@admin.route("/api/users", methods=["POST"])
+@admin.route("/api/users", methods=["POST", "OPTIONS"])
 def createUser():
     user_data = request.json
     email = user_data["email"]
     pwd = user_data["password"]
     role = user_data["role"]
     createUAController = CreateUserAccountController()
+    if request.method == "OPTIONS":
+        # This is the preflight request
+        return jsonify({"status": "CORS preflight successful"}), 200
     try:
         isCreated = createUAController.createUser(email, pwd, role)
         if isCreated:

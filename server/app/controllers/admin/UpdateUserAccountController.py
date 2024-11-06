@@ -28,6 +28,7 @@ def updateUserAccount(email):
     user_pwd = data["password"]
     user_status = data["status"]
     user_role = data["role"]
+
     try:
         isUpdated = updateUAController.updateUserAccount(
             email, user_email, user_pwd, user_status, user_role
