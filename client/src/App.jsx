@@ -17,6 +17,7 @@ import Layout from "./Layout.jsx";
 import ManageUserProfilePage from "./components/admin/ManageUserProfilePage.jsx";
 import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
 import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
+import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
 
 function App() {
 	return (
@@ -64,6 +65,10 @@ function App() {
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Agent"]} />}>
 					<Route path="/agent" element={<AgentDashboard />} />
+					<Route
+						path="/agent/create"
+						element={<CreateCarListingPage />}
+					/>
 				</Route>
 			</Route>
 		</Routes>

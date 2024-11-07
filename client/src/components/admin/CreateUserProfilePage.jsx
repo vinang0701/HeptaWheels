@@ -36,7 +36,7 @@ const CreateUserProfilePage = ({ toggleFormVisibility, profiles }) => {
 		e.preventDefault();
 		try {
 			// POST Req
-			const data = { profile_name: profileName };
+			const data = { profile_name: profileName, permissions: [] };
 			const response = await axios.post("/api/profiles", data);
 
 			// isCreated is returned

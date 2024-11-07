@@ -14,9 +14,31 @@ const UpdateUserAccountPage = () => {
 	const [error, setError] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const USER_ROLES = ["User Admin", "Buyer", "Seller", "Agent"];
+	const [userRoles, setUserRoles] = useState([]);
+	const [profiles, setProfiles] = useState([]);
 
-	console.log(status);
+	// Get all user accounts and populate
+	useEffect(() => {
+		const fetchProfiles = async () => {
+			try {
+				const response = await axios.get("/api/profiles");
+
+				// Set the profiles data to state
+				setProfiles(response.data.user_profiles);
+				const roles = response.data.user_profiles.map(
+					(profile) => profile.profile_name
+				);
+				setUserRoles(roles);
+			} catch (err) {
+				setError("Error fetching data");
+				console.error(err);
+			}
+		};
+
+		fetchProfiles(); // Call the fetch function
+	}, []);
+
+	useEffect;
 
 	const handleGoBack = () => {
 		navigate(-1); // Go back to the previous page
@@ -116,7 +138,7 @@ const UpdateUserAccountPage = () => {
 							onChange={(e) => setRole(e.target.value)}
 							defaultValue={role}
 						>
-							{USER_ROLES.map((user_role) => (
+							{userRoles.map((user_role) => (
 								<option key={user_role} value={user_role}>
 									{user_role}
 								</option>

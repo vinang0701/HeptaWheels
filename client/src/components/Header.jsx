@@ -45,8 +45,7 @@ const Header = () => {
 			case "Agent":
 				return (
 					<>
-						<Link to="/agent">Agent Dashboard</Link>
-						<Link to="/manage">Manage Listings</Link>
+						<Link to="/agent">Manage Listings</Link>
 					</>
 				);
 			default:

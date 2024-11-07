@@ -21,15 +21,15 @@ class CreateUserProfileController:
             raise e
 
 
-@admin.route("/api/profiles", methods=["POST", "OPTIONS"])
+@admin.route("/api/profiles", methods=["POST"])
 def createUserProfile():
     data = request.json
     profile_name = data["profile_name"]
     permissions = data["permissions"]
     createUPController = CreateUserProfileController()
-    if request.method == "OPTIONS":
-        # This is the preflight request
-        return jsonify({"status": "CORS preflight successful"}), 200
+    # if request.method == "OPTIONS":
+    #     # This is the preflight request
+    #     return jsonify({"status": "CORS preflight successful"}), 200
     try:
         isCreated = createUPController.createUserProfile(profile_name, permissions)
         if isCreated:

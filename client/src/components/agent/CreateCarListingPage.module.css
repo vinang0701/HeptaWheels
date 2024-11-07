@@ -1,0 +1,99 @@
+.createListingForm {
+	display: flex;
+	justify-content: space-around;
+	/* padding: 20px 40px; */
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 100%;
+}
+
+.createListingForm > img {
+	width: 600px;
+	height: 400px;
+}
+
+.fileContainer {
+	display: flex;
+}
+
+.uploadImageContainer {
+	display: flex;
+	flex-direction: column;
+	margin-right: 24px;
+}
+
+.uploadImage {
+	width: 92px;
+	height: 66px;
+	border: 1px dashed black;
+	margin-bottom: 12px;
+	cursor: pointer;
+	text-align: center;
+	align-content: center;
+}
+
+.selectImage {
+	width: 92px;
+	height: 66px;
+	border: 1px solid black;
+	margin-bottom: 12px;
+	cursor: pointer;
+}
+
+.selectImage img {
+	object-fit: cover;
+	width: 92px;
+	height: 66px;
+}
+
+.selectedImage {
+	width: 600px;
+	height: 400px;
+	background-color: #d9d9d9;
+	border: 1px solid black;
+}
+
+.selectedImage > img {
+	object-fit: cover;
+	width: 600px;
+	height: 400px;
+}
+
+.listingDetails {
+	display: flex;
+	flex-direction: column;
+
+	justify-content: baseline;
+}
+
+.inputContainer {
+	display: flex;
+	margin-bottom: 16px;
+	justify-content: space-between;
+}
+
+.inputContainer p {
+	width: 120px;
+}
+
+.buttonContainer {
+	margin-top: auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 20px;
+}
+
+.buttonContainer > button {
+	padding: 8px 0;
+	border-radius: 5px;
+}
+
+.textAreaContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.textAreaContainer > textarea {
+	padding-left: 8px;
+	height: 100px;
+}

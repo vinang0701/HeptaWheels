@@ -158,3 +158,24 @@ button:hover {
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
+.pageContainer {
+	width: 1360px;
+	margin: 0 auto;
+}
+
+.cancelButton {
+	background-color: var(--secondary-button);
+}
+
+.cancelButton:hover {
+	background-color: var(--secondary-hover-button);
+}
+
+.backButton {
+	cursor: pointer;
+	margin-top: 12px;
+}
+
+.backButton:hover {
+	color: var(--primary-color);
+}

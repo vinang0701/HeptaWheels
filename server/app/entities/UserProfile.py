@@ -39,6 +39,9 @@ class UserProfile:
             raise RuntimeError(f"Unexpected error occurred: {str(e)}")
 
     def updateUserProfile(self, currentProfile_name, profile_name, permissions, profile_status):
+        # Check if profile name changed
+        # If changed, update all user accounts that
+
         try:
             self.collection.update_one(
                 {"profile_name": currentProfile_name},
