@@ -25,7 +25,7 @@ class ViewListingController:
             raise e
 
 
-@agent.route("/api/agent/listings/detail/<int:listingID>", methods=["GET"])
+@agent.route("/api/agent/listings/details/<int:listingID>", methods=["GET"])
 def fetchListingDetails(listingID):
     try:
         viewListingController = ViewListingController()

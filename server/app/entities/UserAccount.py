@@ -40,10 +40,12 @@ class UserAccount:
     def validateUser(self, email, pwd):
         user = self.find_user_by_email(email)
         if user is None:
+
             return None
         else:
             if pwd == user["password"]:
                 print(user)
+
                 return user
             else:
                 return None

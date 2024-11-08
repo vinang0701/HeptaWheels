@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
-import { useAsyncValue, useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useRoutes } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
-import styles from "./CreateCarListingPage.module.css";
+import styles from "./UpdateCarListingPage.module.css";
 
-const CreateCarListingPage = () => {
+const UpdateCarListingPage = () => {
+	const { listingID } = useParams(); // Retrieve car ID from the URL
 	const navigate = useNavigate();
+	const [listing, setListing] = useState({});
 	const [error, setError] = useState("");
+	const [isDeleteVisible, setDeleteVisible] = useState(false);
 	const { auth } = useAuth();
 	const agentID = auth.userID;
 	const fileInputRef = useRef(null);
@@ -21,7 +24,12 @@ const CreateCarListingPage = () => {
 	const [desc, setDesc] = useState("");
 
 	const handleGoBack = () => {
-		navigate("/agent");
+		navigate(-1); // Go back to the previous page
+	};
+
+	const toggleDeleteVisibility = (e) => {
+		console.log("Hi");
+		setDeleteVisible(!isDeleteVisible);
 	};
 
 	// Function to handle file selection
@@ -42,8 +50,26 @@ const CreateCarListingPage = () => {
 
 	const selectImage = (image) => {
 		setSelectedImage(image);
-		console.log(image);
 	};
+
+	useEffect(() => {
+		const fetchListing = async () => {
+			try {
+				const response = await axios.get(
+					`/api/agent/listings/details/${listingID}`
+				);
+				var listing = response.data.listing;
+				setListing(listing);
+				if (listing) {
+					set;
+				}
+			} catch (err) {
+				setError("Error fetching data");
+				console.error(err);
+			}
+		};
+		fetchListing(); // Call the fetch function
+	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -199,4 +225,4 @@ const CreateCarListingPage = () => {
 	);
 };
 
-export default CreateCarListingPage;
+export default UpdateCarListingPage;

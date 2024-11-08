@@ -90,12 +90,13 @@ const Login = () => {
 					sessionStorage.setItem("loggedIn", true);
 
 					const userRole = response.data.user_data.role;
+					const userID = response.data.user_data.userID;
 					console.log(userRole);
 
-					setAuth({ email, password, userRole });
+					setAuth({ email, password, userRole, userID });
 					sessionStorage.setItem(
 						"auth",
-						JSON.stringify({ email, userRole })
+						JSON.stringify({ email, userRole, userID })
 					);
 
 					// Redirect user based on role

@@ -19,9 +19,11 @@ class CreateCarListingController:
         self,
         agentID,
         sellerID,
+        carPlateNo,
         carMake,
         carModel,
         price,
+        desc,
         status,
         image,
     ):
@@ -29,9 +31,11 @@ class CreateCarListingController:
             listSuccess = self.listing_entity.postList(
                 agentID,
                 sellerID,
+                carPlateNo,
                 carMake,
                 carModel,
                 price,
+                desc,
                 status,
                 image,
             )
@@ -50,19 +54,24 @@ def postList():
 
     agentID = data["agentID"]
     sellerID = data["sellerID"]
+    carPlateNo = data["carPlateNo"]
     carMake = data["carMake"]
     carModel = data["carModel"]
     price = data["price"]
+    desc = data["desc"]
     status = data["status"]
     image = data["image"]
+
     try:
         createCLController = CreateCarListingController()
         listSuccess = createCLController.postList(
             agentID,
             sellerID,
+            carPlateNo,
             carMake,
             carModel,
             price,
+            desc,
             status,
             image,
         )

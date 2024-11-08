@@ -38,7 +38,7 @@ def fetchAllListings():
             agentViewAllListingsController = AgentViewAllListingsController()
             listings = agentViewAllListingsController.fetchAllListings(agentID)
 
-            if not listings:
+            if len(listings) == 0:
                 return (
                     jsonify(
                         {

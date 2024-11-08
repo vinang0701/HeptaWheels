@@ -18,11 +18,12 @@ class LoginController:
         """
 
         user = self.user_entity.validateUser(email, pwd)
-        
+
         if user is None:
             return None
         else:
             return user
+
 
 # Initialize Entity and Controller
 
@@ -56,7 +57,7 @@ def login():
                 404,
             )
         else:
-            user_data = {"email": user["email"], "role": user["role"].lower()}
+            # user_data = {"email": user["email"], "role": user["role"].lower()}
             return (
                 jsonify(
                     {

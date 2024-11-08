@@ -18,6 +18,7 @@ import ManageUserProfilePage from "./components/admin/ManageUserProfilePage.jsx"
 import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
 import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
 import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
+import UpdateCarListingPage from "./components/agent/UpdateCarListingPage.jsx";
 
 function App() {
 	return (
@@ -68,6 +69,10 @@ function App() {
 					<Route
 						path="/agent/create"
 						element={<CreateCarListingPage />}
+					/>
+					<Route
+						path="/agent/listings/:listingID"
+						element={<UpdateCarListingPage />}
 					/>
 				</Route>
 			</Route>

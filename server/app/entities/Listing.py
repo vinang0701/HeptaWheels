@@ -25,12 +25,15 @@ class Listing:
         self,
         agentID,
         sellerID,
+        carPlateNo,
         carMake,
         carModel,
         price,
+        desc,
         status,
         image,
     ):
+
         last_listing = self.collection.find_one(sort=[("listingID", DESCENDING)])
         next_listing_id = (last_listing["listingID"] + 1) if last_listing else 1
         try:
@@ -39,10 +42,12 @@ class Listing:
                     "listingID": next_listing_id,
                     "agentID": agentID,
                     "sellerID": sellerID,
+                    "carPlateNo": carPlateNo,
                     "carMake": carMake,
                     "carModel": carModel,
                     "price": price,
                     "status": status,
+                    "desc": desc,
                     "image": image,
                 }
             )
@@ -53,9 +58,12 @@ class Listing:
     def updateListing(
         self,
         listingID,
-        carMake,    
+        sellerID,
+        carPlateNo,
+        carMake,
         carModel,
         price,
+        desc,
         status,
         image,
     ):
@@ -64,9 +72,12 @@ class Listing:
                 {"listingID": listingID},
                 {
                     "$set": {
+                        "sellerID": sellerID,
+                        "carPlateNo": carPlateNo,
                         "carMake": carMake,
                         "carModel": carModel,
                         "price": price,
+                        "desc": desc,
                         "image": image,
                         "status": status,
                     }

@@ -18,11 +18,13 @@ class UpdateCarListingController:
     # Update car listing function
     # Find by listingID/sellerID, then update
     # carMake, carModel, price, status, image
-    def updateListing(self, listingID, carMake, carModel, price, status, image):
+    def updateListing(
+        self, listingID, sellerID, carPlateNo, carMake, carModel, price, status, image
+    ):
 
         try:
             isUpdated = self.listing_entity.updateListing(
-                listingID, carMake, carModel, status, price, image
+                listingID, sellerID, carPlateNo, carMake, carModel, status, price, image
             )
             if isUpdated:
                 return True
@@ -36,7 +38,8 @@ class UpdateCarListingController:
 def updateListing(listingID):
     # Data to get from front end in json
     data = request.json
-
+    sellerID = data["sellerID"]
+    carPlateNo = data["carPlateNo"]
     carMake = data["carMake"]
     carModel = data["carModel"]
     price = data["price"]
@@ -46,7 +49,7 @@ def updateListing(listingID):
     try:
         updateCarListingController = UpdateCarListingController()
         updateSuccess = updateCarListingController.updateListing(
-            listingID, carMake, carModel, status, price, image
+            listingID, sellerID, carPlateNo, carMake, carModel, status, price, image
         )
 
         if updateSuccess:
