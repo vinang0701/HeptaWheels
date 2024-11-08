@@ -13,7 +13,19 @@ const AgentDashboard = () => {
 	return (
 		<div className={styles.pageContainer}>
 			<h4>Manage Listings</h4>
-			<button onClick={createListing}>Create</button>
+			<div className={styles.searchContainer}>
+				<button className="createListingButton" onClick={createListing}>
+					Create
+				</button>
+				<div>
+					<input
+						type="text"
+						placeholder="Search by Seller ID"
+						autoComplete="off"
+					/>
+					<button>Search</button>
+				</div>
+			</div>
 			<div className={styles.listingContainer}>
 				<div className={styles.listingCard}>
 					<img src="./src/assets/audi.jpg" alt="car image" />

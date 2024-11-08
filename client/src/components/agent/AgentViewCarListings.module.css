@@ -11,6 +11,19 @@
 	padding: 8px 12px;
 }
 
+.searchContainer {
+	display: flex;
+}
+
+.searchContainer input {
+	height: 100%;
+	margin-right: 0.5em;
+	border-radius: 12px;
+	padding-left: 8px;
+	border: 1px solid #767676;
+	background-color: #d9d9d9;
+}
+
 .listingContainer {
 	margin-top: 20px;
 	display: flex;
