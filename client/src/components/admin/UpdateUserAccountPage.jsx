@@ -136,7 +136,7 @@ const UpdateUserAccountPage = () => {
 							name="selectRole"
 							id="selectRole"
 							onChange={(e) => setRole(e.target.value)}
-							defaultValue={role}
+							value={role}
 						>
 							{userRoles.map((user_role) => (
 								<option key={user_role} value={user_role}>

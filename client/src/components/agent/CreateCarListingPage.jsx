@@ -10,8 +10,8 @@ const CreateCarListingPage = () => {
 	const { auth } = useAuth();
 	const agentID = auth.userID;
 	const fileInputRef = useRef(null);
-	const [uploadedImages, setUploadedImages] = useState([]);
-	const [images, setImages] = useState([]);
+	const [uploadedImage, setUploadedImage] = useState({});
+	const [image, setImage] = useState("");
 	const [selectedImage, setSelectedImage] = useState("");
 	const [sellerID, setSellerID] = useState("");
 	const [carPlateNo, setCarPlateNo] = useState("");
@@ -24,14 +24,31 @@ const CreateCarListingPage = () => {
 		navigate("/agent");
 	};
 
+	const sellerIDInputChange = (e) => {
+		const value = e.target.value;
+		// Allow only digits by replacing non-digit characters
+		if (/^\d*$/.test(value)) {
+			setSellerID(value); // Update the state if the value is a valid number
+		}
+	};
+
+	const priceInputChange = (e) => {
+		const value = e.target.value;
+		// Allow only digits by replacing non-digit characters
+		if (/^\d*$/.test(value)) {
+			setPrice(value); // Update the state if the value is a valid number
+		}
+	};
+
 	// Function to handle file selection
 	const handleFileChange = (e) => {
 		e.preventDefault();
 		const file = e.target.files[0];
-		setImages((prevImages) => [...images, file]);
+
+		http: setImage("localhost:5000/src/assets/" + file.name);
 		if (file) {
 			const newImage = URL.createObjectURL(file); // Create a URL for the uploaded file
-			setUploadedImages((prevImages) => [...prevImages, newImage]); // Add new image URL to state
+			setUploadedImage(newImage);
 		}
 	};
 
@@ -47,6 +64,11 @@ const CreateCarListingPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (price <= 0) {
+			setError("Please input a valid price.");
+			return;
+		}
+
 		const data = {
 			agentID: agentID,
 			sellerID: sellerID,
@@ -56,7 +78,7 @@ const CreateCarListingPage = () => {
 			price: price,
 			desc: desc,
 			status: "Available",
-			image: images,
+			image: image,
 		};
 
 		console.log(data);
@@ -67,7 +89,9 @@ const CreateCarListingPage = () => {
 
 			if (response.data.status === "success") {
 				alert("Listing Successfully Added!");
-				window.location.reload();
+				setTimeout(() => {
+					navigate("/agent");
+				}, 2000);
 			} else {
 				setError(response.data.message);
 			}
@@ -86,21 +110,14 @@ const CreateCarListingPage = () => {
 			<form className={styles.createListingForm} onSubmit={handleSubmit}>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>
-						{uploadedImages.map((image, index) => (
+						{Object.keys(uploadedImage).length !== 0 ? (
 							<div
-								key={index}
 								className={styles.selectImage}
-								onClick={() => {
-									selectImage(image);
-								}}
+								onClick={() => selectImage(uploadedImage)}
 							>
-								<img
-									src={image}
-									alt={`Uploaded ${index + 1}`}
-								/>
+								<img src={uploadedImage} alt="Uploaded" />
 							</div>
-						))}
-
+						) : null}
 						<div
 							className={styles.uploadImage}
 							onClick={triggerFileSelect}
@@ -120,6 +137,7 @@ const CreateCarListingPage = () => {
 						) : null}
 					</div>
 				</div>
+
 				<div className={styles.listingDetails}>
 					<div className={styles.inputContainer}>
 						<p>Seller ID</p>
@@ -127,7 +145,8 @@ const CreateCarListingPage = () => {
 							type="text"
 							pattern="\d+"
 							value={sellerID}
-							onChange={(e) => setSellerID(e.target.value)}
+							inputMode="numeric"
+							onChange={sellerIDInputChange}
 							autoComplete="off"
 							required
 						/>
@@ -165,14 +184,15 @@ const CreateCarListingPage = () => {
 					<div className={styles.inputContainer}>
 						<p>Price</p>
 						<input
-							type="number"
+							type="text"
 							value={price}
-							onChange={(e) => setPrice(e.target.value)}
-							min="0"
+							pattern="^[1-9]\d*$"
+							onChange={priceInputChange}
 							autoComplete="off"
 							required
 						/>
 					</div>
+
 					<div className={styles.textAreaContainer}>
 						<p>Description (optional)</p>
 						<textarea

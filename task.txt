@@ -5,21 +5,31 @@
 [X] Update User
     [X] Update User Backend
     [X] Update User Frontend
-[] Suspend User
-    [] Suspend User Frontend
+[X] Suspend User
+    [X] Suspend User Frontend
     [X] Suspend User Backend
-[] Create Profile
-    [] Create Profile Frontend
+[X] Create Profile
+    [X] Create Profile Frontend
     [X] Create Profile Backend
-[] View Profile
+[X] View Profile
     [X] View Profile Frontend
     [X] View Profile Backend
-[] Update Profile
-    [] Update Profile Frontend
+[X] Update Profile
+    [X] Update Profile Frontend
     [X] Update Profile Backend
-[] Suspend Profile
-    [] Suspend Profile Frontend
+[X] Suspend Profile
+    [X] Suspend Profile Frontend
     [X] Suspend Profile Backend
+
+// Used Car Agent
+[] Create Car Listing
+    // Need to check if Seller ID exists
+[] Update Car Listing
+    // Need to check if Seller ID exists
+[] Suspend Car Listing
+[] Search Car Listing
+[] View All Car Listings
+[] View Ratings and Reviews
 
 // Buyer
 [] View Car Listings
@@ -28,5 +38,3 @@
 [] Delete Favourite Car Listings
 
 // Seller
-
-// Used Car Agent

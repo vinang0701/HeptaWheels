@@ -63,8 +63,8 @@ class Listing:
         carMake,
         carModel,
         price,
-        desc,
         status,
+        desc,
         image,
     ):
         try:

@@ -19,12 +19,29 @@ class UpdateCarListingController:
     # Find by listingID/sellerID, then update
     # carMake, carModel, price, status, image
     def updateListing(
-        self, listingID, sellerID, carPlateNo, carMake, carModel, price, status, image
+        self,
+        listingID,
+        sellerID,
+        carPlateNo,
+        carMake,
+        carModel,
+        price,
+        status,
+        desc,
+        image,
     ):
 
         try:
             isUpdated = self.listing_entity.updateListing(
-                listingID, sellerID, carPlateNo, carMake, carModel, status, price, image
+                listingID,
+                sellerID,
+                carPlateNo,
+                carMake,
+                carModel,
+                price,
+                status,
+                desc,
+                image,
             )
             if isUpdated:
                 return True
@@ -37,19 +54,28 @@ class UpdateCarListingController:
 @agent.route("/api/agent/listings/<int:listingID>", methods=["PUT"])
 def updateListing(listingID):
     # Data to get from front end in json
-    data = request.json
-    sellerID = data["sellerID"]
-    carPlateNo = data["carPlateNo"]
-    carMake = data["carMake"]
-    carModel = data["carModel"]
-    price = data["price"]
-    status = data["status"]
-    image = data["image"]
+    carListingObj = request.json
+    sellerID = carListingObj["sellerID"]
+    carPlateNo = carListingObj["carPlateNo"]
+    carMake = carListingObj["carMake"]
+    carModel = carListingObj["carModel"]
+    price = carListingObj["price"]
+    status = carListingObj["status"]
+    desc = carListingObj["desc"]
+    image = carListingObj["image"]
 
     try:
         updateCarListingController = UpdateCarListingController()
         updateSuccess = updateCarListingController.updateListing(
-            listingID, sellerID, carPlateNo, carMake, carModel, status, price, image
+            listingID,
+            sellerID,
+            carPlateNo,
+            carMake,
+            carModel,
+            price,
+            status,
+            desc,
+            image,
         )
 
         if updateSuccess:

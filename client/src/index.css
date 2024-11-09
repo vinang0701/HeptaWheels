@@ -145,7 +145,7 @@ button {
 	color: var(--background-color);
 	font-weight: var(--fw-bold);
 	border: none;
-	border-radius: 12px;
+	border-radius: 4px;
 	cursor: pointer;
 }
 
@@ -173,6 +173,7 @@ button:hover {
 
 .backButton {
 	cursor: pointer;
+	width: fit-content;
 	margin-top: 12px;
 }
 

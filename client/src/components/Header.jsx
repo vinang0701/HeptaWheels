@@ -46,6 +46,7 @@ const Header = () => {
 				return (
 					<>
 						<Link to="/agent">Manage Listings</Link>
+						<Link>Ratings and Reviews</Link>
 					</>
 				);
 			default:

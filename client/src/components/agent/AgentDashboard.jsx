@@ -49,21 +49,25 @@ const AgentDashboard = () => {
 				<div>
 					<input
 						type="text"
-						placeholder="Search by Seller ID"
+						placeholder="Search by ..."
 						autoComplete="off"
 					/>
-					<button>Search</button>
+					<button className="cancelButton">Search</button>
 				</div>
 			</div>
 			<div className={styles.listingContainer}>
 				{listings.map((listing) => (
 					<div className={styles.listingCard} key={listing.listingID}>
-						<img src="./src/assets/audi.jpg" alt="car image" />
+						{typeof listing.image === "string" ? (
+							<img src={listing.image} alt="car image" />
+						) : (
+							<img src="./src/assets/blank.jpg" alt="blank" />
+						)}
 						<div className={styles.listingDetails}>
 							<p className={styles.listingPrice}>
-								{listing.price}
+								${listing.price}
 							</p>
-							<p>
+							<p className={styles.listingTitle}>
 								{listing.carMake} {listing.carModel}
 							</p>
 							<p>Listing ID: {listing.listingID}</p>
@@ -71,34 +75,23 @@ const AgentDashboard = () => {
 							<p>Car Plate No: {listing.carPlateNo}</p>
 							<p>Status: {listing.status}</p>
 							<p>Description:</p>
-							<p className={styles.wrap}>
-								{listing.desc}
-								aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-							</p>
-							<button
-								onClick={(e) => {
-									updateListing(listing.listingID);
-								}}
-							>
-								Edit
-							</button>
+							<p className={styles.wrap}>{listing.desc}</p>
+							<div className={styles.buttonContainer}>
+								<button
+									className={styles.editButton}
+									onClick={(e) => {
+										updateListing(listing.listingID);
+									}}
+								>
+									Edit
+								</button>
+								<button className={styles.suspendButton}>
+									Suspend
+								</button>
+							</div>
 						</div>
 					</div>
 				))}
-				<div className={styles.listingCard}>
-					<img src="./src/assets/audi.jpg" alt="car image" />
-					<div className={styles.listingDetails}>
-						<p className={styles.listingPrice}>12312312</p>
-						<p>asdasdasd</p>
-						<p>Listing ID: asdasdas</p>
-						<p>Seller ID: asdasda</p>
-						<p>Car Plate No: asdasd</p>
-						<p>Status: asdasdad</p>
-						<p>Description:</p>
-						<p className={styles.wrap}> </p>
-						<button type="button">Edit</button>
-					</div>
-				</div>
 			</div>
 		</div>
 	);
