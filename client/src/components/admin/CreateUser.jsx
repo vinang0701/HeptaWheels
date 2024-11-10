@@ -1,16 +1,18 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import axios from "../../api/axios";
 import "./UserAdminDashboard.css";
 
 const CreateUser = ({ toggleFormVisibility }) => {
 	// PUT request to backend
+	const [profiles, setProfiles] = useState([]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [role, setRole] = useState("");
 	const [error, setError] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const USER_ROLES = ["User Admin", "Buyer", "Seller", "Agent"];
+	const [userRoles, setUserRoles] = useState([]);
+	// const USER_ROLES = ["User Admin", "Buyer", "Seller", "Agent"];
 
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
@@ -47,10 +49,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 
 			try {
 				// Make a POST request to the API
-				const response = await axios.post(
-					"http://127.0.0.1:8080/api/users",
-					data
-				);
+				const response = await axios.post("/api/users", data);
 
 				if (response.data.status === "success") {
 					alert("User Successfully Added!");
@@ -64,6 +63,33 @@ const CreateUser = ({ toggleFormVisibility }) => {
 			}
 		}
 	};
+	// Get all user profiles
+	useEffect(() => {
+		const fetchProfiles = async () => {
+			try {
+				const response = await axios.get("/api/profiles");
+
+				// Set the profiles data to state
+				// Check if response contains user profiles data
+				if (response.data.user_profiles) {
+					const activeRoles = response.data.user_profiles
+						.filter((profile) => profile.status === "Active") // Filter for active profiles
+						.map((profile) => profile.profile_name); // Extract roles of active profiles
+
+					setProfiles(response.data.user_profiles); // Set profiles data to state
+					setUserRoles(activeRoles); // Set the roles of active profiles
+				}
+			} catch (err) {
+				setError("Error fetching data");
+				console.error(err);
+			}
+		};
+
+		fetchProfiles(); // Call the fetch function
+	}, []);
+
+	console.log(profiles);
+	console.log(userRoles);
 
 	return (
 		<div>
@@ -126,7 +152,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 								value={role || ""}
 								onChange={(e) => setRole(e.target.value)}
 							>
-								{USER_ROLES.map((user_role) => (
+								{userRoles.map((user_role) => (
 									<option key={user_role} value={user_role}>
 										{user_role}
 									</option>

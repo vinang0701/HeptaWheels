@@ -5,18 +5,18 @@ of logic for used car agent to view a specific listing
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.Listing import Listing
+from app.entities.CarListing import CarListing
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class ViewListingController:
+class ViewCarListingController:
     def __init__(self):
-        self.listing_entity = Listing()
+        self.carListing_entity = CarListing()
 
     def fetchListingDetails(self, listingID):
         try:
-            listing = self.listing_entity.fetchListingDetails(listingID)
+            listing = self.carListing_entity.fetchListingDetails(listingID)
             if listing is None:
                 return None
             else:
@@ -28,8 +28,8 @@ class ViewListingController:
 @agent.route("/api/agent/listings/details/<int:listingID>", methods=["GET"])
 def fetchListingDetails(listingID):
     try:
-        viewListingController = ViewListingController()
-        listing = viewListingController.fetchListingDetails(listingID)
+        viewCarListingController = ViewCarListingController()
+        listing = viewCarListingController.fetchListingDetails(listingID)
         if listing is None:
             return jsonify({"status": "error", "message": "Listing not found..."}), 400
         else:

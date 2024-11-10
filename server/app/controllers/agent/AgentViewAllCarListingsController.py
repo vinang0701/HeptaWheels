@@ -7,18 +7,18 @@ It will return an array of listings
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.Listing import Listing
+from app.entities.CarListing import CarListing
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class AgentViewAllListingsController:
+class AgentViewAllCarListingsController:
     def __init__(self):
-        self.listing_entity = Listing()
+        self.carListing_entity = CarListing()
 
     def fetchAllListings(self, agentID):
         try:
-            listings = self.listing_entity.fetchAllListings(agentID)
+            listings = self.carListing_entity.fetchAllListings(agentID)
             if not listings:
                 return []
             return listings
@@ -31,13 +31,10 @@ class AgentViewAllListingsController:
 def fetchAllListings():
     agentID = int(request.args.get("agentID"))
 
-    agentViewAllListingsController = AgentViewAllListingsController()
-    listings = agentViewAllListingsController.fetchAllListings(agentID)
+    agentViewAllCarListingsController = AgentViewAllCarListingsController()
     if agentID:
         try:
-            agentViewAllListingsController = AgentViewAllListingsController()
-            listings = agentViewAllListingsController.fetchAllListings(agentID)
-
+            listings = agentViewAllCarListingsController.fetchAllListings(agentID)
             if len(listings) == 0:
                 return (
                     jsonify(

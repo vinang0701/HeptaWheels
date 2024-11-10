@@ -1,0 +1,22 @@
+.ratingsPageContainer {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+h4 {
+	margin: 40px 0;
+}
+
+.ratingsContainer {
+	width: 628px;
+	margin-bottom: 40px;
+}
+
+.ratingsContainer > .emailText {
+	font-size: var(--fs-500);
+	font-weight: var(--fw-semi-bold);
+}
+
+.ratingsContainer > .reviewText {
+	margin-top: 16px;
+}

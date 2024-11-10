@@ -21,7 +21,7 @@ const ViewUserAccountPage = () => {
 		});
 	};
 
-	const toggleDeleteVisibility = (e) => {
+	const toggleDeleteVisibility = () => {
 		console.log("Hi");
 		setDeleteVisible(!isDeleteVisible);
 	};

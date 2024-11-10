@@ -16,7 +16,7 @@ from app.db import get_database
 from pymongo import DESCENDING
 
 
-class Listing:
+class CarListing:
     def __init__(self):
         database = get_database()
         self.collection = database["listings"]
@@ -113,7 +113,7 @@ class Listing:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def removeListing(self, listingID):
+    def deleteListing(self, listingID):
         listing = self.findListing(listingID)
         current_status = listing["status"]
         if current_status == "Unavailable":
@@ -131,3 +131,39 @@ class Listing:
                 return True
             except Exception as e:
                 raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+
+    def searchListing(self, query):
+        try:
+            listings = list(
+                self.collection.find(
+                    {
+                        "$or": [
+                            {"carMake": {"$regex": f"{query}", "$options": "i"}},
+                            {"carModel": {"$regex": f"{query}", "$options": "i"}},
+                        ]
+                    },
+                    {"_id": 0},
+                )
+            )
+            if not listings:
+                return None
+            else:
+                return listings
+        except Exception as e:
+            print("An error occurred:", e)
+            return None
+
+    # Seller Functions
+
+    def sellerViewCarListings(self, sellerID):
+        try:
+            listings = list(
+                self.collection.find({"sellerID": sellerID}, {"_id": 0}).sort(
+                    "listingID", 1
+                )
+            )
+            if not listings:
+                return None
+            return listings
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error occured: {str(e)}")

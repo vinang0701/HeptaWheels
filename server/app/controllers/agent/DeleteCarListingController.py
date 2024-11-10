@@ -5,21 +5,21 @@ logic for used car agent to remove specified car listing
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.Listing import Listing
+from app.entities.CarListing import CarListing
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class DeleteListingController:
+class DeleteCarListingController:
     def __init__(self):
-        self.listing_entity = Listing()
+        self.carListing_entity = CarListing()
 
     # Delete car listing function
     # Find by listingID/sellerID, then update
     # status
-    def removeListing(self, listingID):
+    def deleteListing(self, listingID):
         try:
-            isRemoved = self.listing_entity.removeListing(listingID)
+            isRemoved = self.carListing_entity.deleteListing(listingID)
             if isRemoved:
                 return True
             else:
@@ -28,23 +28,21 @@ class DeleteListingController:
             raise e
 
 
-@agent.route(
-    "/api/agent/listings/<int:listingID>/delete", methods=["PUT"]
-)
-def removeListing(listingID):
+@agent.route("/api/agent/listings/<int:listingID>/delete", methods=["PUT"])
+def deleteListing(listingID):
     # Data to get from front end in json
 
     try:
-        deleteListingController = DeleteListingController()
-        removeSuccess = deleteListingController.removeListing(listingID)
+        deleteCarListingController = DeleteCarListingController()
+        deleteSuccess = deleteCarListingController.deleteListing(listingID)
 
-        if removeSuccess:
+        if deleteSuccess:
             return (
                 jsonify(
                     {
                         "status": "success",
                         "message": "Car listing deleted successfully",
-                        "removeSuccess": removeSuccess,
+                        "deleteSuccess": deleteSuccess,
                     }
                 ),
                 200,
@@ -55,7 +53,7 @@ def removeListing(listingID):
                     {
                         "status": "error",
                         "message": "Car listing is already deleted",
-                        "removeSuccess": removeSuccess,
+                        "deleteSuccess": deleteSuccess,
                     }
                 ),
                 400,

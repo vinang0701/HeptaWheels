@@ -6,14 +6,14 @@ It will call the Listing entity to update specifed listing.
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.Listing import Listing
+from app.entities.CarListing import CarListing
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
 class UpdateCarListingController:
     def __init__(self):
-        self.listing_entity = Listing()
+        self.carListing_entity = CarListing()
 
     # Update car listing function
     # Find by listingID/sellerID, then update
@@ -32,7 +32,7 @@ class UpdateCarListingController:
     ):
 
         try:
-            isUpdated = self.listing_entity.updateListing(
+            isUpdated = self.carListing_entity.updateListing(
                 listingID,
                 sellerID,
                 carPlateNo,

@@ -19,6 +19,7 @@ import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
 import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
 import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
 import UpdateCarListingPage from "./components/agent/UpdateCarListingPage.jsx";
+import ViewRatingsAndReviewsPage from "./components/agent/ViewRatingsAndReviewsPage.jsx";
 
 function App() {
 	return (
@@ -73,6 +74,10 @@ function App() {
 					<Route
 						path="/agent/listings/:listingID"
 						element={<UpdateCarListingPage />}
+					/>
+					<Route
+						path="/agent/ratings"
+						element={<ViewRatingsAndReviewsPage />}
 					/>
 				</Route>
 			</Route>

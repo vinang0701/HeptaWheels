@@ -7,6 +7,7 @@ import styles from "./CreateCarListingPage.module.css";
 const CreateCarListingPage = () => {
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 	const { auth } = useAuth();
 	const agentID = auth.userID;
 	const fileInputRef = useRef(null);
@@ -45,7 +46,7 @@ const CreateCarListingPage = () => {
 		e.preventDefault();
 		const file = e.target.files[0];
 
-		http: setImage("localhost:5000/src/assets/" + file.name);
+		setImage("http://localhost:5000/src/assets/" + file.name);
 		if (file) {
 			const newImage = URL.createObjectURL(file); // Create a URL for the uploaded file
 			setUploadedImage(newImage);
@@ -64,6 +65,7 @@ const CreateCarListingPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setError("");
 		if (price <= 0) {
 			setError("Please input a valid price.");
 			return;
@@ -87,8 +89,8 @@ const CreateCarListingPage = () => {
 			// Make a POST request to the API
 			const response = await axios.post("/api/agent/listings", data);
 
-			if (response.data.status === "success") {
-				alert("Listing Successfully Added!");
+			if (response.status === 200) {
+				setSuccess("Listing successfully updated!");
 				setTimeout(() => {
 					navigate("/agent");
 				}, 2000);
@@ -97,8 +99,9 @@ const CreateCarListingPage = () => {
 			}
 		} catch (err) {
 			// Handle error
-			setError("Listing already exists!");
-			console.log(error);
+			if (err.response.status === 500) {
+				setError("Duplicate listing! Please check details again.");
+			}
 		}
 	};
 
@@ -107,6 +110,8 @@ const CreateCarListingPage = () => {
 			<p onClick={handleGoBack} className="backButton">
 				&lt; Back
 			</p>
+			{success && <div className={styles.success}>{success}</div>}
+			{error && <div className={styles.error}>{error}</div>}
 			<form className={styles.createListingForm} onSubmit={handleSubmit}>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>

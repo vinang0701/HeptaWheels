@@ -6,14 +6,14 @@ It will call the Listing entity to create new listing.
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.Listing import Listing
+from app.entities.CarListing import CarListing
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
 class CreateCarListingController:
     def __init__(self):
-        self.listing_entity = Listing()
+        self.carListing_entity = CarListing()
 
     def postList(
         self,
@@ -28,7 +28,7 @@ class CreateCarListingController:
         image,
     ):
         try:
-            listSuccess = self.listing_entity.postList(
+            listSuccess = self.carListing_entity.postList(
                 agentID,
                 sellerID,
                 carPlateNo,

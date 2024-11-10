@@ -16,7 +16,7 @@ const ManageUserProfilePage = () => {
 		setFormVisible(!isFormVisible);
 	};
 
-	// Get all user accounts and populate
+	// Get all user profiles
 	useEffect(() => {
 		const fetchProfiles = async () => {
 			try {

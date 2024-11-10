@@ -10,6 +10,7 @@ const UpdateCarListingPage = () => {
 	const navigate = useNavigate();
 	const [listing, setListing] = useState({});
 	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 	const [isDeleteVisible, setDeleteVisible] = useState(false);
 	const { auth } = useAuth();
 	const agentID = auth.userID;
@@ -55,7 +56,7 @@ const UpdateCarListingPage = () => {
 		e.preventDefault();
 		const file = e.target.files[0];
 
-		setImage("./src/assets/" + file.name);
+		setImage("http://localhost:5000/src/assets/" + file.name);
 		if (file) {
 			const newImage = URL.createObjectURL(file); // Create a URL for the uploaded file
 			setUploadedImage(newImage);
@@ -129,17 +130,17 @@ const UpdateCarListingPage = () => {
 			);
 
 			if (response.data.status === "success") {
-				alert("Listing successfully updated!");
+				setSuccess("Listing successfully updated!");
+				// alert("Listing successfully updated!");
 				setTimeout(() => {
-					navigate("/agent"), 2000;
-				});
-			} else {
-				setError(response.data.message);
+					navigate("/agent");
+				}, 2000);
 			}
 		} catch (err) {
 			// Handle error
-			setError("Update unsuccessful!");
-			console.log(error);
+			if (err.response.status === 500) {
+				setError("Duplicate listing! Please check details again.");
+			}
 		}
 	};
 	return (
@@ -147,6 +148,8 @@ const UpdateCarListingPage = () => {
 			<p onClick={handleGoBack} className="backButton">
 				&lt; Back
 			</p>
+			{success && <div className={styles.success}>{success}</div>}
+			{error && <div className={styles.error}>{error}</div>}
 			<form className={styles.uploadListingForm} onSubmit={handleSubmit}>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>

@@ -1,5 +1,4 @@
 import useAuth from "../hooks/useAuth";
-import "./admin/AdminNav.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 
@@ -39,14 +38,14 @@ const Header = () => {
 			case "Seller":
 				return (
 					<>
-						<Link to="/seller">Listings</Link>
+						<Link to="/seller">My Listings</Link>
 					</>
 				);
 			case "Agent":
 				return (
 					<>
 						<Link to="/agent">Manage Listings</Link>
-						<Link>Ratings and Reviews</Link>
+						<Link to="/agent/ratings">Ratings and Reviews</Link>
 					</>
 				);
 			default:

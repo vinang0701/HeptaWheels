@@ -101,3 +101,13 @@
 	padding-left: 8px;
 	height: 100px;
 }
+
+.error {
+	text-align: center;
+	color: red;
+}
+
+.success {
+	text-align: center;
+	color: green;
+}
