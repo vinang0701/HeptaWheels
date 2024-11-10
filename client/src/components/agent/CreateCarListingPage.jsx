@@ -63,6 +63,12 @@ const CreateCarListingPage = () => {
 		console.log(image);
 	};
 
+	// Handler for image loading error
+	const handleImageError = (e) => {
+		console.log("Image failed to load, applying fallback image.");
+		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
@@ -120,9 +126,14 @@ const CreateCarListingPage = () => {
 								className={styles.selectImage}
 								onClick={() => selectImage(uploadedImage)}
 							>
-								<img src={uploadedImage} alt="Uploaded" />
+								<img
+									src={uploadedImage}
+									alt="Uploaded"
+									onError={handleImageError}
+								/>
 							</div>
 						) : null}
+
 						<div
 							className={styles.uploadImage}
 							onClick={triggerFileSelect}

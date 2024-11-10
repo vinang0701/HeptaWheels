@@ -167,3 +167,24 @@ class CarListing:
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
+
+    # Buyer Functions
+
+    # Function for buyuer to get all listings
+    def retrieveCarListings(self):
+        try:
+            listings = list(self.collection.find({}, {"_id": 0}))
+            if not listings:
+                return None
+            return listings
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error occured: {str(e)}")
+
+    def buyerViewCarListing(self, listingID):
+        try:
+            listing = self.collection.find_one({"listingID": listingID}, {"_id": 0})
+            if not listing:
+                return None
+            return listing
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error occured: {str(e)}")

@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
 import styles from "./AgentViewCarListings.module.css";
 import DeleteCarListingPage from "./DeleteCarListingPage";
+import CarImage from "./CarImage";
 
 const AgentDashboard = () => {
 	const [isDeleteVisible, setDeleteVisible] = useState(false);
@@ -48,6 +49,11 @@ const AgentDashboard = () => {
 		};
 		fetchListings();
 	}, []);
+
+	// Handler for image loading error
+	const handleImageError = (e) => {
+		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
+	};
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -105,11 +111,19 @@ const AgentDashboard = () => {
 							className={styles.listingCard}
 							key={listing.listingID}
 						>
-							{typeof listing.image === "string" ? (
+							{/* Use onError handler here */}
+							<img
+								src={listing.image}
+								alt="car image"
+								onError={handleImageError}
+							/>
+							{/* Use CarImage here */}
+							{/* <CarImage src={listing.image} alt="car image" /> */}
+							{/* {typeof listing.image === "string" ? (
 								<img src={listing.image} alt="car image" />
 							) : (
 								<img src="./src/assets/blank.jpg" alt="blank" />
-							)}
+							)} */}
 							<div className={styles.listingDetails}>
 								<p className={styles.listingPrice}>
 									${listing.price}
@@ -154,11 +168,17 @@ const AgentDashboard = () => {
 							className={styles.listingCard}
 							key={listing.listingID}
 						>
-							{typeof listing.image === "string" ? (
+							<img
+								src={listing.image}
+								alt="car image"
+								onError={handleImageError}
+							/>
+							{/* <CarImage src={listing.image} alt="car image" /> */}
+							{/* {typeof listing.image === "string" ? (
 								<img src={listing.image} alt="car image" />
 							) : (
 								<img src="./src/assets/blank.jpg" alt="blank" />
-							)}
+							)} */}
 							<div className={styles.listingDetails}>
 								<p className={styles.listingPrice}>
 									${listing.price}

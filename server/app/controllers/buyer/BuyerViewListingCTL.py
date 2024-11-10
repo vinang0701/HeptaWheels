@@ -1,7 +1,7 @@
 """
 This is a controller class that controls the flow
-of logic for buyer viewing all car listings.
-It will call the Listing entity to get all listings.
+of logic for buyer viewing a specific car listing.
+It will call the Listing entity to get the specifed listing.
 """
 
 from flask import jsonify
@@ -11,35 +11,35 @@ from app.db import get_database
 from app.routes.buyer_routes import buyer
 
 
-class BuyerViewListingsCTL:
+class BuyerViewListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def retrieveCarListings(self):
+    def buyerViewCarListing(self, listingID):
         try:
-            listings = self.carListing_entity.retrieveCarListings()
-            if not listings:
+            listing = self.carListing_entity.buyerViewCarListing(listingID)
+            if listing is None:
                 return None
-            return listings
+            return listing
         except Exception as e:
             raise e
 
 
-@buyer.route("/api/buyer/listings", methods=["GET"])
-def retrieveCarListings():
-    buyerViewListingCTL = BuyerViewListingsCTL()
+@buyer.route("/api/buyer/listings/<int:listingID>", methods=["GET"])
+def buyerViewCarListing(listingID):
+    buyerViewListingCTL = BuyerViewListingCTL()
     try:
-        listings = buyerViewListingCTL.retrieveCarListings()
-        if len(listings) == 0:
+        listing = buyerViewListingCTL.buyerViewCarListing(listingID)
+        if listing is None:
             return (
                 jsonify(
                     {
                         "status": "error",
                         "message": "No listing found...",
-                        "listings": listings,
+                        "listing": listing,
                     }
                 ),
-                200,
+                400,
             )
         else:
             return (
@@ -47,7 +47,7 @@ def retrieveCarListings():
                     {
                         "status": "success",
                         "message": "Listings found!",
-                        "listings": listings,
+                        "listing": listing,
                     }
                 ),
                 200,

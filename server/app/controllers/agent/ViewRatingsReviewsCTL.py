@@ -1,47 +1,47 @@
 """
 This is a controller class that controls the flow
-of logic for used car agent to view all listings
-that belongs to specific used car agent via agentID.
-It will return an array of listings 
+of logic for used car agent to view all ratings
+and reviews that belongs to specific used car agent via agentID.
+It will return an array of rateReviews 
 """
 
 from flask import jsonify, request
 from flask_cors import cross_origin
-from app.entities.CarListing import CarListing
+from app.entities.RateReview import RateReview
 from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class AgentViewAllCarListingsController:
+class ViewRatingsReviewsCTL:
     def __init__(self):
-        self.carListing_entity = CarListing()
+        self.rateReview_entity = RateReview()
 
-    def fetchAllListings(self, agentID):
+    def viewRatingsReviews(self, agentID):
         try:
-            listings = self.carListing_entity.fetchAllListings(agentID)
-            if not listings:
+            rateReviews = self.rateReview_entity.viewRatingsReviews(agentID)
+            if not rateReviews:
                 return []
-            return listings
+            return rateReviews
         except Exception as e:
             raise e
 
 
 # Get agentID from json http request
-@agent.route("/api/agent/listings", methods=["GET"])
-def fetchAllListings():
+@agent.route("/api/agent/ratereview", methods=["GET"])
+def viewRatingsReviews():
     agentID = int(request.args.get("agentID"))
 
-    agentViewAllCarListingsController = AgentViewAllCarListingsController()
+    viewRatingsReviewsCTL = ViewRatingsReviewsCTL()
     if agentID:
         try:
-            listings = agentViewAllCarListingsController.fetchAllListings(agentID)
-            if len(listings) == 0:
+            rateReviews = viewRatingsReviewsCTL.viewRatingsReviews(agentID)
+            if not rateReviews:
                 return (
                     jsonify(
                         {
                             "status": "error",
-                            "message": "No listing found...",
-                            "listings": listings,
+                            "message": "No ratings found...",
+                            "rateReviews": rateReviews,
                         }
                     ),
                     400,
@@ -51,8 +51,8 @@ def fetchAllListings():
                     jsonify(
                         {
                             "status": "success",
-                            "message": "Listings found!",
-                            "listings": listings,
+                            "message": "Ratings and reviews found!",
+                            "rateReviews": rateReviews,
                         }
                     ),
                     200,

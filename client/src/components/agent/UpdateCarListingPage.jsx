@@ -25,6 +25,7 @@ const UpdateCarListingPage = () => {
 	const [price, setPrice] = useState("");
 	const [status, setStatus] = useState("");
 	const [desc, setDesc] = useState("");
+	const [imageError, setImageError] = useState(false);
 
 	const handleGoBack = () => {
 		navigate(-1); // Go back to the previous page
@@ -43,6 +44,14 @@ const UpdateCarListingPage = () => {
 		// Allow only digits by replacing non-digit characters
 		if (/^\d*$/.test(value)) {
 			setPrice(value); // Update the state if the value is a valid number
+		}
+	};
+
+	const handleImageError = (e) => {
+		if (!imageError) {
+			// Check if the error handler was already triggered
+			setImageError(true); // Set the error state to prevent infinite loop
+			e.target.src = "/blank.jpg"; // Provide the fallback image path
 		}
 	};
 
@@ -158,7 +167,11 @@ const UpdateCarListingPage = () => {
 								className={styles.selectImage}
 								onClick={() => selectImage(uploadedImage)}
 							>
-								<img src={uploadedImage} alt="Uploaded" />
+								<img
+									src={uploadedImage}
+									alt="Uploaded"
+									onError={handleImageError}
+								/>
 							</div>
 						) : null}
 						<div
