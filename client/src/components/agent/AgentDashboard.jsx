@@ -189,7 +189,7 @@ const AgentDashboard = () => {
 										}
 										className={styles.suspendButton}
 									>
-										Suspend
+										Delete
 									</button>
 								</div>
 							</div>

@@ -17,15 +17,17 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 			const response = await axios.put(
 				`/api/agent/listings/${listingID}/delete`
 			);
-			if (response.data.deleteSuccess) {
-				setSuccess("Listing has been suspended!");
+			if (response.status === 200) {
+				setSuccess("Listing has been deleted!");
 				setTimeout(() => {
 					toggleDeleteVisibility(listingID);
 				}, 2000);
 				window.location.reload();
 			}
 		} catch (err) {
-			setError("Listing is already suspended!");
+			if (err.response) {
+				setError("Listing is already deleted!");
+			}
 			setTimeout(() => {
 				toggleDeleteVisibility(listingID);
 			}, 2000);
@@ -37,7 +39,7 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 			<div className={styles.deleteCardContainer}>
 				{success && <span className={styles.success}>{success}</span>}
 				{error && <span className={styles.error}>{error}</span>}
-				<p>Confirm suspend Listing ID: {listingID}</p>
+				<p>Confirm delete Listing ID: {listingID}?</p>
 				<div className={styles.buttonFlexbox}>
 					<button onClick={handleDelete}>Yes</button>
 					<button
