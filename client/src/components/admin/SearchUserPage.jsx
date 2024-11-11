@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
-import CreateUser from "./CreateUser";
-import styles from "./UserAdminDashboard.module.css";
+import CreateUserAccountPage from "./CreateUserAccountPage";
+import styles from "./SearchUserPage.module.css";
 
-const UserAdminDashboard = () => {
+const SearchUserPage = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
 	const [error, setError] = useState("");
 	const [searchEmail, setSearchEmail] = useState("");
@@ -18,19 +18,19 @@ const UserAdminDashboard = () => {
 	};
 
 	// Get all user accounts and populate
-	useEffect(() => {
-		const fetchUsers = async () => {
-			try {
-				const response = await axios.get("/api/users");
-				setUsers(response.data.users); // Set the users data to state
-			} catch (err) {
-				setError("Error fetching data");
-				console.error(err);
-			}
-		};
+	// useEffect(() => {
+	// 	const fetchUsers = async () => {
+	// 		try {
+	// 			const response = await axios.get("/api/users");
+	// 			setUsers(response.data.users); // Set the users data to state
+	// 		} catch (err) {
+	// 			setError("Error fetching data");
+	// 			console.error(err);
+	// 		}
+	// 	};
 
-		fetchUsers(); // Call the fetch function
-	}, []);
+	// 	fetchUsers(); // Call the fetch function
+	// }, []);
 
 	const searchUserAccount = async (e) => {
 		e.preventDefault();
@@ -41,16 +41,18 @@ const UserAdminDashboard = () => {
 
 		if (searchEmail.length > 0) {
 			try {
-				const response = await axios.get(`api/users/${searchEmail}`);
+				const response = await axios.post("/api/users/search", {
+					email: searchEmail,
+				});
 
-				if (response.data.user_data != null) {
+				if (response.data != null) {
 					console.log(searchEmail);
 					setError("");
-					setSearchResult(response.data.user_data);
+					setSearchResult(response.data);
 					setSearchEmail("");
 				} else {
-					setSearchEmail("");
 					setError("User not found!");
+					setSearchEmail("");
 				}
 			} catch (err) {
 				setSearchEmail("");
@@ -106,7 +108,9 @@ const UserAdminDashboard = () => {
 					/>
 				)}
 				{isFormVisible && (
-					<CreateUser toggleFormVisibility={toggleFormVisibility} />
+					<CreateUserAccountPage
+						toggleFormVisibility={toggleFormVisibility}
+					/>
 				)}
 			</div>
 		);
@@ -192,10 +196,12 @@ const UserAdminDashboard = () => {
 				/>
 			)}
 			{isFormVisible && (
-				<CreateUser toggleFormVisibility={toggleFormVisibility} />
+				<CreateUserAccountPage
+					toggleFormVisibility={toggleFormVisibility}
+				/>
 			)}
 		</div>
 	);
 };
 
-export default UserAdminDashboard;
+export default SearchUserPage;

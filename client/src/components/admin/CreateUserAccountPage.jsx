@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
-import styles from "./UserAdminDashboard.module.css";
+import styles from "./SearchUserPage.module.css";
 
-const CreateUser = ({ toggleFormVisibility }) => {
+const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 	// PUT request to backend
 	const [profiles, setProfiles] = useState([]);
 	const [email, setEmail] = useState("");
@@ -175,4 +175,4 @@ const CreateUser = ({ toggleFormVisibility }) => {
 	);
 };
 
-export default CreateUser;
+export default CreateUserAccountPage;

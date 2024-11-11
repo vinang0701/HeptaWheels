@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import CreateUserProfilePage from "./CreateUserProfilePage";
-import styles from "./ManageUserProfilePage.module.css";
+import styles from "./SearchUserProfilePage.module.css";
 
-const ManageUserProfilePage = () => {
+const SearchUserProfilePage = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
 	const [error, setError] = useState("");
 	const [searchProfile, setSearchProfile] = useState("");
@@ -17,23 +17,23 @@ const ManageUserProfilePage = () => {
 	};
 
 	// Get all user profiles
-	useEffect(() => {
-		const fetchProfiles = async () => {
-			try {
-				const response = await axios.get("/api/profiles");
+	// useEffect(() => {
+	// 	const fetchProfiles = async () => {
+	// 		try {
+	// 			const response = await axios.get("/api/profiles");
 
-				// Set the profiles data to state
-				setProfiles(response.data.user_profiles);
-			} catch (err) {
-				// setError("Error fetching data");
-				console.error(err);
-			}
-		};
+	// 			// Set the profiles data to state
+	// 			setProfiles(response.data.user_profiles);
+	// 		} catch (err) {
+	// 			// setError("Error fetching data");
+	// 			console.error(err);
+	// 		}
+	// 	};
 
-		fetchProfiles(); // Call the fetch function
-	}, []);
+	// 	fetchProfiles(); // Call the fetch function
+	// }, []);
 
-	const searchUserProfile = async (e) => {
+	const searchProfileRequest = async (e) => {
 		e.preventDefault();
 
 		if (searchProfile.length > 0) {
@@ -94,7 +94,9 @@ const ManageUserProfilePage = () => {
 								}
 								autoComplete="off"
 							/>
-							<button onClick={searchUserProfile}>Search</button>
+							<button onClick={searchProfileRequest}>
+								Search
+							</button>
 						</div>
 					</div>
 				</div>
@@ -140,7 +142,9 @@ const ManageUserProfilePage = () => {
 								}
 								autoComplete="off"
 							/>
-							<button onClick={searchUserProfile}>Search</button>
+							<button onClick={searchProfileRequest}>
+								Search
+							</button>
 						</div>
 					</div>
 				</div>
@@ -209,4 +213,4 @@ const ManageUserProfilePage = () => {
 	);
 };
 
-export default ManageUserProfilePage;
+export default SearchUserProfilePage;

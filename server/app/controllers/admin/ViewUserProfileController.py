@@ -25,34 +25,6 @@ class ViewUserProfileController:
         return user_profile
 
 
-@admin.route("/api/profiles", methods=["GET"])
-def getUserProfiles():
-    viewUPController = ViewUserProfileController()
-    user_profiles = viewUPController.getUserProfiles()
-    if user_profiles is None:
-        return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "No user profile found",
-                    "user_profiles": None,
-                }
-            ),
-            404,
-        )
-    else:
-        return (
-            jsonify(
-                {
-                    "status": "success",
-                    "message": "User profiles found!",
-                    "user_profiles": user_profiles,
-                }
-            ),
-            200,
-        )
-
-
 # Remember to include changing to lower case for checking
 @admin.route("/api/profiles/<string:profile_name>", methods=["GET"])
 def getUserProfile(profile_name):
@@ -80,3 +52,33 @@ def getUserProfile(profile_name):
             ),
             200,
         )
+
+
+"""
+@admin.route("/api/profiles", methods=["GET"])
+def getUserProfiles():
+    viewUPController = ViewUserProfileController()
+    user_profiles = viewUPController.getUserProfiles()
+    if user_profiles is None:
+        return (
+            jsonify(
+                {
+                    "status": "error",
+                    "message": "No user profile found",
+                    "user_profiles": None,
+                }
+            ),
+            404,
+        )
+    else:
+        return (
+            jsonify(
+                {
+                    "status": "success",
+                    "message": "User profiles found!",
+                    "user_profiles": user_profiles,
+                }
+            ),
+            200,
+        )
+"""

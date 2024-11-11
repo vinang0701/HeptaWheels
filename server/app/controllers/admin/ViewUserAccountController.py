@@ -58,6 +58,7 @@ def viewUserAccount(email):
 
 
 # Method to get all users from admin controller
+"""
 @admin.route("/api/users", methods=["GET"])
 @cross_origin()
 def getAllUsers():
@@ -80,3 +81,4 @@ def getAllUsers():
         )
     except Exception as e:
         return jsonify({"status": "error", "message": str(e), "users": None}), 500
+"""

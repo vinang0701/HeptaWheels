@@ -19,9 +19,9 @@ const Login = () => {
 	const [passwordError, setPasswordError] = useState("");
 
 	// To navigate user to respective home page
-	const handleSubmit = async (e) => {
-		const navigate = useNavigate();
+	const navigate = useNavigate();
 
+	const handleSubmit = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
@@ -112,8 +112,6 @@ const Login = () => {
 
 	const goHome = () => {
 		// Check role
-		const navigate = useNavigate();
-
 		const role = auth?.userRole;
 		switch (role) {
 			case "User Admin":

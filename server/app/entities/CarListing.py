@@ -188,3 +188,23 @@ class CarListing:
             return listing
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
+
+    def buyerSearchListing(self, query):
+        try:
+            listings = list(
+                self.collection.find(
+                    {
+                        "$or": [
+                            {"carMake": {"$regex": f"{query}", "$options": "i"}},
+                            {"carModel": {"$regex": f"{query}", "$options": "i"}},
+                        ]
+                    },
+                    {"_id": 0},
+                )
+            )
+            if not listings:
+                return None
+            return listings
+        except Exception as e:
+            print("An error occurred:", e)
+            return None

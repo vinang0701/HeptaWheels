@@ -1,12 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import RequireAuth from "./components/RequireAuth.jsx";
-import Header from "./components/Header.jsx";
 import MainPage from "./components/MainPage.jsx";
 import UsedCars from "./components/buyer/UsedCars.jsx";
 import Login from "./components/Login.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
-import UserAdminDashboard from "./components/admin/UserAdminDashboard.jsx";
 import BuyerViewListingsPage from "./components/buyer/BuyerViewListingsPage.jsx";
 import CarDetailsPage from "./components/buyer/CarDetailsPage.jsx";
 import SellerDashboard from "./components/seller/SellerDashboard.jsx";
@@ -14,12 +12,13 @@ import AgentDashboard from "./components/agent/AgentDashboard.jsx";
 import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
 import Layout from "./Layout.jsx";
-import ManageUserProfilePage from "./components/admin/ManageUserProfilePage.jsx";
+import SearchUserProfilePage from "./components/admin/SearchUserProfilePage.jsx";
 import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
 import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
 import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
 import UpdateCarListingPage from "./components/agent/UpdateCarListingPage.jsx";
 import ViewRatingsAndReviewsPage from "./components/agent/ViewRatingsAndReviewsPage.jsx";
+import SearchUserPage from "./components/admin/SearchUserPage.jsx";
 
 function App() {
 	return (
@@ -32,7 +31,7 @@ function App() {
 
 				{/* Protected Routes */}
 				<Route element={<RequireAuth allowedRoles={["User Admin"]} />}>
-					<Route path="/admin" element={<UserAdminDashboard />} />
+					<Route path="/admin" element={<SearchUserPage />} />
 					<Route
 						path="users/:email"
 						element={<ViewUserAccountPage />}
@@ -43,7 +42,7 @@ function App() {
 					/>
 					<Route
 						path="/admin/profiles"
-						element={<ManageUserProfilePage />}
+						element={<SearchUserProfilePage />}
 					/>
 					<Route
 						path="/admin/profiles/:profile_name"

@@ -25,6 +25,15 @@ class UserAccount:
         except Exception as e:
             raise RuntimeError(f"An unexpected error as occured: {str(e)}")
 
+    def searchUser(self, email):
+        try:
+            user = self.collection.find_one({"email": email}, {"_id": 0})
+            if user is None:
+                return None
+            return user
+        except Exception as e:
+            raise RuntimeError(f"An unexpected error as occured: {str(e)}")
+
     def getAllUsers(self):
         """
         Fetch all users from MongoDB.
@@ -71,23 +80,6 @@ class UserAccount:
         except Exception as e:
             return False
             # return jsonify({"status": "error", "message": str(e)}), 500
-        """
-        if (checkDuplUser is not None):
-            return jsonify({"status": "error", "message": "User already exists"}), 500
-        else:
-            # If does not exist, insert new user
-            try:
-                self.collection.insert_one({
-                    "userID": next_user_id,
-                    "email": email,
-                    "password": pwd,
-                    "status": "Active",
-                    "role": role
-                })
-                return jsonify({"status": "success", "message": "User added successfully"}), 200
-            except Exception as e:
-                return jsonify({"status": "error", "message": str(e)}), 500
-        """
 
     def suspend(self, email):
         # Get account to check for status
@@ -101,13 +93,13 @@ class UserAccount:
             raise ValueError("User not found!")
             return False
 
-        if current_status == "Inactive":
+        if current_status == "Suspended":
             return False
 
         else:
             try:
                 self.collection.update_one(
-                    {"email": email}, {"$set": {"status": "Inactive"}}
+                    {"email": email}, {"$set": {"status": "Suspended"}}
                 )
                 return True
             except Exception as e:
