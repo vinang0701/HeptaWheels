@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
-import "./UserAdminDashboard.css";
+import styles from "./UserAdminDashboard.module.css";
 
 const CreateUser = ({ toggleFormVisibility }) => {
 	// PUT request to backend
@@ -93,20 +93,20 @@ const CreateUser = ({ toggleFormVisibility }) => {
 
 	return (
 		<div>
-			<div className="userFormContainer">
-				<div className="userFormHeader">
+			<div className={styles.userFormContainer}>
+				<div className={styles.userFormHeader}>
 					<h4>Create User</h4>
 					<button onClick={toggleFormVisibility} id="closeFormButton">
 						Close
 					</button>
 				</div>
 
-				<form className="createUserForm" onSubmit={handleSubmit}>
-					{error && <span className="error">{error}</span>}
+				<form className={styles.createUserForm} onSubmit={handleSubmit}>
+					{error && <span className={styles.error}>{error}</span>}
 					<div>
-						<div className="userInputContainer">
+						<div className={styles.userInputContainer}>
 							{/* {emailError && (
-								<span className="error">{emailError}</span>
+								<span className={styles.error}>{emailError}</span>
 							)} */}
 							<label>Email</label>
 							<input
@@ -122,9 +122,9 @@ const CreateUser = ({ toggleFormVisibility }) => {
 					</div>
 
 					<div>
-						<div className="userInputContainer">
+						<div className={styles.userInputContainer}>
 							{/* {passwordError && (
-								<span className="error">{passwordError}</span>
+								<span className={styles.error}>{passwordError}</span>
 							)} */}
 							<label>Password</label>
 							<input
@@ -138,7 +138,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 						</div>
 					</div>
 					<div>
-						<div className="userInputContainer">
+						<div className={styles.userInputContainer}>
 							<label>Role</label>
 							{/* <input
 								type="text"
@@ -167,6 +167,7 @@ const CreateUser = ({ toggleFormVisibility }) => {
 						type="submit"
 						value="Add User"
 						id="submitCreateUser"
+						className={styles.submitCreateUser}
 					/>
 				</form>
 			</div>

@@ -14,7 +14,7 @@ const MainPage = () => {
 
 	const goHome = () => {
 		// Check role
-		const role = auth.userRole;
+		const role = auth?.userRole;
 		switch (role) {
 			case "User Admin":
 				navigate("/admin");
@@ -49,7 +49,7 @@ const MainPage = () => {
 					inspected and ready for the road. Start your journey with
 					us. Drive away your dream car today!
 				</p>
-				{auth.userRole ? (
+				{auth?.userRole ? (
 					<button onClick={goHome}>Get Started</button>
 				) : (
 					<button onClick={loginButton}>Login</button>

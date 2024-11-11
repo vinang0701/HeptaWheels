@@ -8,13 +8,13 @@
 	position: relative;
 }
 
-#searchBarContainer {
+.searchBarContainer {
 	margin: 1em 0;
 	display: flex;
 	justify-content: space-between;
 }
 
-#searchBarContainer button {
+.searchBarContainer button {
 	background-color: #0032e4;
 
 	font-weight: var(--fw-bold);
@@ -25,11 +25,11 @@
 	cursor: pointer;
 }
 
-#searchBarContainer button:hover {
+.searchBarContainer button:hover {
 	background-color: #564ab8;
 }
 
-#searchUser {
+.searchBarContainer input {
 	margin-right: 0.5em;
 	height: 100%;
 	border-radius: 12px;
@@ -154,15 +154,14 @@
 	padding-left: 8px;
 }
 
-.error {
+.userAdminContainer .error {
 	color: red;
-	font-size: 0.8em;
 	width: 100%;
 	height: 16px;
 	text-align: left;
 }
 
-#submitCreateUser {
+.submitCreateUser {
 	margin-top: 50px;
 	background-color: var(--primary-color);
 	color: var(--background-color);
@@ -173,6 +172,6 @@
 	padding: 10px 12px;
 }
 
-#submitCreateUser:hover {
+.submitCreateUser:hover {
 	background-color: #d10027;
 }

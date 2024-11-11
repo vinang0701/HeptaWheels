@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import CreateUser from "./CreateUser";
-import "./UserAdminDashboard.css";
+import styles from "./UserAdminDashboard.module.css";
 
 const UserAdminDashboard = () => {
 	const [isFormVisible, setFormVisible] = useState(false);
@@ -69,12 +69,55 @@ const UserAdminDashboard = () => {
 		navigate(`/users/${encodeURIComponent(email)}`);
 	};
 
+	if (Object.keys(searchResult).length === 0) {
+		return (
+			<div>
+				<div className={styles.userAdminContainer}>
+					<h4>Manage Users</h4>
+
+					<form className={styles.searchBarContainer}>
+						<button onClick={toggleFormVisibility}>Add User</button>
+						<div>
+							<input
+								type="text"
+								name="searchUser"
+								id="searchUser"
+								value={searchEmail}
+								placeholder="Search by email"
+								onChange={(e) => setSearchEmail(e.target.value)}
+								autoComplete="off"
+							/>
+							<button type="submit" onClick={searchUserAccount}>
+								Search
+							</button>
+						</div>
+					</form>
+					{error ? (
+						<p className={styles.error}>{error}</p>
+					) : (
+						<div>Please search for a user</div>
+					)}
+				</div>
+
+				{isFormVisible && (
+					<div
+						className={styles.overlay}
+						onClick={toggleFormVisibility}
+					/>
+				)}
+				{isFormVisible && (
+					<CreateUser toggleFormVisibility={toggleFormVisibility} />
+				)}
+			</div>
+		);
+	}
+
 	return (
 		<div>
-			<div className="userAdminContainer">
+			<div className={styles.userAdminContainer}>
 				<h4>Manage Users</h4>
 
-				<form id="searchBarContainer">
+				<form className={styles.searchBarContainer}>
 					<button onClick={toggleFormVisibility}>Add User</button>
 					<div>
 						<input
@@ -91,9 +134,8 @@ const UserAdminDashboard = () => {
 						</button>
 					</div>
 				</form>
-				{error && <p>{error}</p>}
-				<div className="userTable">
-					<div className="tableHeader">
+				<div className={styles.userTable}>
+					<div className={styles.tableHeader}>
 						<div>User ID</div>
 						<div>Email Address</div>
 						<div>Role</div>
@@ -103,7 +145,7 @@ const UserAdminDashboard = () => {
 
 					{/* Need to conditional render dependent on searchResult */}
 					{searchResult.email ? (
-						<div className="tableRow" key={searchResult.id}>
+						<div className={styles.tableRow} key={searchResult.id}>
 							<div>{searchResult.userID}</div>
 							<div>{searchResult.email}</div>
 							<div>{searchResult.role}</div>
@@ -118,31 +160,36 @@ const UserAdminDashboard = () => {
 								</button>
 							</div>
 						</div>
-					) : (
-						<div>
-							{users.map((user) => (
-								<div className="tableRow" key={user.userID}>
-									<div>{user.userID}</div>
-									<div>{user.email}</div>
-									<div>{user.role}</div>
-									<div>{user.status}</div>
-									<div>
-										<button
-											onClick={(e) =>
-												viewAccount(user.email)
-											}
-										>
-											View Account
-										</button>
-									</div>
-								</div>
-							))}
-						</div>
-					)}
+					) : // <div>
+					// 	{users.map((user) => (
+					// 		<div
+					// 			className={styles.tableRow}
+					// 			key={user.userID}
+					// 		>
+					// 			<div>{user.userID}</div>
+					// 			<div>{user.email}</div>
+					// 			<div>{user.role}</div>
+					// 			<div>{user.status}</div>
+					// 			<div>
+					// 				<button
+					// 					onClick={(e) =>
+					// 						viewAccount(user.email)
+					// 					}
+					// 				>
+					// 					View Account
+					// 				</button>
+					// 			</div>
+					// 		</div>
+					// 	))}
+					// </div>
+					null}
 				</div>
 			</div>
 			{isFormVisible && (
-				<div className="overlay" onClick={toggleFormVisibility} />
+				<div
+					className={styles.overlay}
+					onClick={toggleFormVisibility}
+				/>
 			)}
 			{isFormVisible && (
 				<CreateUser toggleFormVisibility={toggleFormVisibility} />

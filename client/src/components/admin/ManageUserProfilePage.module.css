@@ -83,3 +83,10 @@
 .profileTableRow button {
 	padding: 12px 10px;
 }
+
+.manageProfileContainer .error {
+	color: red;
+	width: 100%;
+	height: 16px;
+	text-align: left;
+}

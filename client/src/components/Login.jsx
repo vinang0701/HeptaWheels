@@ -6,11 +6,12 @@ import "./Login.css";
 
 const Login = () => {
 	const { auth, setAuth } = useAuth();
-	const location = useLocation();
+	// const location = useLocation();
 
 	// State needed for user login details
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [success, setSuccess] = useState("");
 
 	// States for user input error
 	const [error, setError] = useState("");
@@ -18,31 +19,9 @@ const Login = () => {
 	const [passwordError, setPasswordError] = useState("");
 
 	// To navigate user to respective home page
-	const navigate = useNavigate();
-
-	const goHome = () => {
-		// Check role
-		const role = auth.userRole;
-		switch (role) {
-			case "User Admin":
-				navigate("/admin");
-				break;
-			case "Agent":
-				navigate("/agent");
-				break;
-			case "Buyer":
-				navigate("/buyer");
-				break;
-			case "Seller":
-				navigate("/seller");
-				break;
-			default:
-				navigate("/");
-				break;
-		}
-	};
-
 	const handleSubmit = async (e) => {
+		const navigate = useNavigate();
+
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
@@ -85,7 +64,8 @@ const Login = () => {
 				console.log(response.data);
 
 				if (response.data.status === "success") {
-					alert("Login successful");
+					// alert("Login successful");
+					setSuccess("Login successful!");
 
 					sessionStorage.setItem("loggedIn", true);
 
@@ -130,10 +110,34 @@ const Login = () => {
 		}
 	};
 
+	const goHome = () => {
+		// Check role
+		const navigate = useNavigate();
+
+		const role = auth?.userRole;
+		switch (role) {
+			case "User Admin":
+				navigate("/admin");
+				break;
+			case "Agent":
+				navigate("/agent");
+				break;
+			case "Buyer":
+				navigate("/buyer");
+				break;
+			case "Seller":
+				navigate("/seller");
+				break;
+			default:
+				navigate("/");
+				break;
+		}
+	};
+
 	return (
 		<div>
 			<div className="loginPageContainer">
-				{auth.userRole ? (
+				{auth?.userRole ? (
 					<div>
 						<h1>You are already logged In</h1>
 						<button className="goHomeButton" onClick={goHome}>
@@ -142,6 +146,7 @@ const Login = () => {
 					</div>
 				) : (
 					<div className="loginPageContainer">
+						{success && <div>{success}</div>}
 						<h1>Login</h1>
 						<form
 							className="loginInputForm"
@@ -152,10 +157,11 @@ const Login = () => {
 								{emailError && (
 									<p className="error">{emailError}</p>
 								)}
-								<span>Email</span>
+								<label htmlFor="email">Email</label>
 								<input
 									className="loginUserName"
 									type="text"
+									id="email"
 									value={email}
 									autoComplete="off"
 									onChange={(e) => setEmail(e.target.value)}
@@ -166,9 +172,10 @@ const Login = () => {
 								{passwordError && (
 									<p className="error">{passwordError}</p>
 								)}
-								<span>Password</span>
+								<label htmlFor="password">Password</label>
 								<input
 									className="loginPassword"
+									id="password"
 									type="password"
 									value={password}
 									autoComplete="off"

@@ -6,8 +6,8 @@ const Header = () => {
 	const navigate = useNavigate();
 	const { auth, setAuth } = useAuth();
 
-	const userEmail = auth.email;
-	const userRole = auth.userRole;
+	const userEmail = auth?.email;
+	const userRole = auth?.userRole;
 
 	const handleLogout = () => {
 		sessionStorage.removeItem("user-role");

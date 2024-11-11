@@ -25,7 +25,7 @@ const ManageUserProfilePage = () => {
 				// Set the profiles data to state
 				setProfiles(response.data.user_profiles);
 			} catch (err) {
-				setError("Error fetching data");
+				// setError("Error fetching data");
 				console.error(err);
 			}
 		};
@@ -46,9 +46,9 @@ const ManageUserProfilePage = () => {
 					const profileTemp = [];
 					profileTemp.push(response.data.user_profile);
 					setError("");
-					// setSearchResult(response.data.user_profile);
-					setProfiles(profileTemp);
-					console.log(profiles);
+					setSearchResult(response.data.user_profile);
+					// setProfiles(profileTemp);
+					// console.log(profiles);
 					setSearchProfile("");
 				} else {
 					setSearchProfile("");
@@ -71,6 +71,52 @@ const ManageUserProfilePage = () => {
 	const viewProfile = (profile_name) => {
 		navigate(`/admin/profiles/${encodeURIComponent(profile_name)}`);
 	};
+
+	if (Object.keys(searchResult).length === 0) {
+		return (
+			<div className={styles.manageProfileContainer}>
+				<h4>Manage Profiles</h4>
+				<div>
+					<div className={styles.searchContainer}>
+						<button
+							className="createProfileButton"
+							onClick={toggleFormVisibility}
+						>
+							Add Profile
+						</button>
+						<div>
+							<input
+								type="text"
+								placeholder="Search by name"
+								value={searchProfile}
+								onChange={(e) =>
+									setSearchProfile(e.target.value)
+								}
+								autoComplete="off"
+							/>
+							<button onClick={searchUserProfile}>Search</button>
+						</div>
+					</div>
+				</div>
+
+				{error ? (
+					<span className={styles.error}>{error}</span>
+				) : (
+					<div>Please search for a user profile</div>
+				)}
+
+				{isFormVisible && (
+					<div className="overlay" onClick={toggleFormVisibility} />
+				)}
+				{isFormVisible && (
+					<CreateUserProfilePage
+						toggleFormVisibility={toggleFormVisibility}
+						profiles={profiles}
+					/>
+				)}
+			</div>
+		);
+	}
 
 	return (
 		<div>
@@ -98,8 +144,28 @@ const ManageUserProfilePage = () => {
 						</div>
 					</div>
 				</div>
-				{error && <span>{error}</span>}
-				{profiles.length > 0 ? (
+				<div className={styles.table}>
+					<div className={styles.profileTableHeader}>
+						<div>Role</div>
+						<div>Status</div>
+						<div className={styles.lastColumn}>Actions</div>
+					</div>
+					<div className={styles.profileTableRow}>
+						<div>{searchResult.profile_name}</div>
+						<div>{searchResult.status}</div>
+						<div>
+							<button
+								className={styles.lastColumn}
+								onClick={() =>
+									viewProfile(searchResult.profile_name)
+								}
+							>
+								View Profile
+							</button>
+						</div>
+					</div>
+				</div>
+				{/* {profiles.length > 0 ? (
 					<div className={styles.table}>
 						<div className={styles.profileTableHeader}>
 							<div>Role</div>
@@ -128,7 +194,7 @@ const ManageUserProfilePage = () => {
 					</div>
 				) : (
 					<div>No profiles found. Create a new profile!</div>
-				)}
+				)} */}
 				{isFormVisible && (
 					<div className="overlay" onClick={toggleFormVisibility} />
 				)}
