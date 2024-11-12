@@ -85,11 +85,11 @@ To run the back-end server:
 Mac/Linx:
 
 ```bash
-python3 main.py
+python3 app.py
 ```
 
 Windows:
 
 ```bash
-python main.py
+python app.py
 ```
