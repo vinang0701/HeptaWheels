@@ -19,6 +19,8 @@ import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
 import UpdateCarListingPage from "./components/agent/UpdateCarListingPage.jsx";
 import ViewRatingsAndReviewsPage from "./components/agent/ViewRatingsAndReviewsPage.jsx";
 import SearchUserPage from "./components/admin/SearchUserPage.jsx";
+import BuyerViewListingPage from "./components/buyer/BuyerViewListingPage.jsx";
+import BuyerRateReviewPage from "./components/buyer/BuyerRateReviewPage.jsx";
 
 function App() {
 	return (
@@ -55,6 +57,18 @@ function App() {
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Buyer"]} />}>
 					<Route path="/buyer" element={<BuyerViewListingsPage />} />
+					<Route
+						path="/buyer/listings"
+						element={<BuyerViewListingsPage />}
+					/>
+					<Route
+						path="/buyer/listings/:listingID"
+						element={<BuyerViewListingPage />}
+					/>
+					<Route
+						path="/buyer/agent"
+						element={<BuyerRateReviewPage />}
+					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Seller"]} />}>
 					<Route path="seller" element={<SellerDashboard />} />

@@ -53,8 +53,6 @@ def getUserProfile(profile_name):
             200,
         )
 
-
-"""
 @admin.route("/api/profiles", methods=["GET"])
 def getUserProfiles():
     viewUPController = ViewUserProfileController()
@@ -81,4 +79,3 @@ def getUserProfiles():
             ),
             200,
         )
-"""

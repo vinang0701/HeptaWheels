@@ -1,0 +1,81 @@
+.listingPageContainer {
+	max-width: 1360px;
+	margin: 0 auto;
+}
+
+.buyerListingContainer {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.imageContainer {
+	position: relative;
+	width: 600px;
+	height: 400px;
+	background-color: #d9d9d9;
+}
+
+.imageContainer img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	border: 1px solid black;
+}
+
+.listingDetails {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+}
+
+.listingDetails > p {
+	margin-bottom: 12px;
+}
+
+.listingDetails > p > span {
+	font-weight: var(--fw-semi-bold);
+}
+
+.listingDetailsHeader {
+	font-weight: var(--fw-semi-bold);
+}
+
+.listingDetails .buyerListingTitle {
+	font-size: 1.25rem;
+	font-weight: var(--fw-semi-bold);
+}
+
+.listingDetails .listingDesc {
+	display: inline-block;
+	word-break: break-all;
+}
+
+.listingDetails .listingAgentID {
+	cursor: pointer;
+}
+
+.listingDetails .listingAgentID:hover {
+	text-decoration: underline;
+}
+
+.listingDetails .rateButton {
+	padding: 2px 8px;
+	margin-left: 8px;
+}
+
+.saveListing {
+	display: flex;
+	align-content: center;
+	width: fit-content;
+}
+
+.saveListingText {
+	margin-left: 4px;
+}
+
+.saveListing:hover {
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}

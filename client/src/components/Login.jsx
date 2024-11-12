@@ -6,7 +6,7 @@ import "./Login.css";
 
 const Login = () => {
 	const { auth, setAuth } = useAuth();
-	// const location = useLocation();
+	const [loading, setLoading] = useState(false);
 
 	// State needed for user login details
 	const [email, setEmail] = useState("");
@@ -51,27 +51,23 @@ const Login = () => {
 		if (!hasError) {
 			try {
 				// Make a POST request to the API
-				const response = await axios.post(
-					"/api/login",
-					{
-						email: email,
-						password: password,
-					},
-					{
-						headers: { "Access-Control-Allow-Origin": "*" },
-					}
-				);
+				setLoading(true);
+				const response = await axios.post("/api/login", {
+					email: email,
+					password: password,
+				});
+
 				console.log(response.data);
 
-				if (response.data.status === "success") {
+				if (response.status === 200) {
 					// alert("Login successful");
+					setLoading(false);
 					setSuccess("Login successful!");
 
 					sessionStorage.setItem("loggedIn", true);
 
 					const userRole = response.data.user_data.role;
 					const userID = response.data.user_data.userID;
-					console.log(userRole);
 
 					setAuth({ email, password, userRole, userID });
 					sessionStorage.setItem(
@@ -82,29 +78,39 @@ const Login = () => {
 					// Redirect user based on role
 					switch (userRole) {
 						case "User Admin":
-							navigate("/admin");
+							setTimeout(() => {
+								navigate("/admin");
+							}, 1000);
+
 							break;
 						case "Buyer":
-							navigate("/buyer");
+							setTimeout(() => {
+								navigate("/buyer");
+							}, 1000);
 							break;
 						case "Seller":
-							navigate("/seller");
+							setTimeout(() => {
+								navigate("/seller");
+							}, 1000);
 							break;
 						case "Agent":
-							navigate("/agent");
+							setTimeout(() => {
+								navigate("/agent");
+							}, 1000);
 							break;
 						default:
 							console.error("Unknown role:", userRole);
-							// Optionally navigate to a default route or show an error
 							break;
 					}
 				} else {
+					setLoading(false);
 					setEmail("");
 					setPassword("");
 					setError(response.data.message);
 				}
 			} catch (err) {
 				// Handle error
+				setLoading(false);
 				setError("Email/password is wrong! Please try again.");
 			}
 		}
@@ -132,12 +138,20 @@ const Login = () => {
 		}
 	};
 
+	if (loading) {
+		return (
+			<div className="loginPageContainer">
+				<div>Loading...</div>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<div className="loginPageContainer">
 				{auth?.userRole ? (
 					<div>
-						<h1>You are already logged In</h1>
+						<h1>You are logged in!</h1>
 						<button className="goHomeButton" onClick={goHome}>
 							Go home
 						</button>
@@ -158,7 +172,8 @@ const Login = () => {
 								<label htmlFor="email">Email</label>
 								<input
 									className="loginUserName"
-									type="text"
+									type="email"
+									name="email"
 									id="email"
 									value={email}
 									autoComplete="off"
@@ -175,6 +190,7 @@ const Login = () => {
 									className="loginPassword"
 									id="password"
 									type="password"
+									name="password"
 									value={password}
 									autoComplete="off"
 									onChange={(e) =>

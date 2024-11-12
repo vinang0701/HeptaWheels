@@ -12,6 +12,10 @@ h1 {
 	align-items: center;
 }
 
+.loginPageContainer h1 {
+	text-align: center;
+}
+
 .loginInputForm {
 	display: flex;
 	flex-direction: column;

@@ -9,44 +9,44 @@ const BuyerViewListingsPage = () => {
 	const { auth } = useAuth();
 	const [filteredCars, setFilteredCars] = useState([]);
 	const navigate = useNavigate();
-	const [listingID, setListingID] = useState("");
 	const [searchInput, setSearchInput] = useState("");
 	const buyerID = auth.userID;
 	const [error, setError] = useState("");
 	const [searchResult, setSearchResult] = useState([]);
 	const [listings, setListings] = useState([]);
-	// const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
+	const [imageError, setImageError] = useState(false);
 
-	// useEffect(() => {
-	// 	fetch("https://6707c1878e86a8d9e42cc865.mockapi.io/cars")
-	// 		.then((response) => response.json())
-	// 		.then((data) => {
-	// 			setCars(data);
-	// 			setFilteredCars(data); // Initially show all cars
-	// 			setLoading(false);
-	// 		})
-	// 		.catch((error) => console.error("Error fetching data:", error));
-	// }, []);
+	useEffect(() => {
+		const retrieveCarListings = async () => {
+			const response = await axios.get("/api/buyer/listings");
+			if (response.status === 200) {
+				setListings(response.data.listings);
+			}
+			setLoading(false);
+		};
+		retrieveCarListings();
+	}, []);
 
-	// const handleSearch = (searchCriteria) => {
-	// 	const filtered = cars.filter((car) => {
-	// 		const matchesMake = car.make
-	// 			.toLowerCase()
-	// 			.includes(searchCriteria.make.toLowerCase());
-	// 		const matchesModel = car.model
-	// 			.toLowerCase()
-	// 			.includes(searchCriteria.model.toLowerCase());
-	// 		const matchesPrice =
-	// 			car.price >= searchCriteria.minPrice &&
-	// 			car.price <= searchCriteria.maxPrice;
-	// 		return matchesMake && matchesModel && matchesPrice;
-	// 	});
-	// 	setFilteredCars(filtered);
-	// };
+	const viewDetails = (listingID) => {
+		navigate(`/buyer/listings/${listingID}`);
+	};
 
-	// if (loading) {
-	// 	return <div>Loading...</div>;
-	// }
+	const handleImageError = (e) => {
+		if (!imageError) {
+			// Check if the error handler was already triggered
+			setImageError(true); // Set the error state to prevent infinite loop
+			e.target.src = "/blank.jpg"; // Provide the fallback image path
+		}
+	};
+
+	if (loading) {
+		return (
+			<div className={styles.buyerListingsContainer}>
+				<h4>Loading...</h4>
+			</div>
+		);
+	}
 
 	return (
 		<div className={styles.buyerListingsContainer}>
@@ -67,100 +67,38 @@ const BuyerViewListingsPage = () => {
 				</form>
 			</div>
 			<div className={styles.buyerListingContainer}>
-				<div className={styles.listingCard}>
-					<img src="audi.jpg" alt="audi" />
-					<div className={styles.listingDetails}>
-						<p className={styles.listingPrice}>$100000</p>
-						<p className={styles.listingTitle}>Audi R8</p>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Eaque, ut maxime quae optio quam veritatis
-							rerum sit consectetur aspernatur quo. Doloribus rem
-							obcaecati nobis fugiat excepturi autem totam est?
-							Repudiandae dignissimos facilis accusantium alias
-							nihil error sequi molestias cumque similique
-							corporis placeat delectus, voluptas vitae rem
-							perferendis, quae unde. At!
-						</p>
-						<button>View Details</button>
-					</div>
-				</div>
-				<div className={styles.listingCard}>
-					<img src="audi.jpg" alt="audi" />
-					<div className={styles.listingDetails}>
-						<p className={styles.listingPrice}>$100000</p>
-						<p className={styles.listingTitle}>Audi R8</p>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Eaque, ut maxime quae optio quam veritatis
-							rerum sit consectetur aspernatur quo. Doloribus rem
-							obcaecati nobis fugiat excepturi autem totam est?
-							Repudiandae dignissimos facilis accusantium alias
-							nihil error sequi molestias cumque similique
-							corporis placeat delectus, voluptas vitae rem
-							perferendis, quae unde. At!
-						</p>
-						<button>View Details</button>
-					</div>
-				</div>
-				<div className={styles.listingCard}>
-					<img src="audi.jpg" alt="audi" />
-					<div className={styles.listingDetails}>
-						<p className={styles.listingPrice}>$100000</p>
-						<p className={styles.listingTitle}>Audi R8</p>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Eaque, ut maxime quae optio quam veritatis
-							rerum sit consectetur aspernatur quo. Doloribus rem
-							obcaecati nobis fugiat excepturi autem totam est?
-							Repudiandae dignissimos facilis accusantium alias
-							nihil error sequi molestias cumque similique
-							corporis placeat delectus, voluptas vitae rem
-							perferendis, quae unde. At!
-						</p>
-						<button>View Details</button>
-					</div>
-				</div>
-				<div className={styles.listingCard}>
-					<img src="audi.jpg" alt="audi" />
-					<div className={styles.listingDetails}>
-						<p className={styles.listingPrice}>$100000</p>
-						<p className={styles.listingTitle}>Audi R8</p>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Eaque, ut maxime quae optio quam veritatis
-							rerum sit consectetur aspernatur quo. Doloribus rem
-							obcaecati nobis fugiat excepturi autem totam est?
-							Repudiandae dignissimos facilis accusantium alias
-							nihil error sequi molestias cumque similique
-							corporis placeat delectus, voluptas vitae rem
-							perferendis, quae unde. At!
-						</p>
-						<button>View Details</button>
-					</div>
-				</div>
-			</div>
-
-			{/* Car grid */}
-			{/* <div className={styles.car - grid}>
-				{Array.isArray(filteredCars) && filteredCars.length > 0 ? (
-					filteredCars.map((car) => (
-						<div className={styles.car - card} key={car.id}>
-							<strong>
-								{car.make} {car.model}
-							</strong>{" "}
-							<br />
-							Year: {new Date(car.year).getFullYear()} <br />
-							Price: ${Number(car.price).toFixed(2)} <br />
-							<Link to={`/car-details/${car.id}`}>
-								View Details
-							</Link>
+				{listings.map((listing) => (
+					<div className={styles.listingCard} key={listing.listingID}>
+						<img
+							src={listing.image}
+							alt="Car Image"
+							onError={handleImageError}
+						/>
+						<div className={styles.listingDetails}>
+							<p className={styles.listingPrice}>
+								${listing.price}
+							</p>
+							<p className={styles.listingTitle}>
+								{listing.carMake} {listing.carModel}
+							</p>
+							{listing.desc ? (
+								<p className={styles.listingDesc}>
+									{listing.desc}
+								</p>
+							) : (
+								<p className={styles.listingDesc}>
+									No description available...
+								</p>
+							)}
+							<button
+								onClick={() => viewDetails(listing.listingID)}
+							>
+								View Listing
+							</button>
 						</div>
-					))
-				) : (
-					<p>No cars available</p>
-				)}
-			</div> */}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

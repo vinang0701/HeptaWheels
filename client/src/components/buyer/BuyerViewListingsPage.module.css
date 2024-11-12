@@ -46,22 +46,6 @@ h1 {
 	gap: 20px;
 }
 
-.car-card {
-	background-color: #fff;
-	border: 1px solid #ddd;
-	padding: 15px;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	text-align: center;
-	transition: transform 0.2s ease-in-out;
-}
-
-.car-card:hover {
-	transform: translateY(
-		-5px
-	); /* Slight lift effect when hovering over a card */
-}
-
 .car-card a {
 	text-decoration: none;
 	color: #007bff;
@@ -74,7 +58,7 @@ h1 {
 /* Buyer View Listings Page */
 
 .buyerListingsContainer {
-	width: 1360px;
+	max-width: 1360px;
 	margin: 0 auto;
 }
 
@@ -105,7 +89,7 @@ h1 {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	justify-content: space-between;
+	column-gap: 50px;
 }
 
 .listingCard {
@@ -116,8 +100,13 @@ h1 {
 	border: 1px solid hsl(240 5.9% 90%);
 	width: 420px;
 	margin-bottom: 20px;
-	/* background-color: var(--background-color); */
-	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); */
+	background-color: var(--background-color);
+	box-shadow: 0 1px 8px 5px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease-in-out;
+}
+
+.listingCard:hover {
+	transform: translateY(-5px);
 }
 
 .listingCard img {
@@ -131,7 +120,7 @@ h1 {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	padding: 0 16px 16px 16px;
 	white-space: normal; /* Make sure text can wrap */
 }
@@ -145,15 +134,13 @@ h1 {
 	font-weight: var(--fw-semi-bold);
 }
 
-.buttonContainer {
-	display: flex;
-	margin-top: auto;
-	width: 100%;
+.listingDetails > button {
+	justify-content: flex-end;
+	margin-top: 16px;
 }
 
-.buttonContainer > button {
-	min-width: 80px;
-	margin-right: 24px;
+.listingDesc {
+	flex-basis: 100%;
 }
 
 .wrap {

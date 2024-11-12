@@ -28,15 +28,15 @@ class LoginController:
 # Initialize Entity and Controller
 
 
-@login.route("/api/login", methods=["POST", "OPTIONS"])
+@login.route("/api/login", methods=["POST"])
 def login():
     """
     Handle login request by passing data to the login controller.
     """
     loginController = LoginController()
-    if request.method == "OPTIONS":
-        # This is the preflight request
-        return jsonify({"status": "CORS preflight successful"}), 200
+    # if request.method == "OPTIONS":
+    #     # This is the preflight request
+    #     return jsonify({"status": "CORS preflight successful"}), 200
     data = request.json
     email = data.get("email")
     password = data.get("password")
