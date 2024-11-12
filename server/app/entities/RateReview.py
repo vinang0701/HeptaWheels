@@ -35,7 +35,8 @@ class RateReview:
             )
             return True
         except Exception as e:
-            raise RuntimeError(f"Unexpected error occured: {str(e)}")
+            return False
+            # raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
     # Buyer create review
     def sellerSubmitFeedback(self, agentID, userEmail, userProfile, rating, review):

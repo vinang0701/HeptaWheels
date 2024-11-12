@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "./BuyerRateReviewPage.module.css";
+import useAuth from "../../hooks/useAuth";
+import axios from "../../api/axios";
 
 const BuyerRateReviewPage = () => {
+	const { listingID } = useParams();
+	const { auth } = useAuth();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const { agentID } = location.state || {}; // Retrieve `agentID` from the state
+	const userEmail = auth?.email;
+	const userProfile = auth?.userRole;
 	const [rating, setRating] = useState(0);
 	const stars = [1, 2, 3, 4, 5];
 	const [hoveredRating, setHoveredRating] = useState(0);
+	const [review, setReview] = useState("");
+	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
+
+	const handleGoBack = () => {
+		navigate(`/buyer/listings/${listingID}`); // Go back to the previous page
+	};
 
 	const handleStarClick = (index) => {
 		setRating(index);
@@ -18,10 +35,51 @@ const BuyerRateReviewPage = () => {
 		setHoveredRating(0);
 	};
 
+	const submitFeedback = async (e) => {
+		e.preventDefault();
+		setError("");
+		if (rating === 0) {
+			setError("Please give a rating.");
+			return;
+		}
+
+		if (review.length <= 0) {
+			setError("Please write a review.");
+			return;
+		}
+
+		const data = {
+			agentID: agentID,
+			userEmail: userEmail,
+			userProfile: userProfile,
+			rating: rating,
+			review: review,
+		};
+
+		try {
+			const response = await axios.post("/api/buyer/ratereview", data);
+			if (response.status === 200) {
+				setSuccess("Feedback have been submitted!");
+				setTimeout(() => {
+					navigate("/buyer/listings");
+				}, 2000);
+			} else {
+				setError("Feedback could not be submitted. Try again later.");
+			}
+		} catch (err) {
+			setError("Feedback could not be submitted.");
+		}
+	};
+
 	return (
 		<div className={styles.buyerRatePageContainer}>
+			<div className="backButton" onClick={handleGoBack}>
+				&lt; Back
+			</div>
 			<h4>Rate and Review</h4>
-			<p>Agent ID: </p>
+			{error && <p className="error">{error}</p>}
+			{success && <p className={styles.success}>{success}</p>}
+			<p>Agent ID: {agentID}</p>
 			<div>
 				{stars.map((index) => (
 					<svg
@@ -48,8 +106,14 @@ const BuyerRateReviewPage = () => {
 				name="review"
 				id="review"
 				placeholder="Give your feedback!"
+				value={review}
+				onChange={(e) => setReview(e.target.value)}
+				required
 			></textarea>
-			<button className={styles.submitFeedbackButton}>
+			<button
+				className={styles.submitFeedbackButton}
+				onClick={submitFeedback}
+			>
 				Submit Feedback
 			</button>
 		</div>

@@ -22,7 +22,7 @@ class BuyerRateReviewCTL:
             )
             return feedbackSubmitted
         except Exception as e:
-            raise e
+            return False
 
 
 @buyer.route("/api/buyer/ratereview", methods=["POST"])
@@ -50,7 +50,17 @@ def buyerSubmitFeedback():
                 ),
                 200,
             )
-
+        else:
+            return (
+                jsonify(
+                    {
+                        "status": "error",
+                        "message": "Feedback submission failed",
+                        "feedbackSubmitted": False,
+                    }
+                ),
+                400,
+            )
     except Exception as e:
         return (
             jsonify(

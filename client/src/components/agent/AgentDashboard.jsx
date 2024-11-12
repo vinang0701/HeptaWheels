@@ -7,16 +7,16 @@ import DeleteCarListingPage from "./DeleteCarListingPage";
 import CarImage from "./CarImage";
 
 const AgentDashboard = () => {
-	const [isDeleteVisible, setDeleteVisible] = useState(false);
-	const [deleteListingID, setDeleteListingID] = useState("");
-	const navigate = useNavigate();
-	const [listingID, setListingID] = useState("");
-	const [searchInput, setSearchInput] = useState("");
 	const { auth } = useAuth();
 	const agentID = auth.userID;
-	const [error, setError] = useState("");
-	const [searchResult, setSearchResult] = useState([]);
+	const navigate = useNavigate();
+	const [isDeleteVisible, setDeleteVisible] = useState(false);
+	const [deleteListingID, setDeleteListingID] = useState("");
+	const [listingID, setListingID] = useState("");
 	const [listings, setListings] = useState([]);
+	const [searchInput, setSearchInput] = useState("");
+	const [searchResult, setSearchResult] = useState([]);
+	const [error, setError] = useState("");
 
 	const createListing = () => {
 		navigate("/agent/create");

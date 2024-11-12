@@ -22,9 +22,9 @@
     [X] Suspend Profile Backend
 
 // Used Car Agent
-[] Create Car Listing
+[X] Create Car Listing
     // Need to check if Seller ID exists
-[] Update Car Listing
+[X] Update Car Listing
     // Need to check if Seller ID exists
 [] Suspend Car Listing
 [] Search Car Listing

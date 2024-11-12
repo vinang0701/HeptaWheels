@@ -28,3 +28,7 @@ textarea {
 	margin-top: 24px;
 	padding: 8px 0;
 }
+
+.success {
+	color: green;
+}

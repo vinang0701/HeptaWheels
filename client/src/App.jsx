@@ -2,11 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import RequireAuth from "./components/RequireAuth.jsx";
 import MainPage from "./components/MainPage.jsx";
-import UsedCars from "./components/buyer/UsedCars.jsx";
 import Login from "./components/Login.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import BuyerViewListingsPage from "./components/buyer/BuyerViewListingsPage.jsx";
-import CarDetailsPage from "./components/buyer/CarDetailsPage.jsx";
 import SellerDashboard from "./components/seller/SellerDashboard.jsx";
 import AgentDashboard from "./components/agent/AgentDashboard.jsx";
 import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
@@ -66,7 +64,7 @@ function App() {
 						element={<BuyerViewListingPage />}
 					/>
 					<Route
-						path="/buyer/agent"
+						path="/buyer/listings/:listingID/agent"
 						element={<BuyerRateReviewPage />}
 					/>
 				</Route>

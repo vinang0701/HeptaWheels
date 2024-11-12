@@ -1,7 +1,7 @@
 """
 Listing Entity to handle data regarding car listings
 <<Entity>>
-Listing]
+Listing
 - listingID : int
 - agentID : int
 - sellerID : int
@@ -173,7 +173,8 @@ class CarListing:
     # Function for buyuer to get all listings
     def retrieveCarListings(self):
         try:
-            listings = list(self.collection.find({}, {"_id": 0}))
+            # Need to filter the available only
+            listings = list(self.collection.find({"status": "Available"}, {"_id": 0}))
             if not listings:
                 return None
             return listings
@@ -191,13 +192,15 @@ class CarListing:
 
     def buyerSearchListing(self, query):
         try:
+            # Need to filter the available only
             listings = list(
                 self.collection.find(
                     {
+                        "status": "Available",
                         "$or": [
                             {"carMake": {"$regex": f"{query}", "$options": "i"}},
                             {"carModel": {"$regex": f"{query}", "$options": "i"}},
-                        ]
+                        ],
                     },
                     {"_id": 0},
                 )

@@ -7,6 +7,7 @@ import styles from "./BuyerViewListingPage.module.css";
 const BuyerViewListingPage = () => {
 	const { listingID } = useParams();
 	const { auth } = useAuth();
+	const [agentID, setAgentID] = useState("");
 	const buyerID = auth.userID;
 	const navigate = useNavigate();
 	const [searchInput, setSearchInput] = useState("");
@@ -40,11 +41,18 @@ const BuyerViewListingPage = () => {
 			);
 			if (response.status === 200) {
 				setListing(response.data.listing);
+				setAgentID(response.data.listing.agentID);
 			}
 			setLoading(false);
 		};
 		retrieveCarListing();
 	}, []);
+
+	const rateAgentButton = () => {
+		navigate(`/buyer/listings/${listingID}/agent`, {
+			state: { agentID },
+		});
+	};
 
 	if (loading) {
 		return (
@@ -84,7 +92,12 @@ const BuyerViewListingPage = () => {
 					</p>
 					<p className={styles.listingAgentID}>
 						<span>Agent ID:</span> {listing.agentID}
-						<button className={styles.rateButton}>Rate</button>
+						<button
+							className={styles.rateButton}
+							onClick={rateAgentButton}
+						>
+							Rate
+						</button>
 					</p>
 					<div className={styles.saveListing} onClick={saveListing}>
 						<svg
