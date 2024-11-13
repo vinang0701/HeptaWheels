@@ -57,11 +57,11 @@ const SellerRateReviewPage = () => {
 		};
 
 		try {
-			const response = await axios.post("/api/buyer/ratereview", data);
+			const response = await axios.post("/api/seller/ratereview", data);
 			if (response.status === 200) {
 				setSuccess("Feedback have been submitted!");
 				setTimeout(() => {
-					navigate("/buyer/listings");
+					navigate("/seller");
 				}, 2000);
 			} else {
 				setError("Feedback could not be submitted. Try again later.");

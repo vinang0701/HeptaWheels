@@ -19,7 +19,7 @@ class BuyerViewListingsCTL:
         try:
             listings = self.carListing_entity.retrieveCarListings()
             if not listings:
-                return None
+                return []
             return listings
         except Exception as e:
             raise e

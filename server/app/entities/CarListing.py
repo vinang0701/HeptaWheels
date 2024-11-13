@@ -146,12 +146,11 @@ class CarListing:
                 )
             )
             if not listings:
-                return None
-            else:
-                return listings
+                return []
+            return listings
         except Exception as e:
             print("An error occurred:", e)
-            return None
+            return []
 
     # Seller Functions
 
@@ -159,11 +158,11 @@ class CarListing:
         try:
             listings = list(
                 self.collection.find({"sellerID": sellerID}, {"_id": 0}).sort(
-                    "listingID", 1
+                    [("status", 1), ("listingID", 1)]
                 )
             )
             if not listings:
-                return None
+                return []
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
@@ -176,7 +175,7 @@ class CarListing:
             # Need to filter the available only
             listings = list(self.collection.find({"status": "Available"}, {"_id": 0}))
             if not listings:
-                return None
+                return []
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
@@ -185,7 +184,7 @@ class CarListing:
         try:
             listing = self.collection.find_one({"listingID": listingID}, {"_id": 0})
             if not listing:
-                return None
+                return []
             return listing
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
@@ -206,8 +205,8 @@ class CarListing:
                 )
             )
             if not listings:
-                return None
+                return []
             return listings
         except Exception as e:
             print("An error occurred:", e)
-            return None
+            return []

@@ -34,27 +34,15 @@ class UserAccount:
         except Exception as e:
             raise RuntimeError(f"An unexpected error as occured: {str(e)}")
 
-    def getAllUsers(self):
-        """
-        Fetch all users from MongoDB.
-        """
-        try:
-            users = list(self.collection.find({}, {"_id": 0}).sort("userID", 1))
-            if users is None:
-                return None
-            return users
-        except Exception as e:
-            raise RuntimeError(f"An unexpected error as occured: {str(e)}")
-
     def validateUser(self, email, pwd):
         user = self.find_user_by_email(email)
+        if user["status"] != "Active":
+            return None
         if user is None:
-
             return None
         else:
             if pwd == user["password"]:
                 print(user)
-
                 return user
             else:
                 return None
@@ -121,3 +109,15 @@ class UserAccount:
             return True
         except Exception as e:
             raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+
+    def getAllUsers(self):
+        """
+        Fetch all users from MongoDB.
+        """
+        try:
+            users = list(self.collection.find({}, {"_id": 0}).sort("userID", 1))
+            if users is None:
+                return None
+            return users
+        except Exception as e:
+            raise RuntimeError(f"An unexpected error as occured: {str(e)}")

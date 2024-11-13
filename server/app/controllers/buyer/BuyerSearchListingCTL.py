@@ -19,7 +19,7 @@ class BuyerSearchListingCTL:
         try:
             listings = self.carListing_entity.buyerSearchListing(query)
             if not listings:
-                return None
+                return []
             else:
                 return listings
         except Exception as e:
@@ -43,7 +43,7 @@ def searchListing():
                 )
             else:
                 return (
-                    jsonify(None),
+                    jsonify([]),
                     400,
                 )
         except Exception as e:

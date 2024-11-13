@@ -44,6 +44,7 @@ const CreateCarListingPage = () => {
 	// Function to handle file selection
 	const handleFileChange = (e) => {
 		e.preventDefault();
+
 		const file = e.target.files[0];
 
 		setImage("http://localhost:5000/src/assets/" + file.name);

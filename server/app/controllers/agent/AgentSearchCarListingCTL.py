@@ -19,7 +19,7 @@ class AgentSearchCarListingCTL:
         try:
             listings = self.carListing_entity.searchListing(query)
             if not listings:
-                return None
+                return []
             else:
                 return listings
         except Exception as e:
@@ -55,7 +55,7 @@ def searchListing():
                         {
                             "status": "error",
                             "message": "No listings found",
-                            "listings": None,
+                            "listings": [],
                         }
                     ),
                     400,
