@@ -14,6 +14,7 @@ const BuyerViewListingPage = () => {
 	const [listing, setListing] = useState({});
 	const [listings, setListings] = useState([]);
 	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [imageError, setImageError] = useState(false);
 
@@ -21,8 +22,25 @@ const BuyerViewListingPage = () => {
 		navigate("/buyer/listings"); // Go back to the previous page
 	};
 
-	const saveListing = () => {
+	const saveListing = async () => {
+		setError("");
+		setSuccess("");
+		console.log("BuyerID: " + buyerID);
 		console.log("Save Listing: " + listingID);
+		const data = {
+			buyerID: buyerID,
+			listingID: listingID,
+		};
+		try {
+			const response = await axios.post("/api/buyer/wishlist", data);
+			if (response.status === 200 && response.data === true) {
+				setSuccess("Listing has been added to wishlist!");
+			} else {
+				setError("Listing is already in wishlist.");
+			}
+		} catch (err) {
+			setError("Listing is already in wishlist.");
+		}
 	};
 
 	const handleImageError = (e) => {
@@ -67,6 +85,8 @@ const BuyerViewListingPage = () => {
 			<div className="backButton" onClick={handleGoBack}>
 				&lt; Back
 			</div>
+			{error && <div className={styles.error}>{error}</div>}
+			{success && <div className={styles.success}>{success}</div>}
 			<div className={styles.buyerListingContainer}>
 				<div className={styles.imageContainer}>
 					<img

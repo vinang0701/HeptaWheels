@@ -17,53 +17,28 @@ class ViewRatingsReviewsCTL:
         self.rateReview_entity = RateReview()
 
     def viewRatingsReviews(self, agentID):
-        try:
-            rateReviews = self.rateReview_entity.viewRatingsReviews(agentID)
-            if not rateReviews:
-                return []
-            return rateReviews
-        except Exception as e:
-            raise e
+        rateReviews = self.rateReview_entity.viewRatingsReviews(agentID)
+        if not rateReviews:
+            return []
+        return rateReviews
 
 
 # Get agentID from json http request
 @agent.route("/api/agent/ratereview", methods=["GET"])
 def viewRatingsReviews():
     agentID = int(request.args.get("agentID"))
-
     viewRatingsReviewsCTL = ViewRatingsReviewsCTL()
     if agentID:
-        try:
-            rateReviews = viewRatingsReviewsCTL.viewRatingsReviews(agentID)
-            if not rateReviews:
-                return (
-                    jsonify(
-                        {
-                            "status": "error",
-                            "message": "No ratings found...",
-                            "rateReviews": rateReviews,
-                        }
-                    ),
-                    400,
-                )
-            else:
-                return (
-                    jsonify(
-                        {
-                            "status": "success",
-                            "message": "Ratings and reviews found!",
-                            "rateReviews": rateReviews,
-                        }
-                    ),
-                    200,
-                )
-        except Exception as e:
+        rateReviews = viewRatingsReviewsCTL.viewRatingsReviews(agentID)
+        if not rateReviews:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": str(e),
-                    }
-                ),
-                500,
+                jsonify([]),
+                200,
             )
+        else:
+            return (
+                jsonify(rateReviews),
+                200,
+            )
+    else:
+        return (jsonify({"status": "error", "message": "Agent ID is empty."}), 400)

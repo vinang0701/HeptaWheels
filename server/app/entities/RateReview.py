@@ -35,10 +35,10 @@ class RateReview:
             )
             return True
         except Exception as e:
+            print(f"Error during insertion: {str(e)}")
             return False
-            # raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    # Buyer create review
+    # Seller create review
     def sellerSubmitFeedback(self, agentID, userEmail, userProfile, rating, review):
         lastRateReview = self.collection.find_one(sort=[("agentID", DESCENDING)])
         nextRateReviewID = (lastRateReview["agentID"] + 1) if lastRateReview else 1
@@ -55,14 +55,12 @@ class RateReview:
             )
             return True
         except Exception as e:
-            raise RuntimeError(f"Unexpected error occured: {str(e)}")
+            print(f"Error during insertion: {str(e)}")
+            return False
 
     # Agent View Ratings and Reviews
     def viewRatingsReviews(self, agentID):
-        try:
-            rateReviews = list(self.collection.find({}, {"_id": 0}))
-            if not rateReviews:
-                return None
-            return rateReviews
-        except Exception as e:
-            raise RuntimeError(f"Unexpected error occured: {str(e)}")
+        rateReviews = list(self.collection.find({"agentID": agentID}, {"_id": 0}))
+        if not rateReviews:
+            return []
+        return rateReviews

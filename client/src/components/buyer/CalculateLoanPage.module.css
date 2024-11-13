@@ -1,0 +1,83 @@
+.calculatePageContainer {
+	display: grid;
+	width: 1360px;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+.calculatePageContainer h4 {
+	text-align: center;
+	margin: 40px 0;
+}
+
+.calculatorContainer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.resultsContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 24px 0;
+	width: 477px;
+	border-radius: 12px;
+	background-color: var(--primary-a1-color);
+	margin-bottom: 40px;
+	align-items: center;
+	justify-content: center;
+}
+
+.textbox {
+	text-align: center;
+}
+
+.instalmentText,
+.amountText {
+	font-size: 1.25rem;
+	font-weight: var(--fw-semi-bold);
+}
+
+.instalmentText {
+	color: var(--primary-color);
+}
+
+.secondRow {
+	display: flex;
+	margin-top: 16px;
+	column-gap: 64px;
+}
+
+.inputContainer {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.inputContainer > input {
+	height: 35px;
+	width: 300px;
+	margin-left: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.inputContainer > label {
+	width: 140px;
+	font-weight: var(--fw-semi-bold);
+}
+
+.calculatorContainer button {
+	margin-top: 8px;
+	padding: 8px 0;
+}

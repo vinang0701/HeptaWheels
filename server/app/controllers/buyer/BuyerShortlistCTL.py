@@ -21,7 +21,7 @@ class BuyerShortlistCTL:
         return isShortlisted
 
 
-@buyer.route("/api/buyer/shortlist", methods=["POST"])
+@buyer.route("/api/buyer/wishlist", methods=["POST"])
 def saveCarListing():
     # Data to get from front end in json
     data = request.json

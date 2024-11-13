@@ -1,5 +1,5 @@
 .ratingsPageContainer {
-	width: fit-content;
+	width: 800px;
 	margin: 0 auto;
 }
 
@@ -19,4 +19,12 @@
 
 .ratingsContainer > .reviewText {
 	margin-top: 16px;
+}
+
+.filledStar {
+	color: gold; /* You can use any color you prefer for filled stars */
+}
+
+.emptyStar {
+	color: gray; /* Color for unfilled stars */
 }

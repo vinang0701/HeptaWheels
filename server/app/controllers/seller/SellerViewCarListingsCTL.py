@@ -35,24 +35,12 @@ def viewCarListings():
             listings = sellerViewCarListingsCTL.viewCarListings(sellerID)
             if not listings:
                 return (
-                    jsonify(
-                        {
-                            "status": "error",
-                            "message": "No listing found...",
-                            "listings": listings,
-                        }
-                    ),
-                    400,
+                    jsonify([]),
+                    200,
                 )
             else:
                 return (
-                    jsonify(
-                        {
-                            "status": "success",
-                            "message": "Listings found!",
-                            "listings": listings,
-                        }
-                    ),
+                    jsonify(listings),
                     200,
                 )
         except Exception as e:

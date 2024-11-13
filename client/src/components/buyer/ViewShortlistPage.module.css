@@ -1,0 +1,43 @@
+.buyerWishlistContainer {
+	margin: 0 auto;
+	display: grid;
+	justify-content: center;
+}
+
+.buyerWishlistContainer h4 {
+	margin: 40px 0;
+	text-align: center;
+}
+
+.wishlistTable {
+	width: 410px;
+	border: 1px solid #d9d9d9d9;
+	border-radius: 12px;
+}
+
+.wishlistTableHeader,
+.wishlistTableRow {
+	display: grid;
+	align-items: center;
+	border-bottom: 1px solid #d9d9d9d9;
+	padding: 12px 0;
+	text-align: center;
+	grid-template-columns: 82px 140px auto;
+}
+
+.wishlistTableRow > div {
+	flex: 1 1 0;
+	text-align: center;
+}
+
+.wishlistTableRow:last-child {
+	border-bottom: none;
+}
+
+.wishlistTableHeader {
+	font-weight: var(--fw-semi-bold);
+}
+
+.wishlistTableRow button {
+	padding: 4px 8px;
+}

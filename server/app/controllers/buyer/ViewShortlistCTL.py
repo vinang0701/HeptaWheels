@@ -16,37 +16,25 @@ class ViewShortlistCTL:
 
     def viewShortlist(self, buyerID):
         listings = self.preferredListing_entity.viewShortlist(buyerID)
-        if listings is None:
-            return None
+        if not listings:
+            return []
         return listings
 
 
-@buyer.route("/api/buyer/shortlist", methods=["GET"])
+@buyer.route("/api/buyer/wishlist", methods=["GET"])
 def viewShortlist():
     buyerID = int(request.args.get("buyerID"))
     viewShortlistCTL = ViewShortlistCTL()
     try:
-        listing = viewShortlistCTL.viewShortlist(buyerID)
-        if listing is None:
+        listings = viewShortlistCTL.viewShortlist(buyerID)
+        if not listings:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "No listing found...",
-                        "listing": listing,
-                    }
-                ),
-                400,
+                jsonify(listings),
+                200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "Listings found!",
-                        "listing": listing,
-                    }
-                ),
+                jsonify(listings),
                 200,
             )
     except Exception as e:

@@ -5,7 +5,6 @@ import MainPage from "./components/MainPage.jsx";
 import Login from "./components/Login.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import BuyerViewListingsPage from "./components/buyer/BuyerViewListingsPage.jsx";
-import SellerDashboard from "./components/seller/SellerDashboard.jsx";
 import AgentDashboard from "./components/agent/AgentDashboard.jsx";
 import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
@@ -19,6 +18,10 @@ import ViewRatingsAndReviewsPage from "./components/agent/ViewRatingsAndReviewsP
 import SearchUserPage from "./components/admin/SearchUserPage.jsx";
 import BuyerViewListingPage from "./components/buyer/BuyerViewListingPage.jsx";
 import BuyerRateReviewPage from "./components/buyer/BuyerRateReviewPage.jsx";
+import ViewShortlistPage from "./components/buyer/ViewShortlistPage.jsx";
+import SellerViewCarListingsPage from "./components/seller/SellerViewCarListingsPage.jsx";
+import SellerRateReviewPage from "./components/seller/SellerRateReviewPage.jsx";
+import CalculateLoanPage from "./components/buyer/CalculateLoanPage.jsx";
 
 function App() {
 	return (
@@ -67,9 +70,25 @@ function App() {
 						path="/buyer/listings/:listingID/agent"
 						element={<BuyerRateReviewPage />}
 					/>
+					<Route
+						path="/buyer/wishlist"
+						element={<ViewShortlistPage />}
+					/>
+					<Route path="/buyer/loan" element={<CalculateLoanPage />} />
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Seller"]} />}>
-					<Route path="seller" element={<SellerDashboard />} />
+					<Route
+						path="/seller"
+						element={<SellerViewCarListingsPage />}
+					/>
+					<Route
+						path="/seller/listings"
+						element={<SellerViewCarListingsPage />}
+					/>
+					<Route
+						path="/seller/listings/:listingID/agent"
+						element={<SellerRateReviewPage />}
+					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Agent"]} />}>
 					<Route path="/agent" element={<AgentDashboard />} />

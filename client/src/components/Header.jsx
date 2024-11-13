@@ -31,8 +31,9 @@ const Header = () => {
 			case "Buyer":
 				return (
 					<>
-						<Link to="/buyer">Browse Used Cars</Link>
-						<Link to="/buyer">Favourites</Link>
+						<Link to="/buyer">View Listings</Link>
+						<Link to="/buyer/wishlist">Wishlist</Link>
+						<Link to="/buyer/loan">Calculate Loan</Link>
 					</>
 				);
 			case "Seller":

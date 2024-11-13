@@ -1,45 +1,13 @@
-/* MainPage.css */
-/* .main-container {
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 20px;
-}
-
-h1 {
-	text-align: left;
-	margin-bottom: 20px;
-} */
-
-/* Buyer View Listings Page */
-
-.buyerListingsContainer {
+.sellerPageContainer {
 	max-width: 1360px;
 	margin: 0 auto;
 }
 
-.buyerListingsContainer h4 {
+.sellerPageContainer h4 {
 	margin: 20px 0;
 }
 
-.buyerListingsContainer button {
-	padding: 8px 12px;
-}
-
-.searchContainer {
-	display: flex;
-	justify-content: end;
-}
-
-.searchContainer input {
-	height: 100%;
-	margin-right: 0.5em;
-	border-radius: 12px;
-	padding-left: 8px;
-	border: 1px solid #767676;
-	background-color: #d9d9d9;
-}
-
-.buyerListingContainer {
+.sellerListingsContainer {
 	margin-top: 20px;
 	display: flex;
 	flex-wrap: wrap;
@@ -89,6 +57,11 @@ h1 {
 	font-weight: var(--fw-semi-bold);
 }
 
+.listingDetails .rateButton {
+	padding: 2px 8px;
+	margin-left: 8px;
+}
+
 .listingDetails > button {
 	justify-content: flex-end;
 	margin-top: 16px;
@@ -100,10 +73,21 @@ h1 {
 
 .wrap {
 	display: inline-block;
-	word-break: break-all;
+	word-break: normal;
 }
 
 .listingPrice {
 	font-size: 24px;
 	font-weight: var(--fw-bold);
+}
+
+.listingDetails .buttonContainer {
+	display: flex;
+	justify-content: space-between;
+	justify-self: flex-end;
+	margin-top: 16px;
+}
+
+.listingDetails .buttonContainer > button {
+	padding: 8px 8px;
 }

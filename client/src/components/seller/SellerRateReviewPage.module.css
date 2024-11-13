@@ -1,0 +1,34 @@
+.buyerRatePageContainer {
+	display: grid;
+	justify-content: center;
+	max-width: 1360px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.buyerRatePageContainer h4 {
+	margin: 20px 0;
+}
+
+textarea {
+	resize: none;
+	padding-left: 8px;
+	padding-top: 4px;
+	margin-top: 16px;
+	width: 340px;
+	height: 140px;
+}
+
+.star {
+	margin-top: 16px;
+	cursor: pointer;
+}
+
+.submitFeedbackButton {
+	margin-top: 24px;
+	padding: 8px 0;
+}
+
+.success {
+	color: green;
+}

@@ -26,5 +26,5 @@ class PreferredListings:
     def viewShortlist(self, buyerID):
         listings = list(self.collection.find({"buyerID": buyerID}, {"_id": 0}))
         if not listings:
-            return None
+            return []
         return listings
