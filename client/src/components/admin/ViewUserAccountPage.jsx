@@ -27,7 +27,7 @@ const ViewUserAccountPage = () => {
 	};
 
 	useEffect(() => {
-		const fetchUser = async () => {
+		const viewUserAccount = async () => {
 			try {
 				var userEmail = decodeURIComponent(email);
 				console.log(userEmail);
@@ -43,7 +43,7 @@ const ViewUserAccountPage = () => {
 			}
 		};
 
-		fetchUser(); // Call the fetch function
+		viewUserAccount(); // Call the fetch function
 	}, []);
 
 	return (

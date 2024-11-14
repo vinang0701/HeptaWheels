@@ -111,7 +111,7 @@ const UpdateCarListingPage = () => {
 		fetchListing(); // Call the fetch function
 	}, []);
 
-	const handleSubmit = async (e) => {
+	const validateUpdate = async (e) => {
 		e.preventDefault();
 		if (price <= 0) {
 			setError("Please input a valid price.");
@@ -159,7 +159,7 @@ const UpdateCarListingPage = () => {
 			</p>
 			{success && <div className={styles.success}>{success}</div>}
 			{error && <div className={styles.error}>{error}</div>}
-			<form className={styles.uploadListingForm} onSubmit={handleSubmit}>
+			<form className={styles.uploadListingForm} onSubmit={validateUpdate}>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>
 						{Object.keys(uploadedImage).length !== 0 ? (

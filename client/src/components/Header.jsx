@@ -9,7 +9,7 @@ const Header = () => {
 	const userEmail = auth?.email;
 	const userRole = auth?.userRole;
 
-	const handleLogout = () => {
+	const logout = () => {
 		sessionStorage.removeItem("user-role");
 		sessionStorage.removeItem("user-email");
 		setAuth({});
@@ -69,7 +69,7 @@ const Header = () => {
 					{renderNavLinks()}
 
 					{userEmail ? (
-						<Link to="/" onClick={handleLogout}>
+						<Link to="/" onClick={logout}>
 							Logout
 						</Link>
 					) : null}

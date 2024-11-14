@@ -12,7 +12,7 @@ class SearchUserCTL:
         self.user_entity = UserAccount()
 
     def searchUser(self, email):
-        user = self.user_entity.find_user_by_email(email)
+        user = self.user_entity.searchUser(email)
         if user is None:
             return None
         return user

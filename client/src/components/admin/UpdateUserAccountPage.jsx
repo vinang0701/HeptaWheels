@@ -44,7 +44,7 @@ const UpdateUserAccountPage = () => {
 		navigate(-1); // Go back to the previous page
 	};
 
-	const handleSubmit = async (e) => {
+	const updateUserAccount = async (e) => {
 		e.preventDefault();
 		let hasError = false;
 
@@ -106,7 +106,7 @@ const UpdateUserAccountPage = () => {
 				<h4>User Account</h4>
 				<form
 					className={styles.userDetailsContainer}
-					onSubmit={handleSubmit}
+					onSubmit={updateUserAccount}
 				>
 					<div className={styles.userDetails}>
 						<label>User ID</label>
@@ -152,7 +152,7 @@ const UpdateUserAccountPage = () => {
 							onChange={(e) => setStatus(e.target.value)}
 						>
 							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
+							<option value="Suspended">Suspended</option>
 						</select>
 					</div>
 					<button type="submit" className={styles.submitButton}>

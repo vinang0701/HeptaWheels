@@ -22,7 +22,7 @@ class CarListing:
         database = get_database()
         self.collection = database["listings"]
 
-    def postList(
+    def createList(
         self,
         agentID,
         sellerID,
@@ -56,7 +56,7 @@ class CarListing:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def updateListing(
+    def validateUpdate(
         self,
         listingID,
         sellerID,
@@ -202,7 +202,7 @@ class CarListing:
 
     # Buyer Functions
 
-    # Function for buyuer to get all listings
+    # Function for buyer to get all listings
     def retrieveCarListings(self):
         try:
             # Need to filter the available only
@@ -213,7 +213,7 @@ class CarListing:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def buyerViewCarListing(self, listingID):
+    def viewListing(self, listingID):
         try:
             listing = self.collection.find_one({"listingID": listingID}, {"_id": 0})
             if not listing:

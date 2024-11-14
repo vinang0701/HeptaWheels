@@ -21,7 +21,7 @@ const Login = () => {
 	// To navigate user to respective home page
 	const navigate = useNavigate();
 
-	const handleSubmit = async (e) => {
+	const login = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
@@ -162,7 +162,7 @@ const Login = () => {
 						<h1>Login</h1>
 						<form
 							className="loginInputForm"
-							onSubmit={handleSubmit}
+							onSubmit={login}
 						>
 							<div className="loginInputFields">
 								{error && <p className="error">{error}</p>}

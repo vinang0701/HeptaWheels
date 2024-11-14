@@ -10,7 +10,7 @@ from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class DeleteCarListingController:
+class DeleteCarListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
@@ -33,7 +33,7 @@ def deleteListing(listingID):
     # Data to get from front end in json
 
     try:
-        deleteCarListingController = DeleteCarListingController()
+        deleteCarListingController = DeleteCarListingCTL()
         deleteSuccess = deleteCarListingController.deleteListing(listingID)
 
         if deleteSuccess:

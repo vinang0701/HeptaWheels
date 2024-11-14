@@ -9,7 +9,7 @@ const SuspendUserAccountPage = ({ toggleDeleteVisibility, user }) => {
 
 	const navigate = useNavigate();
 
-	const handleDelete = async () => {
+	const suspendAccount = async () => {
 		setError("");
 		setSuccess("");
 		try {
@@ -38,7 +38,7 @@ const SuspendUserAccountPage = ({ toggleDeleteVisibility, user }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete user account?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={handleDelete}>Yes</button>
+					<button onClick={suspendAccount}>Yes</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}

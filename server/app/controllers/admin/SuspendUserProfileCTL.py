@@ -7,11 +7,11 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class SuspendUserProfileController:
+class SuspendUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def suspend(self, profile_name):
+    def suspendProfile(self, profile_name):
         """
         Change profile status to inactive
         Check profile's status.
@@ -34,9 +34,9 @@ class SuspendUserProfileController:
 
 @admin.route("/api/profiles/<string:profile_name>/suspend", methods=["PUT"])
 def suspendProfile(profile_name):
-    suspendUPController = SuspendUserProfileController()
+    suspendUPController = SuspendUserProfileCTL()
     try:
-        suspendSuccessful = suspendUPController.suspend(profile_name)
+        suspendSuccessful = suspendUPController.suspendProfile(profile_name)
         if suspendSuccessful:
             return (
                 jsonify(

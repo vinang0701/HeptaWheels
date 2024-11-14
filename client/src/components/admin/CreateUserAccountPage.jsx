@@ -14,7 +14,7 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 	const [userRoles, setUserRoles] = useState([]);
 	// const USER_ROLES = ["User Admin", "Buyer", "Seller", "Agent"];
 
-	const handleSubmit = async (e) => {
+	const handleCreateAcc = async (e) => {
 		e.preventDefault(); // Prevent form from refreshing the page
 
 		let hasError = false;
@@ -101,7 +101,7 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 					</button>
 				</div>
 
-				<form className={styles.createUserForm} onSubmit={handleSubmit}>
+				<form className={styles.createUserForm} onSubmit={handleCreateAcc}>
 					{error && <span className={styles.error}>{error}</span>}
 					<div>
 						<div className={styles.userInputContainer}>

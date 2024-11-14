@@ -12,7 +12,7 @@ from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class AgentViewAllCarListingsController:
+class AgentViewCarListingsCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
@@ -31,7 +31,7 @@ class AgentViewAllCarListingsController:
 def fetchAllListings():
     agentID = int(request.args.get("agentID"))
 
-    agentViewAllCarListingsController = AgentViewAllCarListingsController()
+    agentViewAllCarListingsController = AgentViewCarListingsCTL()
     if agentID:
         try:
             listings = agentViewAllCarListingsController.fetchAllListings(agentID)

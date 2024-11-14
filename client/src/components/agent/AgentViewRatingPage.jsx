@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
-import styles from "./ViewRatingsAndReviewsPage.module.css";
+import styles from "./AgentViewRatingPage.module.css";
 
-const ViewRatingsAndReviewsPage = () => {
+const AgentViewRatingPage = () => {
 	const { auth } = useAuth();
 	const agentID = auth.userID;
 	const [ratingsReviews, setRatingsReviews] = useState([]);
@@ -73,4 +73,4 @@ const ViewRatingsAndReviewsPage = () => {
 	);
 };
 
-export default ViewRatingsAndReviewsPage;
+export default AgentViewRatingPage;

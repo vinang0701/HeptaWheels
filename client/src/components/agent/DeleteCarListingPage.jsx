@@ -8,7 +8,7 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
-	const handleDelete = async () => {
+	const deleteListingRequest = async () => {
 		setError("");
 		setSuccess("");
 		console.log(listingID);
@@ -41,7 +41,7 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete Listing ID: {listingID}?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={handleDelete}>Yes</button>
+					<button onClick={deleteListingRequest}>Yes</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}

@@ -1,7 +1,7 @@
 """
 This is a controller class that controls the flow
-of logic for used car agent updating specified car listing.
-It will call the Listing entity to update specifed listing.
+of logic for used car agent creating new car listing.
+It will call the Listing entity to create new listing.
 """
 
 from flask import jsonify, request
@@ -11,39 +11,35 @@ from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class UpdateCarListingController:
+class CreateCarListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    # Update car listing function
-    # Find by listingID/sellerID, then update
-    # carMake, carModel, price, status, image
-    def updateListing(
+    def createList(
         self,
-        listingID,
+        agentID,
         sellerID,
         carPlateNo,
         carMake,
         carModel,
         price,
-        status,
         desc,
+        status,
         image,
     ):
-
         try:
-            isUpdated = self.carListing_entity.updateListing(
-                listingID,
+            listSuccess = self.carListing_entity.createList(
+                agentID,
                 sellerID,
                 carPlateNo,
                 carMake,
                 carModel,
                 price,
-                status,
                 desc,
+                status,
                 image,
             )
-            if isUpdated:
+            if listSuccess:
                 return True
             else:
                 return False
@@ -51,40 +47,41 @@ class UpdateCarListingController:
             raise e
 
 
-@agent.route("/api/agent/listings/<int:listingID>", methods=["PUT"])
-def updateListing(listingID):
+@agent.route("/api/agent/listings", methods=["POST"])
+def createList():
     # Data to get from front end in json
-    carListingObj = request.json
-    sellerID = carListingObj["sellerID"]
-    carPlateNo = carListingObj["carPlateNo"]
-    carMake = carListingObj["carMake"]
-    carModel = carListingObj["carModel"]
-    price = carListingObj["price"]
-    status = carListingObj["status"]
-    desc = carListingObj["desc"]
-    image = carListingObj["image"]
+    data = request.json
+
+    agentID = data["agentID"]
+    sellerID = data["sellerID"]
+    carPlateNo = data["carPlateNo"]
+    carMake = data["carMake"]
+    carModel = data["carModel"]
+    price = data["price"]
+    desc = data["desc"]
+    status = data["status"]
+    image = data["image"]
 
     try:
-        updateCarListingController = UpdateCarListingController()
-        updateSuccess = updateCarListingController.updateListing(
-            listingID,
+        createCLController = CreateCarListingCTL()
+        listSuccess = createCLController.createList(
+            agentID,
             sellerID,
             carPlateNo,
             carMake,
             carModel,
             price,
-            status,
             desc,
+            status,
             image,
         )
-
-        if updateSuccess:
+        if listSuccess:
             return (
                 jsonify(
                     {
                         "status": "success",
-                        "message": "Car listing updated successfully",
-                        "updateSuccess": updateSuccess,
+                        "message": "Car listing created successfully",
+                        "listSuccess": listSuccess,
                     }
                 ),
                 200,
@@ -94,8 +91,8 @@ def updateListing(listingID):
                 jsonify(
                     {
                         "status": "error",
-                        "message": "Car listing update unsuccessful",
-                        "updateSuccess": updateSuccess,
+                        "message": "Car listing created unsuccessful",
+                        "listSuccess": listSuccess,
                     }
                 ),
                 400,

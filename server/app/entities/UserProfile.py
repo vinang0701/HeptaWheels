@@ -17,7 +17,7 @@ class UserProfile:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def getUserProfile(self, profile_name):
+    def viewProfile(self, profile_name):
         user_profile = self.collection.find_one(
             {"profile_name": profile_name}, {"_id": 0}
         )

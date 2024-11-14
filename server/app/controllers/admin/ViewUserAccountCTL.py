@@ -7,12 +7,12 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class ViewUserAccountController:
+class ViewUserAccountCTL:
     def __init__(self):
         self.user_entity = UserAccount()
 
     def viewUserAccount(self, email):
-        user = self.user_entity.find_user_by_email(email)
+        user = self.user_entity.viewUserAccount(email)
         if user is None:
             return None
         return user
@@ -29,7 +29,7 @@ class ViewUserAccountController:
 # Used to call controller
 @admin.route("/api/users/<string:email>", methods=["GET"])
 def viewUserAccount(email):
-    viewUAController = ViewUserAccountController()
+    viewUAController = ViewUserAccountCTL()
     try:
         user = viewUAController.viewUserAccount(email)
         if user is None:
@@ -63,7 +63,7 @@ def viewUserAccount(email):
 @cross_origin()
 def getAllUsers():
     try:
-        viewUAController = ViewUserAccountController()
+        viewUAController = ViewUserAccountCTL()
         users = viewUAController.getAllUsers()
         if users is None:
             return (

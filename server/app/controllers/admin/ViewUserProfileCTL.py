@@ -5,11 +5,11 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class ViewUserProfileController:
+class ViewUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def getUserProfiles(self):
+    def viewProfiles(self):
         try:
             user_profiles = self.userProfile_entity.getUserProfiles()
             if len(user_profiles) == 0:
@@ -20,16 +20,16 @@ class ViewUserProfileController:
             return e
 
     # Remember to include changing to lower case for checking
-    def getUserProfile(self, profile_name):
-        user_profile = self.userProfile_entity.getUserProfile(profile_name)
+    def viewProfile(self, profile_name):
+        user_profile = self.userProfile_entity.viewProfile(profile_name)
         return user_profile
 
 
 # Remember to include changing to lower case for checking
 @admin.route("/api/profiles/<string:profile_name>", methods=["GET"])
-def getUserProfile(profile_name):
-    viewUPController = ViewUserProfileController()
-    user_profile = viewUPController.getUserProfile(profile_name)
+def viewProfile(profile_name):
+    viewUPController = ViewUserProfileCTL()
+    user_profile = viewUPController.viewProfile(profile_name)
     if user_profile is None:
         return (
             jsonify(
@@ -54,9 +54,9 @@ def getUserProfile(profile_name):
         )
 
 @admin.route("/api/profiles", methods=["GET"])
-def getUserProfiles():
-    viewUPController = ViewUserProfileController()
-    user_profiles = viewUPController.getUserProfiles()
+def viewProfiles():
+    viewUPController = ViewUserProfileCTL()
+    user_profiles = viewUPController.viewProfiles()
     if user_profiles is None:
         return (
             jsonify(

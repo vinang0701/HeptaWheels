@@ -32,7 +32,7 @@ const SearchUserPage = () => {
 	// 	fetchUsers(); // Call the fetch function
 	// }, []);
 
-	const searchUserAccount = async (e) => {
+	const searchUser = async (e) => {
 		e.preventDefault();
 		if (!emailPattern.test(searchEmail) && searchEmail.length > 0) {
 			setError("Please type in a valid email!");
@@ -89,7 +89,7 @@ const SearchUserPage = () => {
 								onChange={(e) => setSearchEmail(e.target.value)}
 								autoComplete="off"
 							/>
-							<button type="submit" onClick={searchUserAccount}>
+							<button type="submit" onClick={searchUser}>
 								Search
 							</button>
 						</div>
@@ -133,7 +133,7 @@ const SearchUserPage = () => {
 							onChange={(e) => setSearchEmail(e.target.value)}
 							autoComplete="off"
 						/>
-						<button type="submit" onClick={searchUserAccount}>
+						<button type="submit" onClick={searchUser}>
 							Search
 						</button>
 					</div>

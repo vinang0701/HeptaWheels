@@ -53,7 +53,7 @@ const BuyerViewListingPage = () => {
 	};
 
 	useEffect(() => {
-		const retrieveCarListing = async () => {
+		const viewListing = async () => {
 			const response = await axios.get(
 				`/api/buyer/listings/${listingID}`
 			);
@@ -63,7 +63,7 @@ const BuyerViewListingPage = () => {
 			}
 			setLoading(false);
 		};
-		retrieveCarListing();
+		viewListing();
 	}, []);
 
 	const rateAgentButton = () => {

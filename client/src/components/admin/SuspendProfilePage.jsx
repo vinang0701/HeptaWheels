@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import styles from "./ViewUserProfilePage.module.css";
 
-const DeleteUserProfilePage = ({ toggleDeleteVisibility, profile }) => {
+const SuspendProfilePage = ({ toggleDeleteVisibility, profile }) => {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
-	const handleDelete = async () => {
+	const suspendProfile = async () => {
 		setError("");
 		setSuccess("");
 		try {
@@ -38,7 +38,7 @@ const DeleteUserProfilePage = ({ toggleDeleteVisibility, profile }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete user profile?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={handleDelete}>Yes</button>
+					<button onClick={suspendProfile}>Yes</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}
@@ -51,4 +51,4 @@ const DeleteUserProfilePage = ({ toggleDeleteVisibility, profile }) => {
 	);
 };
 
-export default DeleteUserProfilePage;
+export default SuspendProfilePage;

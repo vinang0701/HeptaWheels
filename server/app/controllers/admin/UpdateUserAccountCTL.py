@@ -5,7 +5,7 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class UpdateUserAccountController:
+class UpdateUserAccountCTL:
     def __init__(self):
         self.user_entity = UserAccount()
 
@@ -23,7 +23,7 @@ class UpdateUserAccountController:
 @admin.route("/api/users/<string:email>", methods=["PUT"])
 def updateUserAccount(email):
     data = request.json
-    updateUAController = UpdateUserAccountController()
+    updateUAController = UpdateUserAccountCTL()
     user_email = data["email"]
     user_pwd = data["password"]
     user_status = data["status"]

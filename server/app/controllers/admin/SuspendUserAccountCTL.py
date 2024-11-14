@@ -7,11 +7,11 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class SuspendUserAccountController:
+class SuspendUserAccountCTL:
     def __init__(self):
         self.user_entity = UserAccount()
 
-    def suspend(self, email):
+    def suspendAccount(self, email):
         """
         Change user status to inactive
         Check user's status.
@@ -20,7 +20,7 @@ class SuspendUserAccountController:
         else: change status from active to inactive
         """
         try:
-            isSuspended = self.user_entity.suspend(email)
+            isSuspended = self.user_entity.suspendAccount(email)
 
             # Check what is returned from UserAccount entity
             # If true, means user account successfully suspended
@@ -34,10 +34,10 @@ class SuspendUserAccountController:
 
 
 @admin.route("/api/users/<string:email>/suspend", methods=["PUT"])
-def suspendUserAccount(email):
-    suspendUAController = SuspendUserAccountController()
+def suspendAccount(email):
+    suspendUAController = SuspendUserAccountCTL()
     try:
-        isSuspended = suspendUAController.suspend(email)
+        isSuspended = suspendUAController.suspendAccount(email)
         if isSuspended:
             return (
                 jsonify(

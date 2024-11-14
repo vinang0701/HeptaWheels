@@ -15,7 +15,7 @@ class BuyerSearchListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def searchListing(self, query):
+    def buyerSearchListing(self, query):
         try:
             listings = self.carListing_entity.buyerSearchListing(query)
             if not listings:
@@ -27,14 +27,14 @@ class BuyerSearchListingCTL:
 
 
 @buyer.route("/api/buyer/listings/search", methods=["POST"])
-def searchListing():
+def buyerSearchListing():
     # Data to get from front end in json
     data = request.json
     query = data["query"]
     if query != "":
         try:
             buyerSearchListingCTL = BuyerSearchListingCTL()
-            listings = buyerSearchListingCTL.searchListing(query)
+            listings = buyerSearchListingCTL.buyerSearchListing(query)
 
             if listings:
                 return (

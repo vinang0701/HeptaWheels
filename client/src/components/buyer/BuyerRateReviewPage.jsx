@@ -35,7 +35,7 @@ const BuyerRateReviewPage = () => {
 		setHoveredRating(0);
 	};
 
-	const submitFeedback = async (e) => {
+	const buyerSubmitFeedback = async (e) => {
 		e.preventDefault();
 		setError("");
 		if (rating === 0) {
@@ -112,7 +112,7 @@ const BuyerRateReviewPage = () => {
 			></textarea>
 			<button
 				className={styles.submitFeedbackButton}
-				onClick={submitFeedback}
+				onClick={buyerSubmitFeedback}
 			>
 				Submit Feedback
 			</button>

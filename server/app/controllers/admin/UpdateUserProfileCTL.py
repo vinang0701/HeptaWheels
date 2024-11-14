@@ -5,7 +5,7 @@ from app.db import get_database
 from app.routes.admin_routes import admin
 
 
-class UpdateUserProfileController:
+class UpdateUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
@@ -23,7 +23,7 @@ class UpdateUserProfileController:
 @admin.route("/api/profiles/<string:currentProfile_name>", methods=["PUT"])
 def updateUserProfile(currentProfile_name):
     data = request.json
-    updateUPController = UpdateUserProfileController()
+    updateUPController = UpdateUserProfileCTL()
     # User Profile data fields
     profile_name = data["profile_name"]
     permissions = data["permissions"]

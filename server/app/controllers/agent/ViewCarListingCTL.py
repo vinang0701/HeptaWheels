@@ -10,7 +10,7 @@ from app.db import get_database
 from app.routes.agent_routes import agent
 
 
-class ViewCarListingController:
+class ViewCarListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
@@ -28,7 +28,7 @@ class ViewCarListingController:
 @agent.route("/api/agent/listings/details/<int:listingID>", methods=["GET"])
 def fetchListingDetails(listingID):
     try:
-        viewCarListingController = ViewCarListingController()
+        viewCarListingController = ViewCarListingCTL()
         listing = viewCarListingController.fetchListingDetails(listingID)
         if listing is None:
             return jsonify({"status": "error", "message": "Listing not found..."}), 400

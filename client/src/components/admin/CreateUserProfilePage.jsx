@@ -32,7 +32,7 @@ const CreateUserProfilePage = ({ toggleFormVisibility, profiles }) => {
 		}
 	}, [profileName]);
 
-	const handleSubmit = async (e) => {
+	const createProfileRequest = async (e) => {
 		e.preventDefault();
 		try {
 			// POST Req
@@ -60,7 +60,7 @@ const CreateUserProfilePage = ({ toggleFormVisibility, profiles }) => {
 
 	return (
 		<div className={styles.createUserProfileContainer}>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={createProfileRequest}>
 				<div className={styles.formHeader}>
 					<label htmlFor="profileName">Profile Name</label>
 					<button onClick={toggleFormVisibility}>Close</button>

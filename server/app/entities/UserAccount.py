@@ -13,7 +13,7 @@ class UserAccount:
         database = get_database()
         self.collection = database["users"]
 
-    def find_user_by_email(self, email):
+    def viewUserAccount(self, email):
         """
         Fetch a user by their email from MongoDB.
         """
@@ -35,7 +35,7 @@ class UserAccount:
             raise RuntimeError(f"An unexpected error as occured: {str(e)}")
 
     def validateUser(self, email, pwd):
-        user = self.find_user_by_email(email)
+        user = self.viewUserAccount(email)
         if user["status"] != "Active":
             return None
         if user is None:
@@ -49,9 +49,9 @@ class UserAccount:
 
         return None
 
-    def createUser(self, email, pwd, role):
+    def createAcc(self, email, pwd, role):
         # Check if user already exists
-        # checkDuplUser = self.find_user_by_email(email)
+        # checkDuplUser = self.viewUserAccount(email)
         last_user = self.collection.find_one(sort=[("userID", DESCENDING)])
         next_user_id = (last_user["userID"] + 1) if last_user else 1
         try:
@@ -69,13 +69,13 @@ class UserAccount:
             return False
             # return jsonify({"status": "error", "message": str(e)}), 500
 
-    def suspend(self, email):
+    def suspendAccount(self, email):
         # Get account to check for status
         # Check status - if status is inactive,
         # return False to user to show that
         # account is already suspended
 
-        user = self.find_user_by_email(email)
+        user = self.viewUserAccount(email)
         current_status = user["status"]
         if user is None:
             raise ValueError("User not found!")

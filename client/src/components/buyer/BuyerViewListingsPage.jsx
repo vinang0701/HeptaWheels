@@ -38,7 +38,7 @@ const BuyerViewListingsPage = () => {
 		}
 	};
 
-	const searchListing = async (e) => {
+	const buyerSearchListing = async (e) => {
 		e.preventDefault();
 		setError("");
 
@@ -79,7 +79,7 @@ const BuyerViewListingsPage = () => {
 			<h4>Used Car Listings</h4>
 
 			<div className={styles.searchContainer}>
-				<form onSubmit={searchListing}>
+				<form onSubmit={buyerSearchListing}>
 					<input
 						type="text"
 						placeholder="Search by ..."

@@ -15,9 +15,9 @@ class BuyerViewListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def buyerViewCarListing(self, listingID):
+    def viewListing(self, listingID):
         try:
-            listing = self.carListing_entity.buyerViewCarListing(listingID)
+            listing = self.carListing_entity.viewListing(listingID)
             if listing is None:
                 return None
             return listing
@@ -26,10 +26,10 @@ class BuyerViewListingCTL:
 
 
 @buyer.route("/api/buyer/listings/<int:listingID>", methods=["GET"])
-def buyerViewCarListing(listingID):
+def viewListing(listingID):
     buyerViewListingCTL = BuyerViewListingCTL()
     try:
-        listing = buyerViewListingCTL.buyerViewCarListing(listingID)
+        listing = buyerViewListingCTL.viewListing(listingID)
         if listing is None:
             return (
                 jsonify(

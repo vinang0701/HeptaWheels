@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, useRoutes } from "react-router-dom";
 import styles from "./ViewUserProfilePage.module.css";
 import axios from "../../api/axios";
-import DeleteUserProfilePage from "./DeleteUserProfilePage";
+import SuspendProfilePage from "./SuspendProfilePage";
 
 const ViewUserProfilePage = () => {
 	// Get param set in App.jsx
@@ -33,7 +33,7 @@ const ViewUserProfilePage = () => {
 	};
 
 	useEffect(() => {
-		const fetchProfile = async () => {
+		const viewProfile = async () => {
 			try {
 				const response = await axios.get(
 					`api/profiles/${profile_name}`
@@ -52,7 +52,7 @@ const ViewUserProfilePage = () => {
 			}
 		};
 
-		fetchProfile(); // Call the fetch function
+		viewProfile(); // Call the fetch function
 	}, []);
 
 	return (

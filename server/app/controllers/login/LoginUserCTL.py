@@ -8,7 +8,7 @@ from app.entities import UserAccount
 from app.db import get_database
 
 
-class LoginController:
+class LoginUserCTL:
     def __init__(self):
         self.user_entity = UserAccount()
 
@@ -33,7 +33,7 @@ def login():
     """
     Handle login request by passing data to the login controller.
     """
-    loginController = LoginController()
+    loginController = LoginUserCTL()
     # if request.method == "OPTIONS":
     #     # This is the preflight request
     #     return jsonify({"status": "CORS preflight successful"}), 200

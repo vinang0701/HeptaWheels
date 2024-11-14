@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import RequireAuth from "./components/RequireAuth.jsx";
 import MainPage from "./components/MainPage.jsx";
-import Login from "./components/Login.jsx";
+import Login from "./components/LoginPage.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import BuyerViewListingsPage from "./components/buyer/BuyerViewListingsPage.jsx";
 import AgentDashboard from "./components/agent/AgentDashboard.jsx";
@@ -11,10 +11,10 @@ import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx"
 import Layout from "./Layout.jsx";
 import SearchUserProfilePage from "./components/admin/SearchUserProfilePage.jsx";
 import ViewUserProfilePage from "./components/admin/ViewUserProfilePage.jsx";
-import UpdatePermissionsPage from "./components/admin/UpdatePermissionsPage.jsx";
+import UpdateUserProfilePage from "./components/admin/UpdateUserProfilePage.jsx";
 import CreateCarListingPage from "./components/agent/CreateCarListingPage.jsx";
 import UpdateCarListingPage from "./components/agent/UpdateCarListingPage.jsx";
-import ViewRatingsAndReviewsPage from "./components/agent/ViewRatingsAndReviewsPage.jsx";
+import AgentViewRatingPage from "./components/agent/AgentViewRatingPage.jsx";
 import SearchUserPage from "./components/admin/SearchUserPage.jsx";
 import BuyerViewListingPage from "./components/buyer/BuyerViewListingPage.jsx";
 import BuyerRateReviewPage from "./components/buyer/BuyerRateReviewPage.jsx";
@@ -53,7 +53,7 @@ function App() {
 					/>
 					<Route
 						path="/admin/profiles/:profile_name/edit"
-						element={<UpdatePermissionsPage />}
+						element={<UpdateUserProfilePage />}
 					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Buyer"]} />}>
@@ -102,7 +102,7 @@ function App() {
 					/>
 					<Route
 						path="/agent/ratings"
-						element={<ViewRatingsAndReviewsPage />}
+						element={<AgentViewRatingPage />}
 					/>
 				</Route>
 			</Route>

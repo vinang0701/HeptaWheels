@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import axios from "../../api/axios";
-import styles from "./UpdatePermissionsPage.module.css";
+import styles from "./UpdateUserProfilePage.module.css";
 
-const UpdatePermissionsPage = () => {
+const UpdateUserProfilePage = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { profile_name } = useParams();
@@ -187,4 +187,4 @@ const UpdatePermissionsPage = () => {
 	);
 };
 
-export default UpdatePermissionsPage;
+export default UpdateUserProfilePage;

@@ -70,7 +70,7 @@ const CreateCarListingPage = () => {
 		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
 	};
 
-	const handleSubmit = async (e) => {
+	const createListing = async (e) => {
 		e.preventDefault();
 		setError("");
 		if (price <= 0) {
@@ -119,7 +119,7 @@ const CreateCarListingPage = () => {
 			</p>
 			{success && <div className={styles.success}>{success}</div>}
 			{error && <div className={styles.error}>{error}</div>}
-			<form className={styles.createListingForm} onSubmit={handleSubmit}>
+			<form className={styles.createListingForm} onSubmit={createListing}>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>
 						{Object.keys(uploadedImage).length !== 0 ? (
