@@ -22,6 +22,8 @@ import ViewShortlistPage from "./components/buyer/ViewShortlistPage.jsx";
 import SellerViewCarListingsPage from "./components/seller/SellerViewCarListingsPage.jsx";
 import SellerRateReviewPage from "./components/seller/SellerRateReviewPage.jsx";
 import CalculateLoanPage from "./components/buyer/CalculateLoanPage.jsx";
+import TrackShortListPage from "./components/seller/TrackShortListPage.jsx";
+import TrackNumViewsPage from "./components/seller/TrackNumViewsPage.jsx";
 
 function App() {
 	return (
@@ -82,12 +84,16 @@ function App() {
 						element={<SellerViewCarListingsPage />}
 					/>
 					<Route
-						path="/seller/listings"
-						element={<SellerViewCarListingsPage />}
+						path="/seller/listings/:listingID/views"
+						element={<TrackNumViewsPage />}
 					/>
 					<Route
 						path="/seller/listings/:listingID/agent"
 						element={<SellerRateReviewPage />}
+					/>
+					<Route
+						path="/seller/listings/:listingID/shortlists"
+						element={<TrackShortListPage />}
 					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Agent"]} />}>

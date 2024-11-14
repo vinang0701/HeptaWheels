@@ -169,8 +169,7 @@ class CarListing:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
     def getNumOfViews(self, listingID):
-        listing_id = 1
-        end_date = datetime(2024, 11, 20)  # Assuming today is the end date
+        end_date = datetime()  # Assuming today is the end date
         start_date = end_date - timedelta(days=7)
         pipeline = [
             {
@@ -199,6 +198,8 @@ class CarListing:
         # for numOfView in numOfViews:
         #     print(f"Date: {numOfViews['_id']}, Views: {numOfViews['count']}")
         return numOfViews
+
+    
 
     # Buyer Functions
 
