@@ -10,11 +10,12 @@ import {
 import axios from "../../api/axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./SellerViewCarListingsPage.module.css";
+import styles from "./TrackShortListPage.module.css";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title);
 
-const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
+const TrackShortListPage = () => {
+	const { listingID } = useParams();
 	const [error, setError] = useState("");
 	const [dataframe, setDataframe] = useState([]);
 	const [labels, setLabels] = useState([]);
@@ -23,13 +24,16 @@ const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
 	const [max, setMax] = useState(0);
 
 	useEffect(() => {
-		const fetchViews = async (listingID) => {
+		const viewShortlistNumber = async (listingID) => {
 			try {
-				const response = await axios.get("/api/seller/listings/views", {
-					params: {
-						listingID: listingID,
-					},
-				});
+				const response = await axios.get(
+					"/api/seller/listings/shortlist",
+					{
+						params: {
+							listingID: listingID,
+						},
+					}
+				);
 				if (response.status === 200 && response.data.length > 0) {
 					setDataframe(response.data);
 				} else {
@@ -39,7 +43,7 @@ const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
 				setError("Error fetching data...");
 			}
 		};
-		fetchViews(listingID);
+		viewShortlistNumber(listingID);
 	}, []);
 
 	useEffect(() => {
@@ -64,7 +68,7 @@ const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
 		labels: labels,
 		datasets: [
 			{
-				label: "Number of Views",
+				label: "Number of Shortlists",
 				data: dataset,
 				backgroundColor: "aqua",
 				borderColor: "black",
@@ -77,7 +81,7 @@ const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
 		plugins: {
 			title: {
 				display: true,
-				text: "Number of Views in Past 7 Days",
+				text: "Number of Shortlists in Past 7 Days",
 				color: "black",
 				padding: {
 					top: 10,
@@ -98,16 +102,17 @@ const SellerTrackViewsPage = ({ getNumOfViews, listingID }) => {
 	};
 
 	if (dataframe.length === 0) {
-		return <div className={styles.viewsCard}>Nothing to see</div>;
+		return (
+			<div className={styles.trackShortlistPageContainer}>
+				Nothing to see
+			</div>
+		);
 	}
 	return (
-		<div className={styles.viewsCard}>
-			<div onClick={getNumOfViews} className={styles.closeButton}>
-				Close
-			</div>
+		<div className={styles.trackShortlistPageContainer}>
 			<Line data={data} options={options} />
 		</div>
 	);
 };
 
-export default SellerTrackViewsPage;
+export default TrackShortListPage;

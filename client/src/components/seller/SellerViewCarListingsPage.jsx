@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
 import styles from "./SellerViewCarListingsPage.module.css";
-import SellerTrackViewsPage from "./SellerTrackViewsPage";
+import SellerTrackViewsPage from "./TrackNumViewsPage";
 
 const SellerViewCarListingsPage = () => {
 	const { auth } = useAuth();
@@ -13,7 +13,9 @@ const SellerViewCarListingsPage = () => {
 	const [listingID, setListingID] = useState("");
 	const [error, setError] = useState("");
 	const [isViewVisible, setViewVisible] = useState(false);
+	const [isShortlistsVisible, setShortlistsVisible] = useState(false);
 	const [viewsListingID, setViewsListingID] = useState("");
+	const [shortlistsListingID, setShortlistsListingID] = useState("");
 
 	useEffect(() => {
 		const retrieveCarListings = async (sellerID) => {
@@ -42,6 +44,10 @@ const SellerViewCarListingsPage = () => {
 	const getNumOfViews = (listingID) => {
 		setViewVisible(!isViewVisible);
 		setViewsListingID(listingID);
+	};
+
+	const viewShortlistNumber = (listingID) => {
+		navigate(`/seller/listings/${listingID}/shortlists`);
 	};
 
 	// Handler for image loading error
@@ -109,7 +115,15 @@ const SellerViewCarListingsPage = () => {
 									>
 										View Insights
 									</button>
-									<button>Shortlist Insights</button>
+									<button
+										onClick={() => {
+											viewShortlistNumber(
+												listing.listingID
+											);
+										}}
+									>
+										Shortlist Insights
+									</button>
 								</div>
 							</div>
 						</div>
