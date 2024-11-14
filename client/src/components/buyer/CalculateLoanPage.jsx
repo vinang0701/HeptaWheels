@@ -133,7 +133,7 @@ const CalculateLoanPage = () => {
 						/>
 					</div>
 					<div className={styles.inputContainer}>
-						<label htmlFor="interestRate">Interest Rate</label>
+						<label htmlFor="interestRate">Interest Rate %</label>
 						<input
 							type="number"
 							name="interestRate"

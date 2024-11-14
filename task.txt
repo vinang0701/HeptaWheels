@@ -38,3 +38,44 @@
 [] Delete Favourite Car Listings
 
 // Seller
+
+
+// Temp
+[
+  {
+    $unwind: {
+      path: "$view",
+      preserveNullAndEmptyArrays: true
+    }
+  },
+  {
+    $group: {
+      _id: {
+        listingID: "$_id",
+        buyerID: "$views.buyerID",
+        date: "$views.date"
+      },
+      count: {
+        $sum: 1
+      },
+      viewsArray: {
+        $push: "$views"
+      }
+    }
+  },
+  {
+    $match: {
+      count: { $gt: 1 }  // Find only those entries where duplicates exist
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      listingID: "$_id.listingID",
+      buyerID: "$_id.buyerID",
+      date: "$_id.date",
+      count: 1,
+      viewsArray: 1
+    }
+  }
+]

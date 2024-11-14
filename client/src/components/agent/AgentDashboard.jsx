@@ -27,7 +27,6 @@ const AgentDashboard = () => {
 	};
 
 	const toggleDeleteVisibility = (listingID) => {
-		console.log("Hi");
 		setDeleteVisible(!isDeleteVisible);
 		setDeleteListingID(listingID);
 	};

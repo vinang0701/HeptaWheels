@@ -91,3 +91,40 @@
 .listingDetails .buttonContainer > button {
 	padding: 8px 8px;
 }
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	backdrop-filter: blur(10px);
+	z-index: 10;
+}
+
+.viewsCard {
+	display: flex;
+	padding: 16px 24px;
+	flex-direction: column;
+	justify-content: center;
+	width: 1200px;
+	height: 600px;
+	z-index: 13;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
+	position: fixed;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -20%);
+	background-color: #fff4f6;
+	box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 8px;
+}
+
+.closeButton {
+	margin-top: 12px;
+	cursor: pointer;
+}
+
+.closeButton:hover {
+	color: red;
+}

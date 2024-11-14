@@ -12,6 +12,8 @@ const SellerViewCarListingsPage = () => {
 	const [listings, setListings] = useState([]);
 	const [listingID, setListingID] = useState("");
 	const [error, setError] = useState("");
+	const [isViewVisible, setViewVisible] = useState(false);
+	const [viewsListingID, setViewsListingID] = useState("");
 
 	useEffect(() => {
 		const retrieveCarListings = async (sellerID) => {
@@ -37,6 +39,11 @@ const SellerViewCarListingsPage = () => {
 		});
 	};
 
+	const getNumOfViews = (listingID) => {
+		setViewVisible(!isViewVisible);
+		setViewsListingID(listingID);
+	};
+
 	// Handler for image loading error
 	const handleImageError = (e) => {
 		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
@@ -45,7 +52,7 @@ const SellerViewCarListingsPage = () => {
 	return (
 		<div className={styles.sellerPageContainer}>
 			<h4>View Car Listings</h4>
-			<SellerTrackViewsPage />
+
 			{listings?.length > 0 ? (
 				<div className={styles.sellerListingsContainer}>
 					{listings?.map((listing) => (
@@ -95,12 +102,30 @@ const SellerViewCarListingsPage = () => {
 									</p>
 								)}
 								<div className={styles.buttonContainer}>
-									<button>View Insights</button>
+									<button
+										onClick={() =>
+											getNumOfViews(listing.listingID)
+										}
+									>
+										View Insights
+									</button>
 									<button>Shortlist Insights</button>
 								</div>
 							</div>
 						</div>
 					))}
+					{isViewVisible && (
+						<div
+							className={styles.overlay}
+							onClick={getNumOfViews}
+						/>
+					)}
+					{isViewVisible && (
+						<SellerTrackViewsPage
+							getNumOfViews={getNumOfViews}
+							listingID={viewsListingID}
+						/>
+					)}
 				</div>
 			) : null}
 		</div>

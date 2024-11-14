@@ -14,6 +14,7 @@ Listing
 
 from app.db import get_database
 from pymongo import DESCENDING
+from datetime import datetime, timedelta
 
 
 class CarListing:
@@ -166,6 +167,38 @@ class CarListing:
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
+
+    def getNumOfViews(self, listingID):
+        listing_id = 1
+        end_date = datetime(2024, 11, 20)  # Assuming today is the end date
+        start_date = end_date - timedelta(days=7)
+        pipeline = [
+            {
+                "$match": {
+                    "listingID": listingID,  # Filter by listingID
+                    "views.date": {"$gte": start_date, "$lte": end_date},
+                }
+            },
+            {"$unwind": "$views"},  # Unwind the views array
+            {"$match": {"views.date": {"$gte": start_date, "$lte": end_date}}},
+            {
+                "$group": {
+                    "_id": {
+                        "$dateToString": {"format": "%d-%m-%Y", "date": "$views.date"}
+                    },
+                    "count": {"$sum": 1},  # Count views per day
+                }
+            },
+            {"$sort": {"_id": 1}},  # Sort by date
+        ]
+
+        # Execute the aggregation query "%Y-%m-%d"
+        numOfViews = list(self.collection.aggregate(pipeline))
+
+        # Print the results
+        # for numOfView in numOfViews:
+        #     print(f"Date: {numOfViews['_id']}, Views: {numOfViews['count']}")
+        return numOfViews
 
     # Buyer Functions
 

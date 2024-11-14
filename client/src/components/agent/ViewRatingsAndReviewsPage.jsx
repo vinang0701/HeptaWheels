@@ -67,7 +67,7 @@ const ViewRatingsAndReviewsPage = () => {
 					))}
 				</div>
 			) : (
-				<div>There is no review yet!</div>
+				<div>No reviews found</div>
 			)}
 		</div>
 	);
