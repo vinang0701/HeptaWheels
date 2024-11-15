@@ -155,7 +155,7 @@ class CarListing:
 
     # Seller Functions
 
-    def sellerViewCarListings(self, sellerID):
+    def sellerRetrieveCarListings(self, sellerID):
         try:
             listings = list(
                 self.collection.find({"sellerID": sellerID}, {"_id": 0}).sort(

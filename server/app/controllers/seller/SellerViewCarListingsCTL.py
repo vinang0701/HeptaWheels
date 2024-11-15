@@ -14,9 +14,9 @@ class SellerViewCarListingsCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def viewCarListings(self, sellerID):
+    def sellerRetrieveCarListings(self, sellerID):
         try:
-            listings = self.carListing_entity.sellerViewCarListings(sellerID)
+            listings = self.carListing_entity.sellerRetrieveCarListings(sellerID)
             if not listings:
                 return None
             return listings
@@ -26,13 +26,13 @@ class SellerViewCarListingsCTL:
 
 # Get sellerID from json http request
 @seller.route("/api/seller/listings", methods=["GET"])
-def viewCarListings():
+def sellerRetrieveCarListings():
     sellerID = int(request.args.get("sellerID"))
 
     sellerViewCarListingsCTL = SellerViewCarListingsCTL()
     if sellerID:
         try:
-            listings = sellerViewCarListingsCTL.viewCarListings(sellerID)
+            listings = sellerViewCarListingsCTL.sellerRetrieveCarListings(sellerID)
             if not listings:
                 return (
                     jsonify([]),
