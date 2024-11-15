@@ -33,27 +33,26 @@ const ViewUserProfilePage = () => {
 	};
 
 	useEffect(() => {
-		const viewProfile = async () => {
+		const viewProfile = async (profile) => {
 			try {
-				const response = await axios.get(
-					`api/profiles/${profile_name}`
-				);
-				const profile_data = response.data.user_profile;
-				setProfile(profile_data);
-				// Set permissions if defined, otherwise set it to an empty array
-				if (Array.isArray(profile_data.permissions)) {
-					setPermissions(profile_data.permissions);
-				} else {
-					setPermissions([]);
+				const response = await axios.get(`api/profiles/${profile}`);
+				if (response.status === 200 && response.data !== null) {
+					setProfile(response.data);
+					// Set permissions if defined, otherwise set it to an empty array
+					if (Array.isArray(response.data.permissions)) {
+						setPermissions(response.data.permissions);
+					} else {
+						setPermissions([]);
+					}
 				}
 			} catch (err) {
 				setError("Error fetching data");
 				console.error(err);
 			}
 		};
-
-		viewProfile(); // Call the fetch function
+		viewProfile(profile_name);
 	}, []);
+	console.log(profile);
 
 	return (
 		<div className={styles.pageContainer}>
@@ -122,9 +121,9 @@ const ViewUserProfilePage = () => {
 				/>
 			)}
 			{isDeleteVisible && (
-				<DeleteUserProfilePage
+				<SuspendProfilePage
 					toggleDeleteVisibility={toggleDeleteVisibility}
-					profile={profile}
+					profile_name={profile_name}
 				/>
 			)}
 		</div>

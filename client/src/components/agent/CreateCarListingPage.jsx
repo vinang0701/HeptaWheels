@@ -70,7 +70,18 @@ const CreateCarListingPage = () => {
 		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
 	};
 
-	const createListing = async (e) => {
+	const createListing = async (
+		e,
+		agentID,
+		sellerID,
+		carPlateNo,
+		carMake,
+		carModel,
+		price,
+		desc,
+		status,
+		image
+	) => {
 		e.preventDefault();
 		setError("");
 		if (price <= 0) {
@@ -90,19 +101,17 @@ const CreateCarListingPage = () => {
 			image: image,
 		};
 
-		console.log(data);
-
 		try {
 			// Make a POST request to the API
 			const response = await axios.post("/api/agent/listings", data);
 
-			if (response.status === 200) {
-				setSuccess("Listing successfully updated!");
+			if (response.status === 200 && response.data === true) {
+				setSuccess("Listing successfully created!");
 				setTimeout(() => {
 					navigate("/agent");
 				}, 2000);
 			} else {
-				setError(response.data.message);
+				setError("Duplicate listing! Please check details again.");
 			}
 		} catch (err) {
 			// Handle error
@@ -119,7 +128,23 @@ const CreateCarListingPage = () => {
 			</p>
 			{success && <div className={styles.success}>{success}</div>}
 			{error && <div className={styles.error}>{error}</div>}
-			<form className={styles.createListingForm} onSubmit={createListing}>
+			<form
+				className={styles.createListingForm}
+				onSubmit={(e) =>
+					createListing(
+						e,
+						agentID,
+						sellerID,
+						carPlateNo,
+						carMake,
+						carModel,
+						price,
+						desc,
+						"Available",
+						image
+					)
+				}
+			>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>
 						{Object.keys(uploadedImage).length !== 0 ? (

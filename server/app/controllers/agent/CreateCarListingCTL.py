@@ -52,12 +52,12 @@ def createList():
     # Data to get from front end in json
     data = request.json
 
-    agentID = data["agentID"]
-    sellerID = data["sellerID"]
+    agentID = int(data["agentID"])
+    sellerID = int(data["sellerID"])
     carPlateNo = data["carPlateNo"]
     carMake = data["carMake"]
     carModel = data["carModel"]
-    price = data["price"]
+    price = int(data["price"])
     desc = data["desc"]
     status = data["status"]
     image = data["image"]
@@ -77,25 +77,13 @@ def createList():
         )
         if listSuccess:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "Car listing created successfully",
-                        "listSuccess": listSuccess,
-                    }
-                ),
+                jsonify(True),
                 200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "Car listing created unsuccessful",
-                        "listSuccess": listSuccess,
-                    }
-                ),
-                400,
+                jsonify(False),
+                200,
             )
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500

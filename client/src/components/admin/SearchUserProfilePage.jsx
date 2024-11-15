@@ -32,30 +32,26 @@ const SearchUserProfilePage = () => {
 		fetchProfiles(); // Call the fetch function
 	}, []);
 
-	const searchProfileRequest = async (e) => {
+	const searchProfileRequest = async (e, query) => {
 		e.preventDefault();
+		setError("");
 
-		if (searchProfile.length > 0) {
+		if (query.length > 0) {
 			try {
-				const response = await axios.get(
-					`api/profiles/${searchProfile}`
-				);
+				const response = await axios.get(`api/profiles/${query}`);
 
-				if (response.data.user_profile != null) {
-					const profileTemp = [];
-					profileTemp.push(response.data.user_profile);
-					setError("");
-					setSearchResult(response.data.user_profile);
+				if (response.status === 200 && response.data !== null) {
+					setSearchResult(response.data);
 					setSearchProfile("");
 				} else {
 					setSearchProfile("");
-					setError("User not found!");
+					setError("Profile not found!");
 				}
 			} catch (err) {
 				setSearchProfile("");
 				setSearchResult({});
-				setError("Profile not found!");
-				console.log(error);
+				setError("Server error");
+				console.log(err);
 			}
 		} else {
 			setError("");
@@ -91,7 +87,11 @@ const SearchUserProfilePage = () => {
 								}
 								autoComplete="off"
 							/>
-							<button onClick={searchProfileRequest}>
+							<button
+								onClick={(e) =>
+									searchProfileRequest(e, searchProfile)
+								}
+							>
 								Search
 							</button>
 						</div>
@@ -142,12 +142,18 @@ const SearchUserProfilePage = () => {
 								}
 								autoComplete="off"
 							/>
-							<button onClick={searchProfileRequest}>
+							<button
+								onClick={(e) =>
+									searchProfileRequest(e, searchProfile)
+								}
+							>
 								Search
 							</button>
 						</div>
 					</div>
 				</div>
+				{error && <div className={styles.error}>{error}</div>}
+
 				<div className={styles.table}>
 					<div className={styles.profileTableHeader}>
 						<div>Role</div>

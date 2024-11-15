@@ -12,7 +12,6 @@ const UpdateUserProfilePage = () => {
 	// const [profile_name, setProfileName] = useState(profile.profile_name);
 	const [profile, setProfile] = useState({});
 	const [permissions, setPermissions] = useState([]);
-	const [newProfileName, setNewProfileName] = useState(profile.profile_name);
 	const [status, setStatus] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(true);
@@ -20,7 +19,7 @@ const UpdateUserProfilePage = () => {
 	const handleGoBack = () => {
 		navigate(`/admin/profiles/${profile_name}`); // Go back to the previous page
 	};
-	console.log(profile_name);
+
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
@@ -29,10 +28,9 @@ const UpdateUserProfilePage = () => {
 				const response = await axios.get(
 					`api/profiles/${profile_name}`
 				);
-				const profile_data = response.data.user_profile;
+				const profile_data = response.data;
 				setProfile(profile_data);
 				setStatus(profile_data.status);
-				setNewProfileName(profile_data.profile_name);
 				// Set permissions if defined, otherwise set it to an empty array
 				if (Array.isArray(profile_data.permissions)) {
 					setPermissions(profile_data.permissions);
@@ -65,29 +63,25 @@ const UpdateUserProfilePage = () => {
 		});
 	};
 
-	const handleSubmit = async (e) => {
+	const updateProfileRequest = async (e, profile, permissions, status) => {
 		e.preventDefault();
 		// Reset errors first
 		setError("");
 
 		const data = {
-			profile_name: newProfileName,
 			permissions: permissions,
 			status: status,
 		};
 
 		try {
 			// Make a POST request to the API
-			const response = await axios.put(
-				`/api/profiles/${profile_name}`,
-				data
-			);
+			const response = await axios.put(`/api/profiles/${profile}`, data);
 
-			if (response.data.status === "success") {
+			if (response.status === 200 && response.data === true) {
 				alert("Profile successfully updated!");
 				navigate("/admin/profiles");
 			} else {
-				setError(response.data.message);
+				setError("Profile update unsuccessful!");
 			}
 		} catch (err) {
 			// Handle error
@@ -107,17 +101,13 @@ const UpdateUserProfilePage = () => {
 
 			<form
 				className={styles.userProfilePermCard}
-				onSubmit={handleSubmit}
+				onSubmit={(e) =>
+					updateProfileRequest(e, profile_name, permissions, status)
+				}
 			>
 				{error && <p className={styles.error}>{error}</p>}
 				<div className={styles.userProfileDetailsContainer}>
-					<div className={styles.profileName}>
-						<input
-							type="text"
-							value={newProfileName}
-							onChange={(e) => setNewProfileName(e.target.value)}
-						/>
-					</div>
+					<h4 className={styles.profileName}>{profile_name}</h4>
 					{/* Checkbox ticked */}
 					<div className={styles.profileDetails}>
 						<input
@@ -170,7 +160,7 @@ const UpdateUserProfilePage = () => {
 							onChange={(e) => setStatus(e.target.value)}
 						>
 							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
+							<option value="Suspended">Suspended</option>
 						</select>
 					</div>
 				</div>

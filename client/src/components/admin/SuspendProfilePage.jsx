@@ -3,31 +3,32 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import styles from "./ViewUserProfilePage.module.css";
 
-const SuspendProfilePage = ({ toggleDeleteVisibility, profile }) => {
+const SuspendProfilePage = ({ toggleDeleteVisibility, profile_name }) => {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
-	const suspendProfile = async () => {
+	const suspendProfile = async (profile) => {
 		setError("");
 		setSuccess("");
 		try {
-			const profile_name = profile.profile_name;
-
 			const response = await axios.put(
-				`/api/profiles/${profile_name}/suspend`
+				`/api/profiles/${profile}/suspend`
 			);
-			if (response.data.suspendSuccessful) {
+			if (response.status === 200 && response.data === true) {
 				setSuccess("Profile has been suspended!");
 				setTimeout(() => {
 					toggleDeleteVisibility();
 				}, 1000);
 				window.location.reload();
+			} else {
+				setError("Profile is already suspended!");
+				setTimeout(() => {
+					toggleDeleteVisibility();
+				}, 1000);
 			}
 		} catch (err) {
-			setError("Profile is already suspended!");
-			setTimeout(() => {
-				toggleDeleteVisibility();
-			}, 1000);
+			setError("Server Error");
+			console.log(err);
 		}
 	};
 
@@ -38,7 +39,9 @@ const SuspendProfilePage = ({ toggleDeleteVisibility, profile }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete user profile?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={suspendProfile}>Yes</button>
+					<button onClick={() => suspendProfile(profile_name)}>
+						Yes
+					</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}

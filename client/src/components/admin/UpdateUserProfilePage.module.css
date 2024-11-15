@@ -66,16 +66,8 @@
 }
 
 .profileName {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 12px;
-}
-
-.profileName > input {
-	font-size: var(--fs-secondary-heading);
-	font-weight: var(--fw-bold);
 	text-align: center;
-	width: 100%;
+	margin-bottom: 12px;
 }
 
 .error {

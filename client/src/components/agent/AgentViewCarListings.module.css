@@ -73,6 +73,7 @@
 
 .listingDetails .listingDesc {
 	flex-basis: 100%;
+	word-wrap: break-word;
 }
 
 .buttonContainer {

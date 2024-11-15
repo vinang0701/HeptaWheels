@@ -25,10 +25,10 @@ def searchProfile():
     searchUserProfileCTL = SearchUserProfileCTL()
     try:
         profile = searchUserProfileCTL.searchProfile(query)
-        if profile is None:
+        if not profile:
             return (
                 jsonify(None),
-                400,
+                200,
             )
         return (
             jsonify(profile),

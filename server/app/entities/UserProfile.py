@@ -17,10 +17,10 @@ class UserProfile:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def viewProfile(self, profile_name):
-        user_profile = self.collection.find_one(
-            {"profile_name": profile_name}, {"_id": 0}
-        )
+    def viewProfile(self, profile):
+        user_profile = self.collection.find_one({"profile_name": profile}, {"_id": 0})
+        if not user_profile:
+            return None
         return user_profile
 
     def searchProfile(self, query):
@@ -45,42 +45,33 @@ class UserProfile:
             print(f"Unexpected error occurred: {str(e)}")
             return False
 
-    def updateUserProfile(
-        self, currentProfile_name, profile_name, permissions, profile_status
-    ):
-        # Check if profile name changed
-        # If changed, update all user accounts that
-
+    def updateProfile(self, profile, permissions, status):
         try:
             self.collection.update_one(
-                {"profile_name": currentProfile_name},
+                {"profile_name": profile},
                 {
                     "$set": {
-                        "profile_name": profile_name,
                         "permissions": permissions,
-                        "status": profile_status,
+                        "status": status,
                     }
                 },
             )
             return True
         except Exception as e:
-            raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+            print(f"Unexpected error has occurred: {str(e)}")
+            return False
 
-    def suspendProfile(self, profile_name):
-        # Get profile to check for status
-        # Check status - if status is inactive,
-        # return False to user to show that
-        # profile is already suspended
-        profile = self.getUserProfile(profile_name)
-
-        current_status = profile["status"]
+    def suspendProfile(self, profile):
+        userProfile = self.collection.find_one({"profile_name": profile}, {"_id": 0})
+        current_status = userProfile["status"]
         if current_status == "Suspended":
             return False
         else:
             try:
                 self.collection.update_one(
-                    {"profile_name": profile_name}, {"$set": {"status": "Suspended"}}
+                    {"profile_name": profile}, {"$set": {"status": "Suspended"}}
                 )
                 return True
             except Exception as e:
-                raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+                print(f"Unexpected error has occurred: {str(e)}")
+                return False

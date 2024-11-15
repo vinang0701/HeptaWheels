@@ -9,62 +9,21 @@ class ViewUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def viewProfiles(self):
-        try:
-            user_profiles = self.userProfile_entity.getUserProfiles()
-            if len(user_profiles) == 0:
-                return None
-            return user_profiles
-        except Exception as e:
-            # raise RuntimeError(f"Unexpected error occurred: {str(e)}")
-            return e
-
     # Remember to include changing to lower case for checking
-    def viewProfile(self, profile_name):
-        user_profile = self.userProfile_entity.viewProfile(profile_name)
+    def viewProfile(self, profile):
+        user_profile = self.userProfile_entity.viewProfile(profile)
         return user_profile
 
 
 # Remember to include changing to lower case for checking
-@admin.route("/api/profiles/<string:profile_name>", methods=["GET"])
-def viewProfile(profile_name):
+@admin.route("/api/profiles/<string:profile>", methods=["GET"])
+def viewProfile(profile):
     viewUPController = ViewUserProfileCTL()
-    user_profile = viewUPController.viewProfile(profile_name)
-    if user_profile is None:
+    user_profile = viewUPController.viewProfile(profile)
+    try:
         return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "No user profile found",
-                    "user_profile": None,
-                }
-            ),
-            404,
-        )
-    else:
-        return (
-            jsonify(
-                {
-                    "status": "success",
-                    "message": "User profile found!",
-                    "user_profile": user_profile,
-                }
-            ),
+            jsonify(user_profile),
             200,
         )
-
-
-@admin.route("/api/profiles", methods=["GET"])
-def viewProfiles():
-    viewUPController = ViewUserProfileCTL()
-    user_profiles = viewUPController.viewProfiles()
-    if not user_profiles:
-        return (
-            jsonify(None),
-            404,
-        )
-    else:
-        return (
-            jsonify(user_profiles),
-            200,
-        )
+    except Exception as e:
+        return jsonify({"status": "error", "message": "str(e)"}), 500

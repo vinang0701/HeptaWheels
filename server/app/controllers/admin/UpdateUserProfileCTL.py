@@ -9,51 +9,34 @@ class UpdateUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def updateUserProfile(self, currentProfile_name, profile_name, permissions, status):
-        try:
-            isUpdated = self.userProfile_entity.updateUserProfile(
-                currentProfile_name, profile_name, permissions, status
-            )
-            if isUpdated:
-                return True
-        except Exception as e:
-            raise e
+    def updateProfile(self, profile, permissions, status):
+        isUpdated = self.userProfile_entity.updateProfile(profile, permissions, status)
+        if isUpdated:
+            return True
+        else:
+            return False
 
 
-@admin.route("/api/profiles/<string:currentProfile_name>", methods=["PUT"])
-def updateUserProfile(currentProfile_name):
+@admin.route("/api/profiles/<string:profile>", methods=["PUT"])
+def updateProfile(profile):
     data = request.json
-    updateUPController = UpdateUserProfileCTL()
+    updateUserProfileCTL = UpdateUserProfileCTL()
     # User Profile data fields
-    profile_name = data["profile_name"]
     permissions = data["permissions"]
     profile_status = data["status"]
-    # if request.method == "OPTIONS":
-    #     # This is the preflight request
-    #     return jsonify({"status": "CORS preflight successful"}), 200
-    # Call controller
     try:
-        isUpdated = updateUPController.updateUserProfile(
-            currentProfile_name, profile_name, permissions, profile_status
+        isUpdated = updateUserProfileCTL.updateProfile(
+            profile, permissions, profile_status
         )
         if isUpdated:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "User profile successfully updated!",
-                    }
-                ),
+                jsonify(True),
                 200,
             )
+        else:
+            return (jsonify(False), 200)
     except Exception as e:
         return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "User profile cannot be updated.",
-                    "error message": str(e),
-                }
-            ),
+            jsonify({"status": "error", "message": str(e)}),
             500,
         )
