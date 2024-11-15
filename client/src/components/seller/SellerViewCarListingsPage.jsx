@@ -42,8 +42,7 @@ const SellerViewCarListingsPage = () => {
 	};
 
 	const getNumOfViews = (listingID) => {
-		setViewVisible(!isViewVisible);
-		setViewsListingID(listingID);
+		navigate(`/seller/listings/${listingID}/views`);
 	};
 
 	const viewShortlistNumber = (listingID) => {
@@ -128,18 +127,6 @@ const SellerViewCarListingsPage = () => {
 							</div>
 						</div>
 					))}
-					{isViewVisible && (
-						<div
-							className={styles.overlay}
-							onClick={getNumOfViews}
-						/>
-					)}
-					{isViewVisible && (
-						<SellerTrackViewsPage
-							getNumOfViews={getNumOfViews}
-							listingID={viewsListingID}
-						/>
-					)}
 				</div>
 			) : null}
 		</div>

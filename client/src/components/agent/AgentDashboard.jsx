@@ -54,7 +54,7 @@ const AgentDashboard = () => {
 		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
 	};
 
-	const handleSearch = async (e) => {
+	const searchListing = async (e) => {
 		e.preventDefault();
 		setError("");
 
@@ -89,7 +89,7 @@ const AgentDashboard = () => {
 				<button className="createListingButton" onClick={createListing}>
 					Create
 				</button>
-				<form onSubmit={handleSearch}>
+				<form onSubmit={searchListing}>
 					<input
 						type="text"
 						placeholder="Search by ..."
@@ -135,7 +135,15 @@ const AgentDashboard = () => {
 								<p>Car Plate No: {listing.carPlateNo}</p>
 								<p>Status: {listing.status}</p>
 								<p>Description:</p>
-								<p className={styles.wrap}>{listing.desc}</p>
+								{listing.desc ? (
+									<p className={styles.listingDesc}>
+										{listing.desc}
+									</p>
+								) : (
+									<p className={styles.listingDesc}>
+										No description available...
+									</p>
+								)}
 								<div className={styles.buttonContainer}>
 									<button
 										className={styles.editButton}
@@ -190,7 +198,15 @@ const AgentDashboard = () => {
 								<p>Car Plate No: {listing.carPlateNo}</p>
 								<p>Status: {listing.status}</p>
 								<p>Description:</p>
-								<p className={styles.wrap}>{listing.desc}</p>
+								{listing.desc ? (
+									<p className={styles.listingDesc}>
+										{listing.desc}
+									</p>
+								) : (
+									<p className={styles.listingDesc}>
+										No description available...
+									</p>
+								)}
 								<div className={styles.buttonContainer}>
 									<button
 										className={styles.editButton}

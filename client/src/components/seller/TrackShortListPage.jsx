@@ -9,13 +9,14 @@ import {
 } from "chart.js";
 import axios from "../../api/axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./TrackShortListPage.module.css";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title);
 
 const TrackShortListPage = () => {
 	const { listingID } = useParams();
+	const navigate = useNavigate();
 	const [error, setError] = useState("");
 	const [dataframe, setDataframe] = useState([]);
 	const [labels, setLabels] = useState([]);
@@ -23,11 +24,25 @@ const TrackShortListPage = () => {
 	const [min, setMin] = useState(0);
 	const [max, setMax] = useState(0);
 
+	// Helper function to generate past 7 days in dd-mm-yyyy format
+	const getPast7Days = () => {
+		const days = [];
+		for (let i = 6; i >= 0; i--) {
+			const date = new Date();
+			date.setDate(date.getDate() - i);
+			const day = date.getDate().toString().padStart(2, "0");
+			const month = (date.getMonth() + 1).toString().padStart(2, "0");
+			const year = date.getFullYear();
+			days.push(`${day}-${month}-${year}`);
+		}
+		return days;
+	};
+
 	useEffect(() => {
 		const viewShortlistNumber = async (listingID) => {
 			try {
 				const response = await axios.get(
-					"/api/seller/listings/shortlist",
+					"/api/seller/listings/shortlists",
 					{
 						params: {
 							listingID: listingID,
@@ -47,13 +62,25 @@ const TrackShortListPage = () => {
 	}, []);
 
 	useEffect(() => {
-		// Check if dataframe exists and is an array before mapping
 		if (Array.isArray(dataframe)) {
-			const newLabels = dataframe.map((data) => data._id);
-			const newDataset = dataframe.map((data) => data.count);
+			const past7Days = getPast7Days();
 
-			setLabels(newLabels);
-			setDataset(newDataset);
+			// Initialize counts for past 7 days with 0
+			const countsByDate = past7Days.reduce((acc, date) => {
+				acc[date] = 0;
+				return acc;
+			}, {});
+
+			// Fill in actual counts from the dataframe
+			dataframe.forEach((data) => {
+				if (countsByDate.hasOwnProperty(data._id)) {
+					countsByDate[data._id] = data.count;
+				}
+			});
+
+			// Update labels and dataset
+			setLabels(past7Days);
+			setDataset(past7Days.map((date) => countsByDate[date]));
 		}
 	}, [dataframe]);
 
@@ -63,6 +90,28 @@ const TrackShortListPage = () => {
 			setMin(Math.min(...dataset));
 		}
 	}, [dataset]);
+
+	// useEffect(() => {
+	// 	// Check if dataframe exists and is an array before mapping
+	// 	if (Array.isArray(dataframe)) {
+	// 		const newLabels = dataframe.map((data) => data._id);
+	// 		const newDataset = dataframe.map((data) => data.count);
+
+	// 		setLabels(newLabels);
+	// 		setDataset(newDataset);
+	// 	}
+	// }, [dataframe]);
+
+	// useEffect(() => {
+	// 	if (Array.isArray(dataset) && dataset.length > 0) {
+	// 		setMax(Math.max(...dataset) + 3);
+	// 		setMin(Math.min(...dataset));
+	// 	}
+	// }, [dataset]);
+
+	const goBack = () => {
+		navigate(-1);
+	};
 
 	const data = {
 		labels: labels,
@@ -101,15 +150,11 @@ const TrackShortListPage = () => {
 		},
 	};
 
-	if (dataframe.length === 0) {
-		return (
-			<div className={styles.trackShortlistPageContainer}>
-				Nothing to see
-			</div>
-		);
-	}
 	return (
 		<div className={styles.trackShortlistPageContainer}>
+			<div className={styles.backButton} onClick={goBack}>
+				&lt; Back
+			</div>
 			<Line data={data} options={options} />
 		</div>
 	);

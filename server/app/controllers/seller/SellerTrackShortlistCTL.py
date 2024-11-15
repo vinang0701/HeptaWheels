@@ -27,7 +27,7 @@ class TrackShortlistCTL:
 
 
 # Get sellerID from json http request
-@seller.route("/api/seller/listings/views", methods=["GET"])
+@seller.route("/api/seller/listings/shortlists", methods=["GET"])
 def viewShortlistNumber():
     listingID = int(request.args.get("listingID"))
 

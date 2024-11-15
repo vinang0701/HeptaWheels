@@ -18,7 +18,7 @@ class PreferredListings:
         self.collection = database["PreferredListings"]
 
     def saveCarListing(self, buyerID, listingID):
-        todayDate = datetime()
+        todayDate = datetime().today()
         try:
             self.collection.insert_one(
                 {"buyerID": buyerID, "listingID": listingID, "dateCreated": todayDate}
@@ -35,29 +35,26 @@ class PreferredListings:
 
     # Seller
     def viewShortlistNumber(self, listingID):
-        end_date = datetime()  # Assuming today is the end date
+        end_date = datetime.today()  # Assuming today is the end date
         start_date = end_date - timedelta(days=7)
+        print(start_date)
+
         pipeline = [
             {
                 "$match": {
-                    "listingID": listingID,  # Filter by listingID
-                    "shortlists.date": {"$gte": start_date, "$lte": end_date},
+                    "dateCreated": {"$gte": start_date, "$lte": end_date},
+                    "listingID": listingID,
                 }
             },
-            {"$unwind": "$numOfShortlists"},  # Unwind the views array
-            {"$match": {"shortlists.date": {"$gte": start_date, "$lte": end_date}}},
             {
                 "$group": {
                     "_id": {
-                        "$dateToString": {
-                            "format": "%d-%m-%Y",
-                            "date": "$numOfShortlists.date",
-                        }
+                        "$dateToString": {"format": "%d-%m-%Y", "date": "$dateCreated"}
                     },
-                    "count": {"$sum": 1},  # Count views per day
+                    "count": {"$sum": 1},
                 }
             },
-            {"$sort": {"_id": 1}},  # Sort by date
+            {"$sort": {"_id": 1}},  # Sort by date in ascending order
         ]
 
         # Execute the aggregation query "%Y-%m-%d"

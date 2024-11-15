@@ -169,7 +169,7 @@ class CarListing:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
     def getNumOfViews(self, listingID):
-        end_date = datetime()  # Assuming today is the end date
+        end_date = datetime.today()  # Assuming today is the end date
         start_date = end_date - timedelta(days=7)
         pipeline = [
             {
@@ -191,15 +191,12 @@ class CarListing:
             {"$sort": {"_id": 1}},  # Sort by date
         ]
 
-        # Execute the aggregation query "%Y-%m-%d"
         numOfViews = list(self.collection.aggregate(pipeline))
 
         # Print the results
         # for numOfView in numOfViews:
         #     print(f"Date: {numOfViews['_id']}, Views: {numOfViews['count']}")
         return numOfViews
-
-    
 
     # Buyer Functions
 

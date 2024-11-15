@@ -30,7 +30,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	justify-content: space-between;
+	column-gap: 50px;
 }
 
 .listingCard {
@@ -41,8 +41,8 @@
 	border: 1px solid hsl(240 5.9% 90%);
 	width: 420px;
 	margin-bottom: 20px;
-	/* background-color: var(--background-color); */
-	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); */
+	background-color: var(--background-color);
+	box-shadow: 0 1px 8px 5px rgba(0, 0, 0, 0.1);
 }
 
 .listingCard img {
@@ -56,7 +56,8 @@
 	display: flex;
 	height: 100%;
 	flex-direction: column;
-	justify-content: space-between;
+	/* justify-content: space-between; */
+	justify-content: flex-start;
 	padding: 0 16px 16px 16px;
 	white-space: normal; /* Make sure text can wrap */
 }
@@ -70,20 +71,19 @@
 	font-weight: var(--fw-semi-bold);
 }
 
+.listingDetails .listingDesc {
+	flex-basis: 100%;
+}
+
 .buttonContainer {
 	display: flex;
-	margin-top: auto;
+	justify-content: space-between;
+	margin-top: 16px;
 	width: 100%;
 }
 
 .buttonContainer > button {
 	min-width: 80px;
-	margin-right: 24px;
-}
-
-.wrap {
-	display: inline-block;
-	word-break: break-all;
 }
 
 .listingPrice {
