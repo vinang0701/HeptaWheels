@@ -68,7 +68,7 @@ const ViewShortlistPage = () => {
 								className={styles.wishlistTableRow}
 								key={listing.listingID}
 							>
-								<div>{index}</div>
+								<div>{index + 1}</div>
 								<div key={listing.listingID}>
 									{listing.listingID}
 								</div>

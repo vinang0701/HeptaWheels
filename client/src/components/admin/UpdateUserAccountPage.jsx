@@ -7,6 +7,7 @@ const UpdateUserAccountPage = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { user } = location.state || {}; // Retrieve `user` from the state
+	const currentEmail = user.email;
 	const [email, setEmail] = useState(user.email);
 	const [password, setPassword] = useState(user.password);
 	const [role, setRole] = useState(user.role);
@@ -44,7 +45,14 @@ const UpdateUserAccountPage = () => {
 		navigate(-1); // Go back to the previous page
 	};
 
-	const updateUserAccount = async (e) => {
+	const updateUserAccount = async (
+		e,
+		currentEmail,
+		email,
+		pwd,
+		status,
+		role
+	) => {
 		e.preventDefault();
 		let hasError = false;
 
@@ -64,7 +72,7 @@ const UpdateUserAccountPage = () => {
 		}
 
 		// Validate password
-		if (password === "") {
+		if (pwd === "") {
 			setPasswordError("Please enter password!");
 			hasError = true;
 		}
@@ -72,7 +80,7 @@ const UpdateUserAccountPage = () => {
 		if (!hasError) {
 			var data = {
 				email: email.trim(),
-				password: password.trim(),
+				password: pwd.trim(),
 				role: role,
 				status: status,
 			};
@@ -80,7 +88,7 @@ const UpdateUserAccountPage = () => {
 			try {
 				// Make a POST request to the API
 				const response = await axios.put(
-					`/api/users/${user.email}`,
+					`/api/users/${currentEmail}`,
 					data
 				);
 
@@ -106,7 +114,16 @@ const UpdateUserAccountPage = () => {
 				<h4>User Account</h4>
 				<form
 					className={styles.userDetailsContainer}
-					onSubmit={updateUserAccount}
+					onSubmit={(e) =>
+						updateUserAccount(
+							e,
+							currentEmail,
+							email,
+							password,
+							status,
+							role
+						)
+					}
 				>
 					<div className={styles.userDetails}>
 						<label>User ID</label>

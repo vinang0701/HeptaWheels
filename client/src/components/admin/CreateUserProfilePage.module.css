@@ -69,3 +69,12 @@
 	margin-left: 8px;
 	height: 100%;
 }
+.createError {
+	color: red;
+	font-size: 14px;
+}
+
+.createSuccess {
+	color: green;
+	font-size: 14px;
+}

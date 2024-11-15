@@ -9,25 +9,25 @@ const SuspendUserAccountPage = ({ toggleDeleteVisibility, user }) => {
 
 	const navigate = useNavigate();
 
-	const suspendAccount = async () => {
+	const suspendAccount = async (email) => {
 		setError("");
 		setSuccess("");
 		try {
-			const userEmail = user.email;
-			console.log(userEmail);
-			const response = await axios.put(`/api/users/${userEmail}/suspend`);
-			if (response.data.isSuspended) {
+			const response = await axios.put(`/api/users/${email}/suspend`);
+			if (response.status === 200 && response.data === true) {
 				setSuccess("User account has been suspended!");
 				setTimeout(() => {
 					toggleDeleteVisibility();
-				}, 1000);
+				}, 1500);
 				window.location.reload();
+			} else {
+				setError("User account is already suspended!");
+				setTimeout(() => {
+					toggleDeleteVisibility();
+				}, 1000);
 			}
 		} catch (err) {
-			setError("User account is already suspended!");
-			setTimeout(() => {
-				toggleDeleteVisibility();
-			}, 1000);
+			console.log(err);
 		}
 	};
 
@@ -38,7 +38,9 @@ const SuspendUserAccountPage = ({ toggleDeleteVisibility, user }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete user account?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={suspendAccount}>Yes</button>
+					<button onClick={() => suspendAccount(user.email)}>
+						Yes
+					</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}

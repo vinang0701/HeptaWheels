@@ -6,6 +6,7 @@ import SuspendUserAccountPage from "./SuspendUserAccountPage";
 
 const ViewUserAccountPage = () => {
 	const { email } = useParams(); // Retrieve car ID from the URL
+	const userEmail = decodeURIComponent(email);
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const [error, setError] = useState("");
@@ -27,24 +28,22 @@ const ViewUserAccountPage = () => {
 	};
 
 	useEffect(() => {
-		const viewUserAccount = async () => {
+		const viewUserAccount = async (email) => {
 			try {
-				var userEmail = decodeURIComponent(email);
-				console.log(userEmail);
-				const response = await axios.get(
-					`http://127.0.0.1:8080/api/users/${userEmail}`
-				);
-				var user_data = response.data.user_data;
-				setUser(user_data);
-				console.log(user_data);
+				const response = await axios.get(`/api/users/${email}`);
+				if (response.status === 200 && response.data !== null) {
+					const user_data = response.data;
+					setUser(user_data);
+				}
 			} catch (err) {
 				setError("Error fetching data");
 				console.error(err);
 			}
 		};
 
-		viewUserAccount(); // Call the fetch function
+		viewUserAccount(userEmail); // Call the fetch function
 	}, []);
+	console.log(user);
 
 	return (
 		<div>

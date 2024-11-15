@@ -17,21 +17,20 @@ const SearchUserProfilePage = () => {
 	};
 
 	// Get all user profiles
-	// useEffect(() => {
-	// 	const fetchProfiles = async () => {
-	// 		try {
-	// 			const response = await axios.get("/api/profiles");
+	useEffect(() => {
+		const fetchProfiles = async () => {
+			try {
+				const response = await axios.get("/api/profiles");
 
-	// 			// Set the profiles data to state
-	// 			setProfiles(response.data.user_profiles);
-	// 		} catch (err) {
-	// 			// setError("Error fetching data");
-	// 			console.error(err);
-	// 		}
-	// 	};
+				// Set the profiles data to state
+				setProfiles(response.data);
+			} catch (err) {
+				console.error(err);
+			}
+		};
 
-	// 	fetchProfiles(); // Call the fetch function
-	// }, []);
+		fetchProfiles(); // Call the fetch function
+	}, []);
 
 	const searchProfileRequest = async (e) => {
 		e.preventDefault();
@@ -47,8 +46,6 @@ const SearchUserProfilePage = () => {
 					profileTemp.push(response.data.user_profile);
 					setError("");
 					setSearchResult(response.data.user_profile);
-					// setProfiles(profileTemp);
-					// console.log(profiles);
 					setSearchProfile("");
 				} else {
 					setSearchProfile("");
@@ -108,7 +105,10 @@ const SearchUserProfilePage = () => {
 				)}
 
 				{isFormVisible && (
-					<div className="overlay" onClick={toggleFormVisibility} />
+					<div
+						className={styles.overlay}
+						onClick={toggleFormVisibility}
+					/>
 				)}
 				{isFormVisible && (
 					<CreateUserProfilePage
@@ -169,38 +169,11 @@ const SearchUserProfilePage = () => {
 						</div>
 					</div>
 				</div>
-				{/* {profiles.length > 0 ? (
-					<div className={styles.table}>
-						<div className={styles.profileTableHeader}>
-							<div>Role</div>
-							<div>Status</div>
-							<div className={styles.lastColumn}>Actions</div>
-						</div>
-						{profiles.map((profile) => (
-							<div
-								className={styles.profileTableRow}
-								key={profile.profile_name}
-							>
-								<div>{profile.profile_name}</div>
-								<div>{profile.status}</div>
-								<div>
-									<button
-										className={styles.lastColumn}
-										onClick={() =>
-											viewProfile(profile.profile_name)
-										}
-									>
-										View Profile
-									</button>
-								</div>
-							</div>
-						))}
-					</div>
-				) : (
-					<div>No profiles found. Create a new profile!</div>
-				)} */}
 				{isFormVisible && (
-					<div className="overlay" onClick={toggleFormVisibility} />
+					<div
+						className={styles.overlay}
+						onClick={toggleFormVisibility}
+					/>
 				)}
 				{isFormVisible && (
 					<CreateUserProfilePage

@@ -55,7 +55,12 @@ const BuyerViewListingPage = () => {
 	useEffect(() => {
 		const viewListing = async () => {
 			const response = await axios.get(
-				`/api/buyer/listings/${listingID}`
+				`/api/buyer/listings/${listingID}`,
+				{
+					params: {
+						buyerID: buyerID,
+					},
+				}
 			);
 			if (response.status === 200) {
 				setListing(response.data.listing);
@@ -102,6 +107,9 @@ const BuyerViewListingPage = () => {
 					<p className={styles.buyerListingPrice}>
 						<span>Price:</span> ${listing.price}
 					</p>
+					<p className={styles.buyerListingPrice}>
+						<span>Listing ID:</span> {listing.listingID}
+					</p>
 
 					<span className={styles.listingDetailsHeader}>
 						Description:
@@ -118,6 +126,9 @@ const BuyerViewListingPage = () => {
 						>
 							Rate
 						</button>
+					</p>
+					<p className={styles.listingStatus}>
+						<span>SellerID:</span> {listing.sellerID}
 					</p>
 					<div className={styles.saveListing} onClick={saveListing}>
 						<svg

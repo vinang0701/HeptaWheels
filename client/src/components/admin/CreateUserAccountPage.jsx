@@ -9,6 +9,7 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 	const [password, setPassword] = useState("");
 	const [role, setRole] = useState("");
 	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
 	const [userRoles, setUserRoles] = useState([]);
@@ -21,6 +22,7 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 
 		// Reset errors first
 		setEmailError("");
+		setSuccess("");
 		setPasswordError("");
 		setError("");
 
@@ -52,8 +54,11 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 				const response = await axios.post("/api/users", data);
 
 				if (response.data.status === "success") {
-					alert("User Successfully Added!");
-					window.location.reload();
+					// alert("User Successfully Added!");
+					setSuccess("User Successfully Added!");
+					setTimeout(() => {
+						window.location.reload();
+					}, 1000);
 				} else {
 					setError(response.data.message);
 				}
@@ -101,8 +106,16 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 					</button>
 				</div>
 
-				<form className={styles.createUserForm} onSubmit={handleCreateAcc}>
-					{error && <span className={styles.error}>{error}</span>}
+				<form
+					className={styles.createUserForm}
+					onSubmit={handleCreateAcc}
+				>
+					{error && (
+						<span className={styles.createError}>{error}</span>
+					)}
+					{success && (
+						<span className={styles.success}>{success}</span>
+					)}
 					<div>
 						<div className={styles.userInputContainer}>
 							{/* {emailError && (

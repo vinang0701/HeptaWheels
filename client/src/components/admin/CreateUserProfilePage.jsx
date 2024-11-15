@@ -6,6 +6,7 @@ import styles from "./CreateUserProfilePage.module.css";
 const CreateUserProfilePage = ({ toggleFormVisibility, profiles }) => {
 	const [profileName, setProfileName] = useState("");
 	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 	const inputRef = useRef(null);
 
 	// Need a way to check for current role names
@@ -14,58 +15,45 @@ const CreateUserProfilePage = ({ toggleFormVisibility, profiles }) => {
 		pNames.push(pName.profile_name);
 	});
 
-	console.log("profile names: " + pNames);
-
-	// Custom validity check whenever profileName changes
-	useEffect(() => {
-		if (inputRef.current) {
-			// Check if profileName is empty or matches any of the role names
-			if (!profileName) {
-				inputRef.current.setCustomValidity("Profile name is required.");
-			} else if (pNames.includes(profileName)) {
-				inputRef.current.setCustomValidity(
-					"Profile name cannot match a role name."
-				);
-			} else {
-				inputRef.current.setCustomValidity(""); // Clear validity if valid
-			}
-		}
-	}, [profileName]);
-
-	const createProfileRequest = async (e) => {
+	const createProfileRequest = async (e, name) => {
 		e.preventDefault();
+		setError("");
+		setSuccess("");
+		if (pNames.includes(name)) {
+			setError("Profile name is already in use. Please try again!");
+			return;
+		}
+
 		try {
 			// POST Req
-			const data = { profile_name: profileName, permissions: [] };
+			const data = { name: name };
 			const response = await axios.post("/api/profiles", data);
 
-			// isCreated is returned
-
-			const isCreated = response.data.isCreated;
-
-			if (isCreated) {
-				toggleFormVisibility;
-				alert(response.data.message);
-				window.location.reload();
+			if (response.status === 200 && response.data === true) {
+				setSuccess("Profile created successfully!");
+				setTimeout(() => {
+					window.location.reload();
+				}, 1000);
 			} else {
-				setError(
-					"User could not be created. Try with a different name."
-				);
+				setError("Profile could not be created. Try again.");
 			}
 		} catch (error) {
-			setError(error);
+			setError("Profile could not be created. Try again.");
 			console.log(error);
 		}
 	};
 
 	return (
 		<div className={styles.createUserProfileContainer}>
-			<form onSubmit={createProfileRequest}>
+			<form onSubmit={(e) => createProfileRequest(e, profileName)}>
 				<div className={styles.formHeader}>
 					<label htmlFor="profileName">Profile Name</label>
 					<button onClick={toggleFormVisibility}>Close</button>
 				</div>
-
+				{error && <div className={styles.createError}>{error}</div>}
+				{success && (
+					<div className={styles.createSuccess}>{success}</div>
+				)}
 				<div className={styles.inputBox}>
 					<input
 						ref={inputRef} // Attach the ref

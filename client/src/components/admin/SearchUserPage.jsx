@@ -32,21 +32,21 @@ const SearchUserPage = () => {
 	// 	fetchUsers(); // Call the fetch function
 	// }, []);
 
-	const searchUser = async (e) => {
+	const searchUser = async (e, email) => {
 		e.preventDefault();
-		if (!emailPattern.test(searchEmail) && searchEmail.length > 0) {
+		if (!emailPattern.test(email) && email.length > 0) {
 			setError("Please type in a valid email!");
 			return;
 		}
 
-		if (searchEmail.length > 0) {
+		if (email.length > 0) {
 			try {
 				const response = await axios.post("/api/users/search", {
-					email: searchEmail,
+					email: email,
 				});
 
 				if (response.data != null) {
-					console.log(searchEmail);
+					console.log(email);
 					setError("");
 					setSearchResult(response.data);
 					setSearchEmail("");
@@ -89,7 +89,10 @@ const SearchUserPage = () => {
 								onChange={(e) => setSearchEmail(e.target.value)}
 								autoComplete="off"
 							/>
-							<button type="submit" onClick={searchUser}>
+							<button
+								type="submit"
+								onClick={(e) => searchUser(e, searchEmail)}
+							>
 								Search
 							</button>
 						</div>
@@ -157,7 +160,7 @@ const SearchUserPage = () => {
 							<div>
 								<button
 									onClick={(e) =>
-										viewAccount(searchResult.email)
+										viewAccount(e, searchResult.email)
 									}
 								>
 									View Account

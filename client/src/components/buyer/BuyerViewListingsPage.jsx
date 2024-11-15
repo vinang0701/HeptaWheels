@@ -1,4 +1,4 @@
-searchInputimport { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
@@ -34,7 +34,7 @@ const BuyerViewListingsPage = () => {
 		if (!imageError) {
 			// Check if the error handler was already triggered
 			setImageError(true); // Set the error state to prevent infinite loop
-			e.target.src = "/blank.jpg"; // Provide the fallback image path
+			e.target.src = "/blank.jpg"; // Provide the fallback image path\
 		}
 	};
 
@@ -145,6 +145,7 @@ const BuyerViewListingsPage = () => {
 								onError={handleImageError}
 							/>
 							<div className={styles.listingDetails}>
+								<p>Listing ID: {listing.listingID}</p>
 								<p className={styles.listingPrice}>
 									${listing.price}
 								</p>
