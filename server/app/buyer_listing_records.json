@@ -1,0 +1,1252 @@
+[
+	{
+		"buyerID": 76,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 76,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 77,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 78,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 79,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 80,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 81,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 82,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 83,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 84,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 85,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 86,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 87,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 88,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 89,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 90,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 91,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 92,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 93,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 94,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 95,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 96,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 97,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 98,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-14T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-15T00:00:00" }
+	},
+	{
+		"buyerID": 99,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 1,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 2,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 3,
+		"dateCreated": { "$date": "2024-11-13T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 4,
+		"dateCreated": { "$date": "2024-11-08T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 5,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 6,
+		"dateCreated": { "$date": "2024-11-11T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 7,
+		"dateCreated": { "$date": "2024-11-10T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 8,
+		"dateCreated": { "$date": "2024-11-12T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 9,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	},
+	{
+		"buyerID": 100,
+		"listingID": 10,
+		"dateCreated": { "$date": "2024-11-09T00:00:00" }
+	}
+]

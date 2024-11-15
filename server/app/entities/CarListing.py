@@ -234,7 +234,7 @@ class CarListing:
                 return []
             self.collection.update_one(
                 {"listingID": listingID, "views.date": {"$ne": today}},
-                {"$addToSet": {"views": {"buyer": buyerID, "date": today}}},
+                {"$addToSet": {"views": {"buyerID": buyerID, "date": today}}},
             )
             return listing
         except Exception as e:

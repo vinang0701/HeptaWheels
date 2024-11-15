@@ -1,0 +1,802 @@
+[
+    {
+        "listingID": 93,
+        "agentID": 26,
+        "userEmail": "seller90@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 74,
+        "agentID": 26,
+        "userEmail": "seller68@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 71,
+        "agentID": 26,
+        "userEmail": "buyer31@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 84,
+        "agentID": 26,
+        "userEmail": "seller52@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 13,
+        "agentID": 27,
+        "userEmail": "buyer43@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 96,
+        "agentID": 27,
+        "userEmail": "buyer75@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 37,
+        "agentID": 27,
+        "userEmail": "seller24@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 41,
+        "agentID": 27,
+        "userEmail": "seller11@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 84,
+        "agentID": 28,
+        "userEmail": "buyer82@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 88,
+        "agentID": 28,
+        "userEmail": "seller15@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 86,
+        "agentID": 28,
+        "userEmail": "buyer92@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 39,
+        "agentID": 28,
+        "userEmail": "buyer27@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 91,
+        "agentID": 29,
+        "userEmail": "buyer98@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 1,
+        "agentID": 29,
+        "userEmail": "seller89@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 98,
+        "agentID": 29,
+        "userEmail": "seller68@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 50,
+        "agentID": 29,
+        "userEmail": "buyer55@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 87,
+        "agentID": 30,
+        "userEmail": "buyer72@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 65,
+        "agentID": 30,
+        "userEmail": "buyer73@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 89,
+        "agentID": 30,
+        "userEmail": "buyer45@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 76,
+        "agentID": 30,
+        "userEmail": "seller39@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 86,
+        "agentID": 31,
+        "userEmail": "buyer99@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 4,
+        "agentID": 31,
+        "userEmail": "buyer49@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 67,
+        "agentID": 31,
+        "userEmail": "buyer20@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 55,
+        "agentID": 31,
+        "userEmail": "buyer94@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 20,
+        "agentID": 32,
+        "userEmail": "seller63@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 79,
+        "agentID": 32,
+        "userEmail": "seller40@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 68,
+        "agentID": 32,
+        "userEmail": "buyer8@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 41,
+        "agentID": 32,
+        "userEmail": "buyer64@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 36,
+        "agentID": 33,
+        "userEmail": "seller53@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 52,
+        "agentID": 33,
+        "userEmail": "buyer22@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 65,
+        "agentID": 33,
+        "userEmail": "buyer20@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 65,
+        "agentID": 33,
+        "userEmail": "seller64@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 16,
+        "agentID": 34,
+        "userEmail": "seller99@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 79,
+        "agentID": 34,
+        "userEmail": "seller78@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 45,
+        "agentID": 34,
+        "userEmail": "seller91@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 85,
+        "agentID": 34,
+        "userEmail": "seller20@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 15,
+        "agentID": 35,
+        "userEmail": "seller5@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 50,
+        "agentID": 35,
+        "userEmail": "seller13@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 49,
+        "agentID": 35,
+        "userEmail": "seller59@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 98,
+        "agentID": 35,
+        "userEmail": "buyer89@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 99,
+        "agentID": 36,
+        "userEmail": "seller80@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 56,
+        "agentID": 36,
+        "userEmail": "seller20@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 86,
+        "agentID": 36,
+        "userEmail": "buyer53@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 45,
+        "agentID": 36,
+        "userEmail": "seller26@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 61,
+        "agentID": 37,
+        "userEmail": "seller58@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 81,
+        "agentID": 37,
+        "userEmail": "buyer85@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 15,
+        "agentID": 37,
+        "userEmail": "buyer24@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 6,
+        "agentID": 37,
+        "userEmail": "buyer98@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 65,
+        "agentID": 38,
+        "userEmail": "seller30@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 21,
+        "agentID": 38,
+        "userEmail": "buyer28@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 83,
+        "agentID": 38,
+        "userEmail": "seller34@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 16,
+        "agentID": 38,
+        "userEmail": "buyer84@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 57,
+        "agentID": 39,
+        "userEmail": "seller23@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 80,
+        "agentID": 39,
+        "userEmail": "buyer32@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 80,
+        "agentID": 39,
+        "userEmail": "buyer6@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 91,
+        "agentID": 39,
+        "userEmail": "buyer50@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 82,
+        "agentID": 40,
+        "userEmail": "buyer37@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 69,
+        "agentID": 40,
+        "userEmail": "buyer88@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 99,
+        "agentID": 40,
+        "userEmail": "buyer2@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 68,
+        "agentID": 40,
+        "userEmail": "buyer69@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 8,
+        "agentID": 41,
+        "userEmail": "buyer27@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 84,
+        "agentID": 41,
+        "userEmail": "seller15@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 58,
+        "agentID": 41,
+        "userEmail": "buyer79@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 5,
+        "agentID": 41,
+        "userEmail": "seller12@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 3,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 35,
+        "agentID": 42,
+        "userEmail": "seller50@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 32,
+        "agentID": 42,
+        "userEmail": "seller51@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 7,
+        "agentID": 42,
+        "userEmail": "seller89@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 49,
+        "agentID": 42,
+        "userEmail": "seller99@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 28,
+        "agentID": 43,
+        "userEmail": "seller37@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 31,
+        "agentID": 43,
+        "userEmail": "seller47@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 84,
+        "agentID": 43,
+        "userEmail": "seller68@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 66,
+        "agentID": 43,
+        "userEmail": "buyer11@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 51,
+        "agentID": 44,
+        "userEmail": "buyer83@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 36,
+        "agentID": 44,
+        "userEmail": "seller75@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 18,
+        "agentID": 44,
+        "userEmail": "buyer37@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 56,
+        "agentID": 44,
+        "userEmail": "buyer67@gmail.com",
+        "userProfile": "Seller",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 1,
+        "agentID": 45,
+        "userEmail": "buyer42@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 73,
+        "agentID": 45,
+        "userEmail": "seller48@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 32,
+        "agentID": 45,
+        "userEmail": "buyer51@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 17,
+        "agentID": 45,
+        "userEmail": "buyer18@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 83,
+        "agentID": 46,
+        "userEmail": "seller61@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 23,
+        "agentID": 46,
+        "userEmail": "buyer60@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 60,
+        "agentID": 46,
+        "userEmail": "seller92@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 96,
+        "agentID": 46,
+        "userEmail": "buyer62@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 10,
+        "agentID": 47,
+        "userEmail": "seller55@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 15,
+        "agentID": 47,
+        "userEmail": "buyer39@gmail.com",
+        "userProfile": "Seller",
+        "rating": 4,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 76,
+        "agentID": 47,
+        "userEmail": "buyer90@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 36,
+        "agentID": 47,
+        "userEmail": "seller53@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 37,
+        "agentID": 48,
+        "userEmail": "seller92@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 43,
+        "agentID": 48,
+        "userEmail": "seller79@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 1,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 35,
+        "agentID": 48,
+        "userEmail": "seller17@gmail.com",
+        "userProfile": "Seller",
+        "rating": 2,
+        "review": "Excellent service!"
+    },
+    {
+        "listingID": 2,
+        "agentID": 48,
+        "userEmail": "seller91@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 7,
+        "agentID": 49,
+        "userEmail": "seller75@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 2,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 68,
+        "agentID": 49,
+        "userEmail": "buyer93@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 65,
+        "agentID": 49,
+        "userEmail": "seller82@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 4,
+        "review": "Very responsive and helpful."
+    },
+    {
+        "listingID": 46,
+        "agentID": 49,
+        "userEmail": "seller64@gmail.com",
+        "userProfile": "Buyer",
+        "rating": 5,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 93,
+        "agentID": 50,
+        "userEmail": "seller30@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Good agent, highly recommend."
+    },
+    {
+        "listingID": 35,
+        "agentID": 50,
+        "userEmail": "seller74@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Not very helpful."
+    },
+    {
+        "listingID": 57,
+        "agentID": 50,
+        "userEmail": "buyer9@gmail.com",
+        "userProfile": "Seller",
+        "rating": 3,
+        "review": "Provided adequate information."
+    },
+    {
+        "listingID": 38,
+        "agentID": 50,
+        "userEmail": "buyer45@gmail.com",
+        "userProfile": "Seller",
+        "rating": 5,
+        "review": "Good agent, highly recommend."
+    }
+]

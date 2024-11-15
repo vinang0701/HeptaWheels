@@ -5,6 +5,11 @@ from datetime import datetime, timedelta
 
 # Initialize Faker instance for generating random data
 fake = faker.Faker()
+
+# Lists of car models and brands
+toyotaModels = ["Corolla Altis", "Sienta", "Camry", "Alphard"]
+bmwModels = ["i7", "iX", "i5", "XM"]
+mazdaModels = ["CX-4", "CX-5", "CX-8", "Roadster"]
 models = [
     "Corolla Altis",
     "Sienta",
@@ -56,15 +61,16 @@ def generate_mock_data():
 
             price = random.randint(50000, 500000)  # Random price
             views = []
+            seen_buyers = set()  # Set to track unique (buyerID, date) combinations
 
             # Generate views for the listing
             num_views = random.randint(5, 15)
-            seen_buyers = set()
 
             for _ in range(num_views):
                 while True:
                     buyer_id = random.randint(76, 100)  # Random buyer ID
                     date = random_date(start_date, end_date)
+                    # Ensure the combination of buyerID and date is unique
                     if (buyer_id, date) not in seen_buyers:
                         seen_buyers.add((buyer_id, date))
                         break
