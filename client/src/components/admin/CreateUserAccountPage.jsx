@@ -76,12 +76,12 @@ const CreateUserAccountPage = ({ toggleFormVisibility }) => {
 
 				// Set the profiles data to state
 				// Check if response contains user profiles data
-				if (response.data.user_profiles) {
-					const activeRoles = response.data.user_profiles
+				if (response.data) {
+					const activeRoles = response.data
 						.filter((profile) => profile.status === "Active") // Filter for active profiles
 						.map((profile) => profile.profile_name); // Extract roles of active profiles
 
-					setProfiles(response.data.user_profiles); // Set profiles data to state
+					setProfiles(response.data); // Set profiles data to state
 					setUserRoles(activeRoles); // Set the roles of active profiles
 				}
 			} catch (err) {

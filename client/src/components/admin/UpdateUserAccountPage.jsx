@@ -26,7 +26,7 @@ const UpdateUserAccountPage = () => {
 
 				// Set the profiles data to state
 				setProfiles(response.data.user_profiles);
-				const roles = response.data.user_profiles.map(
+				const roles = response.data.map(
 					(profile) => profile.profile_name
 				);
 				setUserRoles(roles);

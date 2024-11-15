@@ -68,7 +68,7 @@ const SearchUserPage = () => {
 	};
 
 	const viewAccount = (email) => {
-		navigate(`/users/${encodeURIComponent(email)}`);
+		navigate(`/users/${email}`);
 	};
 
 	if (Object.keys(searchResult).length === 0) {
@@ -159,8 +159,8 @@ const SearchUserPage = () => {
 							<div>{searchResult.status}</div>
 							<div>
 								<button
-									onClick={(e) =>
-										viewAccount(e, searchResult.email)
+									onClick={() =>
+										viewAccount(searchResult.email)
 									}
 								>
 									View Account

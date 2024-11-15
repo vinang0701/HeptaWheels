@@ -6,7 +6,7 @@ import SuspendUserAccountPage from "./SuspendUserAccountPage";
 
 const ViewUserAccountPage = () => {
 	const { email } = useParams(); // Retrieve car ID from the URL
-	const userEmail = decodeURIComponent(email);
+
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const [error, setError] = useState("");
@@ -41,7 +41,7 @@ const ViewUserAccountPage = () => {
 			}
 		};
 
-		viewUserAccount(userEmail); // Call the fetch function
+		viewUserAccount(email); // Call the fetch function
 	}, []);
 	console.log(user);
 
