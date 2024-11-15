@@ -58,7 +58,7 @@ const SellerRateReviewPage = () => {
 
 		try {
 			const response = await axios.post("/api/seller/ratereview", data);
-			if (response.status === 200) {
+			if (response.status === 200 && response.data === true) {
 				setSuccess("Feedback have been submitted!");
 				setTimeout(() => {
 					navigate("/seller");

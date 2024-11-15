@@ -17,13 +17,10 @@ class AgentViewCarListingsCTL:
         self.carListing_entity = CarListing()
 
     def fetchAllListings(self, agentID):
-        try:
-            listings = self.carListing_entity.fetchAllListings(agentID)
-            if not listings:
-                return []
-            return listings
-        except Exception as e:
-            raise e
+        listings = self.carListing_entity.fetchAllListings(agentID)
+        if not listings:
+            return []
+        return listings
 
 
 # Get agentID from json http request
@@ -35,26 +32,14 @@ def fetchAllListings():
     if agentID:
         try:
             listings = agentViewAllCarListingsController.fetchAllListings(agentID)
-            if len(listings) == 0:
+            if not listings:
                 return (
-                    jsonify(
-                        {
-                            "status": "error",
-                            "message": "No listing found...",
-                            "listings": listings,
-                        }
-                    ),
+                    jsonify([]),
                     400,
                 )
             else:
                 return (
-                    jsonify(
-                        {
-                            "status": "success",
-                            "message": "Listings found!",
-                            "listings": listings,
-                        }
-                    ),
+                    jsonify(listings),
                     200,
                 )
         except Exception as e:

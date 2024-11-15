@@ -18,14 +18,11 @@ class DeleteCarListingCTL:
     # Find by listingID/sellerID, then update
     # status
     def deleteListing(self, listingID):
-        try:
-            isRemoved = self.carListing_entity.deleteListing(listingID)
-            if isRemoved:
-                return True
-            else:
-                return False
-        except Exception as e:
-            raise e
+        isRemoved = self.carListing_entity.deleteListing(listingID)
+        if isRemoved:
+            return True
+        else:
+            return False
 
 
 @agent.route("/api/agent/listings/<int:listingID>/delete", methods=["PUT"])
@@ -38,25 +35,13 @@ def deleteListing(listingID):
 
         if deleteSuccess:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "Car listing deleted successfully",
-                        "deleteSuccess": deleteSuccess,
-                    }
-                ),
+                jsonify(True),
                 200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "Car listing is already deleted",
-                        "deleteSuccess": deleteSuccess,
-                    }
-                ),
-                400,
+                jsonify(False),
+                200,
             )
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500

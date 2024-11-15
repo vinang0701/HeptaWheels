@@ -18,8 +18,10 @@ const BuyerViewListingsPage = () => {
 	useEffect(() => {
 		const retrieveCarListings = async () => {
 			const response = await axios.get("/api/buyer/listings");
-			if (response.status === 200) {
-				setListings(response.data.listings);
+			if (response.status === 200 && response.data.length > 0) {
+				setListings(response.data);
+			} else {
+				setError("No listings found...");
 			}
 			setLoading(false);
 		};
@@ -33,23 +35,23 @@ const BuyerViewListingsPage = () => {
 	const handleImageError = (e) => {
 		if (!imageError) {
 			// Check if the error handler was already triggered
-			setImageError(true); // Set the error state to prevent infinite loop
-			e.target.src = "/blank.jpg"; // Provide the fallback image path\
+			setImageError(true);
+			e.target.src = "/blank.jpg";
 		}
 	};
 
-	const buyerSearchListing = async (e) => {
+	const buyerSearchListing = async (e, query) => {
 		e.preventDefault();
 		setError("");
 
-		if (searchInput.length > 0) {
+		if (query.length > 0) {
 			try {
-				const query = {
-					query: searchInput,
+				const data = {
+					query: query,
 				};
 				const response = await axios.post(
 					"/api/buyer/listings/search",
-					query
+					data
 				);
 				if (
 					response.status === 200 &&
@@ -79,7 +81,7 @@ const BuyerViewListingsPage = () => {
 			<h4>Used Car Listings</h4>
 
 			<div className={styles.searchContainer}>
-				<form onSubmit={buyerSearchListing}>
+				<form onSubmit={(e) => buyerSearchListing(e, searchInput)}>
 					<input
 						type="text"
 						placeholder="Search by ..."

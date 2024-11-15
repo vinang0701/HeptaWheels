@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../api/axios";
 import styles from "./SellerViewCarListingsPage.module.css";
-import SellerTrackViewsPage from "./TrackNumViewsPage";
+// import SellerTrackViewsPage from "./TrackNumViewsPage";
 
 const SellerViewCarListingsPage = () => {
 	const { auth } = useAuth();

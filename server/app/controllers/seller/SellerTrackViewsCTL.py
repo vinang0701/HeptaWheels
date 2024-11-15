@@ -15,13 +15,11 @@ class SellerTrackViewsCTL:
         self.carListing_entity = CarListing()
 
     def getNumOfView(self, listingID):
-        try:
-            numOfViews = self.carListing_entity.getNumOfView(listingID)
-            if not numOfViews:
-                return []
-            return numOfViews
-        except Exception as e:
-            raise e
+
+        numOfViews = self.carListing_entity.getNumOfView(listingID)
+        if not numOfViews:
+            return []
+        return numOfViews
 
 
 # Get sellerID from json http request

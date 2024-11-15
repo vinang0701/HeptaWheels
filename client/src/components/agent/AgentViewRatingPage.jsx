@@ -17,10 +17,10 @@ const AgentViewRatingPage = () => {
 				const response = await axios.get("/api/agent/ratereview", {
 					params: { agentID: agentID },
 				});
-				if (response.status === 200) {
+				if (response.status === 200 && response.data.length !== 0) {
 					setRatingsReviews(response.data);
 					setLoading(false);
-				} else if (response.status === 204) {
+				} else {
 					setError("No reviews found!");
 					setLoading(false);
 				}

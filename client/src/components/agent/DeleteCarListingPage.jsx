@@ -8,7 +8,7 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
-	const deleteListingRequest = async () => {
+	const deleteListingRequest = async (listingID) => {
 		setError("");
 		setSuccess("");
 		console.log(listingID);
@@ -17,12 +17,16 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 			const response = await axios.put(
 				`/api/agent/listings/${listingID}/delete`
 			);
-			if (response.status === 200) {
+			if (response.status === 200 && response.data === true) {
 				setSuccess("Listing has been deleted!");
 				setTimeout(() => {
 					toggleDeleteVisibility(listingID);
 				}, 2000);
-				window.location.reload();
+			} else {
+				setError("Listing is already deleted!");
+				setTimeout(() => {
+					toggleDeleteVisibility(listingID);
+				}, 2000);
 			}
 		} catch (err) {
 			if (err.response) {
@@ -41,7 +45,9 @@ const DeleteCarListingPage = ({ toggleDeleteVisibility, listingID }) => {
 				{error && <span className={styles.error}>{error}</span>}
 				<p>Confirm delete Listing ID: {listingID}?</p>
 				<div className={styles.buttonFlexbox}>
-					<button onClick={deleteListingRequest}>Yes</button>
+					<button onClick={() => deleteListingRequest(listingID)}>
+						Yes
+					</button>
 					<button
 						className={styles.noButton}
 						onClick={toggleDeleteVisibility}

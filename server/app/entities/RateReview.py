@@ -60,7 +60,10 @@ class RateReview:
 
     # Agent View Ratings and Reviews
     def viewRatingsReviews(self, agentID):
-        rateReviews = list(self.collection.find({"agentID": agentID}, {"_id": 0}))
-        if not rateReviews:
-            return []
-        return rateReviews
+        try:
+            rateReviews = list(self.collection.find({"agentID": agentID}, {"_id": 0}))
+            if not rateReviews:
+                return []
+            return rateReviews
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error occured: {str(e)}")

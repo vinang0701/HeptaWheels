@@ -15,13 +15,10 @@ class SellerViewCarListingsCTL:
         self.carListing_entity = CarListing()
 
     def sellerRetrieveCarListings(self, sellerID):
-        try:
-            listings = self.carListing_entity.sellerRetrieveCarListings(sellerID)
-            if not listings:
-                return None
-            return listings
-        except Exception as e:
-            raise e
+        listings = self.carListing_entity.sellerRetrieveCarListings(sellerID)
+        if not listings:
+            return []
+        return listings
 
 
 # Get sellerID from json http request

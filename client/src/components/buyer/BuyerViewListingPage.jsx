@@ -22,11 +22,10 @@ const BuyerViewListingPage = () => {
 		navigate("/buyer/listings"); // Go back to the previous page
 	};
 
-	const saveListing = async () => {
+	const saveListing = async (buyerID, listingID) => {
 		setError("");
 		setSuccess("");
-		console.log("BuyerID: " + buyerID);
-		console.log("Save Listing: " + listingID);
+
 		const data = {
 			buyerID: buyerID,
 			listingID: listingID,
@@ -130,7 +129,10 @@ const BuyerViewListingPage = () => {
 					<p className={styles.listingStatus}>
 						<span>SellerID:</span> {listing.sellerID}
 					</p>
-					<div className={styles.saveListing} onClick={saveListing}>
+					<div
+						className={styles.saveListing}
+						onClick={() => saveListing(buyerID, listingID)}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							height="16px"

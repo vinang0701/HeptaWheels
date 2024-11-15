@@ -95,7 +95,7 @@ def generate_mock_data(num_records):
 
         for _ in range(num_views):
             while True:
-                buyer_id = random.randint(1, 100)  # Random buyerID between 1 and 100
+                buyer_id = random.randint(77, 100)  # Random buyerID between 1 and 100
                 date = random_date(start_date, end_date)
                 if (buyer_id, date) not in seen_buyers:
                     seen_buyers.add((buyer_id, date))

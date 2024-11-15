@@ -6,7 +6,7 @@ import styles from "./AgentViewCarListings.module.css";
 import DeleteCarListingPage from "./DeleteCarListingPage";
 import CarImage from "./CarImage";
 
-const AgentDashboard = () => {
+const AgentViewCarListingsPage = () => {
 	const { auth } = useAuth();
 	const agentID = auth.userID;
 	const navigate = useNavigate();
@@ -32,21 +32,21 @@ const AgentDashboard = () => {
 	};
 
 	useEffect(() => {
-		const fetchListings = async () => {
+		const fetchAllListings = async (agentID) => {
 			try {
 				const response = await axios.get("/api/agent/listings", {
 					params: {
 						agentID: agentID,
 					},
 				});
-				if (response.data.listings) {
-					setListings(response.data.listings);
+				if (response.status === 200 && response.data.length !== 0) {
+					setListings(response.data);
 				}
 			} catch (err) {
 				setError("Error fetching data");
 			}
 		};
-		fetchListings();
+		fetchAllListings(agentID);
 	}, []);
 
 	// Handler for image loading error
@@ -54,24 +54,25 @@ const AgentDashboard = () => {
 		e.target.src = "./src/assets/blank.jpg"; // Path to the fallback image
 	};
 
-	const searchListing = async (e) => {
+	const searchListing = async (e, agentID, query) => {
 		e.preventDefault();
 		setError("");
 
-		if (searchInput.length > 0) {
+		if (query.length > 0) {
 			try {
-				const query = {
-					query: searchInput,
+				const data = {
+					agentID: agentID,
+					query: query,
 				};
 				const response = await axios.post(
 					"/api/agent/listings/search",
-					query
+					data
 				);
-				if (
-					response.status === 200 &&
-					response.data.listings !== null
-				) {
-					setSearchResult(response.data.listings);
+				if (response.status === 200 && response.data.length !== 0) {
+					setSearchResult(response.data);
+				} else {
+					setSearchInput("");
+					setError("No listing found!");
 				}
 			} catch (err) {
 				setError("No listing found!");
@@ -89,7 +90,7 @@ const AgentDashboard = () => {
 				<button className="createListingButton" onClick={createListing}>
 					Create
 				</button>
-				<form onSubmit={searchListing}>
+				<form onSubmit={(e) => searchListing(e, agentID, searchInput)}>
 					<input
 						type="text"
 						placeholder="Search by ..."
@@ -248,4 +249,4 @@ const AgentDashboard = () => {
 	);
 };
 
-export default AgentDashboard;
+export default AgentViewCarListingsPage;

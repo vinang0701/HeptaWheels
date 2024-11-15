@@ -5,7 +5,7 @@ import MainPage from "./components/MainPage.jsx";
 import Login from "./components/LoginPage.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import BuyerViewListingsPage from "./components/buyer/BuyerViewListingsPage.jsx";
-import AgentDashboard from "./components/agent/AgentDashboard.jsx";
+import AgentViewCarListingsPage from "./components/agent/AgentViewCarListingsPage.jsx";
 import ViewUserAccountPage from "./components/admin/ViewUserAccountPage.jsx";
 import UpdateUserAccountPage from "./components/admin/UpdateUserAccountPage.jsx";
 import Layout from "./Layout.jsx";
@@ -23,7 +23,7 @@ import SellerViewCarListingsPage from "./components/seller/SellerViewCarListings
 import SellerRateReviewPage from "./components/seller/SellerRateReviewPage.jsx";
 import CalculateLoanPage from "./components/buyer/CalculateLoanPage.jsx";
 import TrackShortListPage from "./components/seller/TrackShortListPage.jsx";
-import TrackNumViewsPage from "./components/seller/TrackNumViewsPage.jsx";
+import SellerTrackViewsPage from "./components/seller/SellerTrackViewsPage.jsx";
 
 function App() {
 	return (
@@ -84,8 +84,12 @@ function App() {
 						element={<SellerViewCarListingsPage />}
 					/>
 					<Route
+						path="/seller/listings"
+						element={<SellerViewCarListingsPage />}
+					/>
+					<Route
 						path="/seller/listings/:listingID/views"
-						element={<TrackNumViewsPage />}
+						element={<SellerTrackViewsPage />}
 					/>
 					<Route
 						path="/seller/listings/:listingID/agent"
@@ -97,7 +101,10 @@ function App() {
 					/>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["Agent"]} />}>
-					<Route path="/agent" element={<AgentDashboard />} />
+					<Route
+						path="/agent"
+						element={<AgentViewCarListingsPage />}
+					/>
 					<Route
 						path="/agent/create"
 						element={<CreateCarListingPage />}

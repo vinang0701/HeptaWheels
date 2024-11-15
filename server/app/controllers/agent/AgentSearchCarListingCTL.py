@@ -15,50 +15,33 @@ class AgentSearchCarListingCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def searchListing(self, query):
-        try:
-            listings = self.carListing_entity.searchListing(query)
-            if not listings:
-                return []
-            else:
-                return listings
-        except Exception as e:
-            raise e
+    def searchListing(self, agentID, query):
+        listings = self.carListing_entity.searchListing(agentID, query)
+        if not listings:
+            return []
+        return listings
 
 
 @agent.route("/api/agent/listings/search", methods=["POST"])
 def searchListing():
-    # Data to get from front end in json
-    if request.method == "OPTIONS":
-        return jsonify({"status": "success", "message": "CORS Preflight succeed"}, 200)
     data = request.json
+    agentID = int(data["agentID"])
     query = data["query"]
+
     if query != "":
         try:
             agentSearchCarListingCTL = AgentSearchCarListingCTL()
-            listings = agentSearchCarListingCTL.searchListing(query)
+            listings = agentSearchCarListingCTL.searchListing(agentID, query)
 
             if listings:
                 return (
-                    jsonify(
-                        {
-                            "status": "success",
-                            "message": "Listings found!",
-                            "listings": listings,
-                        }
-                    ),
+                    jsonify(listings),
                     200,
                 )
             else:
                 return (
-                    jsonify(
-                        {
-                            "status": "error",
-                            "message": "No listings found",
-                            "listings": [],
-                        }
-                    ),
-                    400,
+                    jsonify([]),
+                    200,
                 )
         except Exception as e:
             return jsonify({"status": "error", "message": str(e)}), 500

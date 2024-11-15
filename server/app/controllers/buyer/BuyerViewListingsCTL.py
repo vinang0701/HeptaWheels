@@ -16,13 +16,8 @@ class BuyerViewListingsCTL:
         self.carListing_entity = CarListing()
 
     def retrieveCarListings(self):
-        try:
-            listings = self.carListing_entity.retrieveCarListings()
-            if not listings:
-                return []
-            return listings
-        except Exception as e:
-            raise e
+        listings = self.carListing_entity.retrieveCarListings()
+        return listings
 
 
 @buyer.route("/api/buyer/listings", methods=["GET"])
@@ -30,28 +25,10 @@ def retrieveCarListings():
     buyerViewListingCTL = BuyerViewListingsCTL()
     try:
         listings = buyerViewListingCTL.retrieveCarListings()
-        if len(listings) == 0:
-            return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "No listing found...",
-                        "listings": listings,
-                    }
-                ),
-                200,
-            )
-        else:
-            return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "Listings found!",
-                        "listings": listings,
-                    }
-                ),
-                200,
-            )
+        return (
+            jsonify(listings),
+            200,
+        )
     except Exception as e:
         return (
             jsonify(

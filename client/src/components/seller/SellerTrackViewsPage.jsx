@@ -10,11 +10,11 @@ import {
 import axios from "../../api/axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./TrackNumViewsPage.module.css";
+import styles from "./SellerTrackViewsPage.module.css";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title);
 
-const TrackNumViewsPage = () => {
+const SellerTrackViewsPage = () => {
 	const { listingID } = useParams();
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
@@ -39,7 +39,7 @@ const TrackNumViewsPage = () => {
 	};
 
 	useEffect(() => {
-		const fetchViews = async (listingID) => {
+		const getNumOfView = async (listingID) => {
 			try {
 				const response = await axios.get("/api/seller/listings/views", {
 					params: {
@@ -55,7 +55,7 @@ const TrackNumViewsPage = () => {
 				setError("Error fetching data...");
 			}
 		};
-		fetchViews(listingID);
+		getNumOfView(listingID);
 	}, []);
 
 	useEffect(() => {
@@ -87,24 +87,6 @@ const TrackNumViewsPage = () => {
 			setMin(Math.min(...dataset));
 		}
 	}, [dataset]);
-
-	// useEffect(() => {
-	// 	// Check if dataframe exists and is an array before mapping
-	// 	if (Array.isArray(dataframe)) {
-	// 		const newLabels = dataframe.map((data) => data._id);
-	// 		const newDataset = dataframe.map((data) => data.count);
-
-	// 		setLabels(newLabels);
-	// 		setDataset(newDataset);
-	// 	}
-	// }, [dataframe]);
-
-	// useEffect(() => {
-	// 	if (Array.isArray(dataset) && dataset.length > 0) {
-	// 		setMax(Math.max(...dataset) + 3);
-	// 		setMin(Math.min(...dataset));
-	// 	}
-	// }, [dataset]);
 
 	const goBack = () => {
 		navigate(-1);
@@ -147,16 +129,6 @@ const TrackNumViewsPage = () => {
 		},
 	};
 
-	// if (dataframe.length === 0) {
-	// 	return (
-	// 		<div className={styles.trackViewsPageContainer}>
-	// 			<div className={styles.backButton} onClick={goBack}>
-	// 				&lt; Back
-	// 			</div>
-	// 			Nothing to see
-	// 		</div>
-	// 	);
-	// }
 	return (
 		<div className={styles.trackViewsPageContainer}>
 			<div className={styles.backButton} onClick={goBack}>
@@ -167,4 +139,4 @@ const TrackNumViewsPage = () => {
 	);
 };
 
-export default TrackNumViewsPage;
+export default SellerTrackViewsPage;

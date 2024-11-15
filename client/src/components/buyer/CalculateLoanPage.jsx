@@ -119,6 +119,7 @@ const CalculateLoanPage = () => {
 							name="carPrice"
 							value={formValues.carPrice}
 							onChange={handleInputChange}
+							autoComplete="off"
 							required
 						/>
 					</div>
@@ -129,6 +130,7 @@ const CalculateLoanPage = () => {
 							name="downPayment"
 							value={formValues.downPayment}
 							onChange={handleInputChange}
+							autoComplete="off"
 							required
 						/>
 					</div>
@@ -139,6 +141,7 @@ const CalculateLoanPage = () => {
 							name="interestRate"
 							value={formValues.interestRate}
 							onChange={handleInputChange}
+							autoComplete="off"
 							required
 						/>
 					</div>
@@ -149,6 +152,7 @@ const CalculateLoanPage = () => {
 							name="loanTerm"
 							value={formValues.loanTerm}
 							onChange={handleInputChange}
+							autoComplete="off"
 							required
 						/>
 					</div>

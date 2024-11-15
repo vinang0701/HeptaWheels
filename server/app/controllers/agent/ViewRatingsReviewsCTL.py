@@ -28,7 +28,7 @@ class ViewRatingsReviewsCTL:
 def viewRatingsReviews():
     agentID = int(request.args.get("agentID"))
     viewRatingsReviewsCTL = ViewRatingsReviewsCTL()
-    if agentID:
+    try:
         rateReviews = viewRatingsReviewsCTL.viewRatingsReviews(agentID)
         if not rateReviews:
             return (
@@ -40,5 +40,5 @@ def viewRatingsReviews():
                 jsonify(rateReviews),
                 200,
             )
-    else:
-        return (jsonify({"status": "error", "message": "Agent ID is empty."}), 400)
+    except Exception as e:
+        return (jsonify({"status": "error", "message": "str(e)"}), 500)

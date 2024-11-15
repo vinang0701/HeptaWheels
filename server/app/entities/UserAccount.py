@@ -44,8 +44,6 @@ class UserAccount:
             else:
                 return None
 
-        return None
-
     def createAcc(self, email, pwd, role):
         # Check if user already exists
         # checkDuplUser = self.viewUserAccount(email)

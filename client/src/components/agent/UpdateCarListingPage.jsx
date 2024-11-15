@@ -111,45 +111,54 @@ const UpdateCarListingPage = () => {
 		fetchListing(); // Call the fetch function
 	}, []);
 
-	const validateUpdate = async (e) => {
+	const validateUpdate = async (
+		e,
+		listingID,
+		sellerID,
+		carPlateNo,
+		carMake,
+		carModel,
+		price,
+		desc,
+		status,
+		image
+	) => {
 		e.preventDefault();
+		setError("");
+		setSuccess("");
 		if (price <= 0) {
 			setError("Please input a valid price.");
 			return;
 		}
 
-		const carListingObj = {
+		const data = {
 			sellerID: sellerID,
 			carPlateNo: carPlateNo,
 			carMake: carMake,
 			carModel: carModel,
-			price: price,
+			price: parseInt(price),
 			desc: desc,
 			status: status,
 			image: image,
 		};
 
-		console.log(carListingObj);
-
 		try {
 			// Make a POST request to the API
 			const response = await axios.put(
 				`/api/agent/listings/${listingID}`,
-				carListingObj
+				data
 			);
 
-			if (response.data.status === "success") {
+			if (response.status === 200 && response.data === true) {
 				setSuccess("Listing successfully updated!");
-				// alert("Listing successfully updated!");
 				setTimeout(() => {
 					navigate("/agent");
 				}, 2000);
-			}
-		} catch (err) {
-			// Handle error
-			if (err.response.status === 500) {
+			} else {
 				setError("Duplicate listing! Please check details again.");
 			}
+		} catch (err) {
+			setError("Duplicate listing! Please check details again.");
 		}
 	};
 	return (
@@ -159,7 +168,23 @@ const UpdateCarListingPage = () => {
 			</p>
 			{success && <div className={styles.success}>{success}</div>}
 			{error && <div className={styles.error}>{error}</div>}
-			<form className={styles.uploadListingForm} onSubmit={validateUpdate}>
+			<form
+				className={styles.uploadListingForm}
+				onSubmit={(e) =>
+					validateUpdate(
+						e,
+						listingID,
+						sellerID,
+						carPlateNo,
+						carMake,
+						carModel,
+						price,
+						desc,
+						status,
+						image
+					)
+				}
+			>
 				<div className={styles.fileContainer}>
 					<div className={styles.uploadImageContainer}>
 						{Object.keys(uploadedImage).length !== 0 ? (

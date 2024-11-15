@@ -47,8 +47,8 @@ class CarListing:
                     "carMake": carMake,
                     "carModel": carModel,
                     "price": price,
-                    "status": status,
                     "desc": desc,
+                    "status": status,
                     "image": image,
                 }
             )
@@ -64,8 +64,8 @@ class CarListing:
         carMake,
         carModel,
         price,
-        status,
         desc,
+        status,
         image,
     ):
         try:
@@ -79,8 +79,8 @@ class CarListing:
                         "carModel": carModel,
                         "price": price,
                         "desc": desc,
-                        "image": image,
                         "status": status,
+                        "image": image,
                     }
                 },
             )
@@ -105,7 +105,7 @@ class CarListing:
         try:
             listings = list(
                 self.collection.find({"agentID": agentID}, {"_id": 0}).sort(
-                    "carMake", 1
+                    "listingID", 1
                 )
             )
             if not listings:
@@ -115,7 +115,7 @@ class CarListing:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
     def deleteListing(self, listingID):
-        listing = self.findListing(listingID)
+        listing = self.collection.find_one({"listingID": listingID}, {"_id": 0})
         current_status = listing["status"]
         if current_status == "Unavailable":
             return False
@@ -131,16 +131,32 @@ class CarListing:
                 )
                 return True
             except Exception as e:
-                raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+                print(f"Unexpected error has occurred: {str(e)}")
+                return False
 
-    def searchListing(self, query):
+    def searchListing(self, agentID, query):
         try:
             listings = list(
                 self.collection.find(
                     {
-                        "$or": [
-                            {"carMake": {"$regex": f"{query}", "$options": "i"}},
-                            {"carModel": {"$regex": f"{query}", "$options": "i"}},
+                        "$and": [
+                            {"agentID": agentID},
+                            {
+                                "$or": [
+                                    {
+                                        "carMake": {
+                                            "$regex": f"{query}",
+                                            "$options": "i",
+                                        }
+                                    },
+                                    {
+                                        "carModel": {
+                                            "$regex": f"{query}",
+                                            "$options": "i",
+                                        }
+                                    },
+                                ]
+                            },
                         ]
                     },
                     {"_id": 0},
@@ -174,18 +190,18 @@ class CarListing:
         pipeline = [
             {
                 "$match": {
-                    "listingID": listingID,  # Filter by listingID
+                    "listingID": listingID,
                     "views.date": {"$gte": start_date, "$lte": end_date},
                 }
             },
-            {"$unwind": "$views"},  # Unwind the views array
+            {"$unwind": "$views"},
             {"$match": {"views.date": {"$gte": start_date, "$lte": end_date}}},
             {
                 "$group": {
                     "_id": {
                         "$dateToString": {"format": "%d-%m-%Y", "date": "$views.date"}
                     },
-                    "count": {"$sum": 1},  # Count views per day
+                    "count": {"$sum": 1},
                 }
             },
             {"$sort": {"_id": 1}},  # Sort by date
@@ -193,9 +209,6 @@ class CarListing:
 
         numOfViews = list(self.collection.aggregate(pipeline))
 
-        # Print the results
-        # for numOfView in numOfViews:
-        #     print(f"Date: {numOfViews['_id']}, Views: {numOfViews['count']}")
         return numOfViews
 
     # Buyer Functions
@@ -209,8 +222,6 @@ class CarListing:
                     "listingID", 1
                 )
             )
-            if not listings:
-                return []
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")

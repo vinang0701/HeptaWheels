@@ -54,15 +54,15 @@ class UpdateCarListingCTL:
 @agent.route("/api/agent/listings/<int:listingID>", methods=["PUT"])
 def validateUpdate(listingID):
     # Data to get from front end in json
-    carListingObj = request.json
-    sellerID = carListingObj["sellerID"]
-    carPlateNo = carListingObj["carPlateNo"]
-    carMake = carListingObj["carMake"]
-    carModel = carListingObj["carModel"]
-    price = carListingObj["price"]
-    status = carListingObj["status"]
-    desc = carListingObj["desc"]
-    image = carListingObj["image"]
+    data = request.json
+    sellerID = int(data["sellerID"])
+    carPlateNo = data["carPlateNo"]
+    carMake = data["carMake"]
+    carModel = data["carModel"]
+    price = data["price"]
+    status = data["status"]
+    desc = data["desc"]
+    image = data["image"]
 
     try:
         updateCarListingController = UpdateCarListingCTL()
@@ -80,25 +80,13 @@ def validateUpdate(listingID):
 
         if updateSuccess:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "Car listing updated successfully",
-                        "updateSuccess": updateSuccess,
-                    }
-                ),
+                jsonify(True),
                 200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "Car listing update unsuccessful",
-                        "updateSuccess": updateSuccess,
-                    }
-                ),
-                400,
+                jsonify(False),
+                200,
             )
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500

@@ -29,7 +29,7 @@ def viewShortlist():
         listings = viewShortlistCTL.viewShortlist(buyerID)
         if not listings:
             return (
-                jsonify(listings),
+                jsonify([]),
                 200,
             )
         else:
