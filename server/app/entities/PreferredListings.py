@@ -18,7 +18,7 @@ class PreferredListings:
         self.collection = database["PreferredListings"]
 
     def saveCarListing(self, buyerID, listingID):
-        todayDate = datetime().today()
+        todayDate = datetime.today()
         try:
             self.collection.insert_one(
                 {"buyerID": buyerID, "listingID": listingID, "dateCreated": todayDate}

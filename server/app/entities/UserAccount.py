@@ -17,13 +17,10 @@ class UserAccount:
         """
         Fetch a user by their email from MongoDB.
         """
-        try:
-            user = self.collection.find_one({"email": email}, {"_id": 0})
-            if user is None:
-                return None
-            return user
-        except Exception as e:
-            raise RuntimeError(f"An unexpected error as occured: {str(e)}")
+        user = self.collection.find_one({"email": email}, {"_id": 0})
+        if user is None:
+            return None
+        return user
 
     def searchUser(self, email):
         try:
@@ -91,7 +88,8 @@ class UserAccount:
                 )
                 return True
             except Exception as e:
-                raise RuntimeError(f"Unexpected error has occurred: {str(e)}")
+                print(f"Unexpected error has occurred: {str(e)}")
+                return False
 
     def updateUserAccount(self, currentEmail, email, pwd, status, role):
         try:

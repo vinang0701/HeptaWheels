@@ -17,12 +17,12 @@ class ViewUserAccountCTL:
             return None
         return user
 
-    def getAllUsers(self):
-        users = self.user_entity.getAllUsers()
+    # def getAllUsers(self):
+    #     users = self.user_entity.getAllUsers()
 
-        if users is None:
-            return None
-        return users
+    #     if users is None:
+    #         return None
+    #     return users
 
 
 # Route to get specified user in url/<string:email>
@@ -34,20 +34,12 @@ def viewUserAccount(email):
         user = viewUAController.viewUserAccount(email)
         if user is None:
             return (
-                jsonify(
-                    {"status": "error", "message": "User not found!", "user_data": None}
-                ),
+                jsonify(None),
                 200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "User has been found!",
-                        "user_data": user,
-                    }
-                ),
+                jsonify(user),
                 200,
             )
     except Exception as e:

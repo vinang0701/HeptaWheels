@@ -53,29 +53,18 @@ def viewProfile(profile_name):
             200,
         )
 
+
 @admin.route("/api/profiles", methods=["GET"])
 def viewProfiles():
     viewUPController = ViewUserProfileCTL()
     user_profiles = viewUPController.viewProfiles()
-    if user_profiles is None:
+    if not user_profiles:
         return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "No user profile found",
-                    "user_profiles": None,
-                }
-            ),
+            jsonify(None),
             404,
         )
     else:
         return (
-            jsonify(
-                {
-                    "status": "success",
-                    "message": "User profiles found!",
-                    "user_profiles": user_profiles,
-                }
-            ),
+            jsonify(user_profiles),
             200,
         )

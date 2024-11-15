@@ -40,25 +40,13 @@ def suspendAccount(email):
         isSuspended = suspendUAController.suspendAccount(email)
         if isSuspended:
             return (
-                jsonify(
-                    {
-                        "status": "success",
-                        "message": "User has been suspended",
-                        "isSuspended": isSuspended,
-                    }
-                ),
+                jsonify(True),
                 200,
             )
         else:
             return (
-                jsonify(
-                    {
-                        "status": "error",
-                        "message": "User cannot be suspended",
-                        "isSuspended": isSuspended,
-                    }
-                ),
-                400,
+                jsonify(False),
+                200,
             )
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500

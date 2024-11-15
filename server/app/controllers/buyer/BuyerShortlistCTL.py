@@ -26,7 +26,7 @@ def saveCarListing():
     # Data to get from front end in json
     data = request.json
     buyerID = data["buyerID"]
-    listingID = data["listingID"]
+    listingID = int(data["listingID"])
 
     buyerShortlistCTL = BuyerShortlistCTL()
     isShortlisted = buyerShortlistCTL.saveCarListing(buyerID, listingID)

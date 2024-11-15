@@ -19,16 +19,14 @@ class CreateUserAccountCTL:
             return False
 
 
-@admin.route("/api/users", methods=["POST", "OPTIONS"])
+@admin.route("/api/users", methods=["POST"])
 def createAcc():
     user_data = request.json
     email = user_data["email"]
     pwd = user_data["password"]
     role = user_data["role"]
     createUAController = CreateUserAccountCTL()
-    if request.method == "OPTIONS":
-        # This is the preflight request
-        return jsonify({"status": "CORS preflight successful"}), 200
+
     try:
         isCreated = createUAController.createAcc(email, pwd, role)
         if isCreated:

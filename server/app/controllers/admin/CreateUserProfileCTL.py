@@ -9,9 +9,9 @@ class CreateUserProfileCTL:
     def __init__(self):
         self.userProfile_entity = UserProfile()
 
-    def createProfile(self, profile_name):
+    def createProfile(self, name):
         try:
-            isCreated = self.userProfile_entity.createProfile(profile_name)
+            isCreated = self.userProfile_entity.createProfile(name)
             if not isCreated:
                 return False
             return isCreated
@@ -22,12 +22,12 @@ class CreateUserProfileCTL:
 @admin.route("/api/profiles", methods=["POST"])
 def createProfile():
     data = request.json
-    profile_name = data["profile_name"]
+    name = data["name"]
 
     createUPController = CreateUserProfileCTL()
 
     try:
-        isCreated = createUPController.createProfile(profile_name)
+        isCreated = createUPController.createProfile(name)
         if isCreated:
             return (
                 jsonify(True),
@@ -40,12 +40,6 @@ def createProfile():
             )
     except Exception as e:
         return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": str(e),
-                    "isCreated": False,
-                }
-            ),
+            jsonify({"status": "error", "message": str(e)}),
             500,
         )

@@ -24,20 +24,15 @@ class UserProfile:
         return user_profile
 
     def searchProfile(self, query):
-        profile = self.collection.find_one({"profile_name": query}, {"_id": 0})
+        profile = self.collection.find_one(
+            {"profile_name": {"$regex": f"{query}", "$options": "i"}}, {"_id": 0}
+        )
         if profile is None:
             return None
         return profile
 
     def createProfile(self, profile_name):
         try:
-            # Check for exisiting profiles
-            profileExists = self.getUserProfile(profile_name)
-
-            # Profile exists
-            if profileExists:
-                return False
-
             profile_data = {
                 "profile_name": profile_name,
                 "permissions": [],
@@ -47,7 +42,8 @@ class UserProfile:
             self.collection.insert_one(profile_data)
             return True
         except Exception as e:
-            raise RuntimeError(f"Unexpected error occurred: {str(e)}")
+            print(f"Unexpected error occurred: {str(e)}")
+            return False
 
     def updateUserProfile(
         self, currentProfile_name, profile_name, permissions, profile_status

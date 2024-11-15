@@ -168,7 +168,7 @@ class CarListing:
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def getNumOfViews(self, listingID):
+    def getNumOfView(self, listingID):
         end_date = datetime.today()  # Assuming today is the end date
         start_date = end_date - timedelta(days=7)
         pipeline = [
@@ -204,18 +204,27 @@ class CarListing:
     def retrieveCarListings(self):
         try:
             # Need to filter the available only
-            listings = list(self.collection.find({"status": "Available"}, {"_id": 0}))
+            listings = list(
+                self.collection.find({"status": "Available"}, {"_id": 0}).sort(
+                    "listingID", 1
+                )
+            )
             if not listings:
                 return []
             return listings
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
 
-    def viewListing(self, listingID):
+    def viewListing(self, listingID, buyerID):
+        today = datetime.combine(datetime.today(), datetime.min.time())
         try:
             listing = self.collection.find_one({"listingID": listingID}, {"_id": 0})
             if not listing:
                 return []
+            self.collection.update_one(
+                {"listingID": listingID, "views.date": {"$ne": today}},
+                {"$addToSet": {"views": {"buyer": buyerID, "date": today}}},
+            )
             return listing
         except Exception as e:
             raise RuntimeError(f"Unexpected error occured: {str(e)}")
