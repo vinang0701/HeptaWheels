@@ -9,7 +9,7 @@ new_views = []
 start_date = datetime(2024, 11, 13)
 
 # Generate 20 unique views
-for i in range(20):
+for i in range(100):
     # Generate a unique buyerID by picking a number in a certain range
     buyer_id = random.randint(
         77, 100
