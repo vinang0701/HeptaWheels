@@ -10,11 +10,11 @@ import {
 import axios from "../../api/axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./TrackShortListPage.module.css";
+import styles from "./TrackShortlistPage.module.css";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title);
 
-const TrackShortListPage = () => {
+const TrackShortlistPage = () => {
 	const { listingID } = useParams();
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
@@ -160,4 +160,4 @@ const TrackShortListPage = () => {
 	);
 };
 
-export default TrackShortListPage;
+export default TrackShortlistPage;

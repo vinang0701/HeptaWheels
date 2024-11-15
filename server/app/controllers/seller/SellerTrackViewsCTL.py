@@ -14,9 +14,9 @@ class SellerTrackViewsCTL:
     def __init__(self):
         self.carListing_entity = CarListing()
 
-    def getNumOfViews(self, listingID):
+    def getNumOfView(self, listingID):
         try:
-            numOfViews = self.carListing_entity.getNumOfViews(listingID)
+            numOfViews = self.carListing_entity.getNumOfView(listingID)
             if not numOfViews:
                 return []
             return numOfViews
@@ -26,13 +26,13 @@ class SellerTrackViewsCTL:
 
 # Get sellerID from json http request
 @seller.route("/api/seller/listings/views", methods=["GET"])
-def getNumOfViews():
+def getNumOfView():
     listingID = int(request.args.get("listingID"))
 
     sellerTrackViewsCTL = SellerTrackViewsCTL()
     if listingID:
         try:
-            numOfViews = sellerTrackViewsCTL.getNumOfViews(listingID)
+            numOfViews = sellerTrackViewsCTL.getNumOfView(listingID)
             if not numOfViews:
                 return (
                     jsonify([]),
